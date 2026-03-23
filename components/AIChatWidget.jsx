@@ -11,16 +11,18 @@ const INITIAL_MESSAGE = {
 
 export default function AIChatWidget() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
 
-  // Don't render on portal pages — PortalAIAssistant handles those
-  if (pathname?.startsWith("/portal")) return null;
+  // All hooks must be declared before any conditional returns (Rules of Hooks)
+  const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
   const [hasNewMessage, setHasNewMessage] = useState(false);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Don't render on portal or internal pages — those have their own AI assistants
+  if (pathname?.startsWith("/portal") || pathname?.startsWith("/internal")) return null;
 
   useEffect(() => {
     if (open) {
