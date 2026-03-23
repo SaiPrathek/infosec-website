@@ -35,6 +35,7 @@ export default function Navbar() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [sectorsOpen, setSectorsOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b transition-colors
@@ -53,7 +54,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
             {/* Services dropdown */}
             <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
               <button className="flex items-center gap-1 text-sm font-medium transition-colors"
@@ -149,18 +150,33 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/why-us" className="text-sm font-medium transition-colors hover:text-teal-500"
-              style={{ color: "var(--muted)" }}>
-              Why Us
-            </Link>
-            <Link href="/insights" className="text-sm font-medium transition-colors hover:text-teal-500"
-              style={{ color: "var(--muted)" }}>
-              Insights
-            </Link>
-            <Link href="/case-studies" className="text-sm font-medium transition-colors hover:text-teal-500"
-              style={{ color: "var(--muted)" }}>
-              Case Studies
-            </Link>
+            {/* Resources dropdown */}
+            <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
+              <button className="flex items-center gap-1 text-sm font-medium transition-colors"
+                style={{ color: "var(--muted)" }}>
+                Resources <ChevronDown size={14} />
+              </button>
+              {resourcesOpen && (
+                <div className="absolute top-full left-0 w-48 pt-2">
+                  <div className="rounded-xl p-2 shadow-xl border z-50"
+                    style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
+                    {[
+                      { label: "Why Us", href: "/why-us" },
+                      { label: "Insights", href: "/insights" },
+                      { label: "Case Studies", href: "/case-studies" },
+                    ].map((s) => (
+                      <Link key={s.href} href={s.href}
+                        className="block px-3 py-2 rounded-lg text-sm font-medium hover:opacity-80 transition-opacity"
+                        style={{ color: "var(--foreground)" }}
+                        onClick={() => setResourcesOpen(false)}>
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
             <Link href="/portal" className="text-sm font-medium transition-colors hover:text-teal-500"
               style={{ color: "var(--muted)" }}>
               Client Portal
@@ -168,7 +184,7 @@ export default function Navbar() {
           </div>
 
           {/* Right actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <button onClick={toggleTheme} className="p-2 rounded-lg transition-colors hover:opacity-70"
               style={{ color: "var(--muted)" }} aria-label="Toggle theme">
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
@@ -214,10 +230,11 @@ export default function Navbar() {
           <p className="text-xs font-semibold uppercase tracking-wider pt-2" style={{ color: "var(--muted)" }}>Free Tools</p>
           <Link href="/assessment" className="block text-sm font-medium py-1" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>IAM Assessment</Link>
           <Link href="/tools/osint" className="block text-sm font-medium py-1" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>OSINT Hub</Link>
+          <p className="text-xs font-semibold uppercase tracking-wider pt-2" style={{ color: "var(--muted)" }}>Resources</p>
+          <Link href="/why-us" className="block text-sm font-medium py-1" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Why Us</Link>
+          <Link href="/insights" className="block text-sm font-medium py-1" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Insights</Link>
+          <Link href="/case-studies" className="block text-sm font-medium py-1" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Case Studies</Link>
           <div className="pt-3 space-y-2">
-            <Link href="/why-us" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Why Us</Link>
-            <Link href="/insights" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Insights</Link>
-            <Link href="/contact" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Contact</Link>
             <Link href="/portal" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Client Portal</Link>
             <Link href="/internal" className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg mt-1" style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "white" }} onClick={() => setMenuOpen(false)}><Sparkles size={11} /> Sales AI</Link>
           </div>
