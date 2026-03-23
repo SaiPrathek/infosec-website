@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AIChatWidget from "@/components/AIChatWidget";
-import NextTopLoader from "nextjs-toploader";
+import PageProgress from "@/components/PageProgress";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -18,17 +18,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${inter.variable} h-full dark`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
-        <NextTopLoader
-          color="#5cdda2"
-          initialPosition={0.08}
-          crawlSpeed={200}
-          height={3}
-          crawl={true}
-          showSpinner={false}
-          easing="ease"
-          speed={200}
-          shadow="0 0 10px #5cdda2, 0 0 5px #5cdda2"
-        />
+        <PageProgress />
         <ThemeProvider>
           <Navbar />
           <main className="flex-1">{children}</main>
