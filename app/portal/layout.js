@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import {
   BarChart3, CheckCircle, FileText, Shield, Upload,
 } from "lucide-react";
@@ -18,24 +17,6 @@ const sidebarItems = [
 
 export default function PortalLayout({ children }) {
   const pathname = usePathname();
-  const router = useRouter();
-  const [authChecked, setAuthChecked] = useState(false);
-  const isLoginPage = pathname === "/portal/login";
-
-  useEffect(() => {
-    if (isLoginPage) return; // login page doesn't need auth check
-    const auth = sessionStorage.getItem("k2k-portal-auth");
-    if (!auth) {
-      router.replace("/portal/login");
-    } else {
-      setAuthChecked(true);
-    }
-  }, [router, isLoginPage]);
-
-  // Login page: render without sidebar or auth gate
-  if (isLoginPage) return <>{children}</>;
-
-  if (!authChecked) return null;
 
   return (
     <div className="pt-16 min-h-screen" style={{ background: "var(--background)" }}>
