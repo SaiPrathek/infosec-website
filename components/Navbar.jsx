@@ -12,6 +12,7 @@ import {
   ChevronDown,
   ArrowRight,
   Search,
+  Sparkles,
 } from "lucide-react";
 
 const services = [
@@ -172,6 +173,10 @@ export default function Navbar() {
               style={{ color: "var(--muted)" }} aria-label="Toggle theme">
               {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
             </button>
+            <Link href="/internal" className="hidden md:inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg transition-colors hover:opacity-90"
+              style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "white" }}>
+              <Sparkles size={11} /> Sales AI
+            </Link>
             <Link href="/book" className="hidden md:inline-flex items-center gap-1 text-sm font-medium px-3 py-1.5 rounded-lg border transition-colors hover:opacity-80"
               style={{ color: "var(--foreground)", borderColor: "var(--border)" }}>
               Book a Call
@@ -214,6 +219,7 @@ export default function Navbar() {
             <Link href="/insights" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Insights</Link>
             <Link href="/contact" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Contact</Link>
             <Link href="/portal" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Client Portal</Link>
+            <Link href="/internal" className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg mt-1" style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "white" }} onClick={() => setMenuOpen(false)}><Sparkles size={11} /> Sales AI</Link>
           </div>
           <Link href="/book" className="btn-primary block text-center text-sm font-semibold px-4 py-2.5 rounded-lg mt-2"
             onClick={() => setMenuOpen(false)}>

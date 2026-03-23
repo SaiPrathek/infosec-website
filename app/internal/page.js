@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, Flame, TrendingUp, Minus, Copy, Check, Lock, BarChart3, Users, Star, Clock } from "lucide-react";
+import { Sparkles, Flame, TrendingUp, Minus, Copy, Check, BarChart3, Users, Star, Clock } from "lucide-react";
 
 const DEMO_LEADS = [
   {
@@ -57,8 +57,6 @@ const DEMO_LEADS = [
     submittedAt: "Yesterday, 08:21",
   },
 ];
-
-const PIN = "k2k2024";
 
 function PriorityBadge({ priority }) {
   const config = {
@@ -233,55 +231,6 @@ function LeadCard({ lead }) {
 }
 
 export default function InternalDashboardPage() {
-  const [pin, setPin] = useState("");
-  const [unlocked, setUnlocked] = useState(false);
-  const [pinError, setPinError] = useState(false);
-
-  const tryUnlock = () => {
-    if (pin === PIN) {
-      setUnlocked(true);
-    } else {
-      setPinError(true);
-      setTimeout(() => setPinError(false), 1500);
-    }
-  };
-
-  if (!unlocked) {
-    return (
-      <div className="pt-16 min-h-screen flex items-center justify-center" style={{ background: "var(--background)" }}>
-        <div className="w-full max-w-sm px-4">
-          <div className="rounded-2xl border p-8 shadow-xl" style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
-            <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 mx-auto"
-              style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)" }}>
-              <Lock size={20} color="white" />
-            </div>
-            <h1 className="text-xl font-bold text-center mb-1" style={{ color: "var(--foreground)" }}>Sales Intelligence Hub</h1>
-            <p className="text-sm text-center mb-6" style={{ color: "var(--muted)" }}>Internal access only</p>
-            <input
-              type="password"
-              placeholder="Enter PIN"
-              value={pin}
-              onChange={(e) => setPin(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && tryUnlock()}
-              className="w-full px-4 py-3 rounded-xl border text-sm text-center tracking-widest mb-3 focus:outline-none transition-colors"
-              style={{
-                background: "var(--background)",
-                borderColor: pinError ? "#ef4444" : "var(--border)",
-                color: "var(--foreground)",
-              }}
-            />
-            {pinError && <p className="text-xs text-red-500 text-center mb-3">Incorrect PIN</p>}
-            <button onClick={tryUnlock}
-              className="w-full py-3 rounded-xl font-semibold text-sm text-white transition-opacity hover:opacity-90"
-              style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)" }}>
-              Access Dashboard
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   const hotCount = 2;
   const avgScore = Math.round(DEMO_LEADS.reduce((a, l) => a + l.score, 0) / DEMO_LEADS.length);
 
