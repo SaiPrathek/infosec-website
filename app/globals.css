@@ -83,3 +83,19 @@ body {
   background: var(--k2k-gradient);
   transition: width 0.4s ease;
 }
+
+/* Print styles for PDF report download */
+.print-header { display: none; }
+
+@media print {
+  nav, footer, .no-print { display: none !important; }
+  body { background: white !important; color: #0a0f1e !important; }
+  .print-header {
+    display: block !important;
+    padding: 0 0 1.5rem 0;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #00a46e;
+  }
+  .recharts-wrapper { break-inside: avoid; }
+  .rounded-2xl { border-radius: 12px !important; }
+}

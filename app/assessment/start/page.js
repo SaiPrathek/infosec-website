@@ -11,7 +11,7 @@ export default function AssessmentStartPage() {
   const [step, setStep] = useState(0); // 0 = theme 0 questions, 4 = theme 4, 5 = contact gate
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
-  const [contact, setContact] = useState({ name: "", company: "", role: "", email: "" });
+  const [contact, setContact] = useState({ name: "", company: "", role: "", email: "", consent: false });
   const [contactErrors, setContactErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
 
@@ -76,6 +76,7 @@ export default function AssessmentStartPage() {
     if (!contact.company.trim()) errors.company = "Required";
     if (!contact.role.trim()) errors.role = "Required";
     if (!contact.email.trim() || !contact.email.includes("@")) errors.email = "Valid email required";
+    if (!contact.consent) errors.consent = "Please confirm you agree to our privacy policy";
     setContactErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -137,13 +138,26 @@ export default function AssessmentStartPage() {
                 </div>
               ))}
             </div>
+            {/* GDPR consent */}
+            <label className="flex items-start gap-3 cursor-pointer mt-2">
+              <input
+                type="checkbox"
+                checked={contact.consent}
+                onChange={(e) => setContact((prev) => ({ ...prev, consent: e.target.checked }))}
+                className="mt-0.5 w-4 h-4 rounded accent-teal-500 flex-shrink-0"
+              />
+              <span className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+                I agree to Infosec K2K processing my details to deliver my assessment results and follow up, in line with their Privacy Policy.
+              </span>
+            </label>
+            {contactErrors.consent && (
+              <p className="text-xs text-red-500 mt-1">{contactErrors.consent}</p>
+            )}
+
             <button onClick={handleSubmit} disabled={submitting}
-              className="btn-primary w-full py-3 rounded-xl font-semibold mt-6 flex items-center justify-center gap-2 disabled:opacity-60">
+              className="btn-primary w-full py-3 rounded-xl font-semibold mt-4 flex items-center justify-center gap-2 disabled:opacity-60">
               {submitting ? "Preparing results..." : "See my results"} {!submitting && <ArrowRight size={16} />}
             </button>
-            <p className="text-xs text-center mt-3" style={{ color: "var(--muted)" }}>
-              We respect your privacy. No spam, ever.
-            </p>
           </div>
         </div>
       </div>

@@ -5,15 +5,9 @@ import Link from "next/link";
 import {
   RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Tooltip
 } from "recharts";
-import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle } from "lucide-react";
+import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle, Shield } from "lucide-react";
 import { assessmentThemes, maturityBands } from "@/lib/assessment-data";
-
-const serviceLinks = {
-  assessment: "/services/assessment",
-  roadmap: "/services/roadmap",
-  implementation: "/services/implementation",
-  managed: "/services/managed",
-};
+import { servicesData } from "@/lib/services-data";
 
 export default function AssessmentResultsPage() {
   const [data, setData] = useState(null);
@@ -41,24 +35,44 @@ export default function AssessmentResultsPage() {
   const { scores, contact } = data;
   const { themeScores, overallScore, band, gaps } = scores;
 
+  const service = servicesData[band.recommendation];
+  const heroDescFirstSentence = service?.heroDesc?.split(".")[0] + ".";
+
   const radarData = assessmentThemes.map((t) => ({
-    subject: t.title.split(" ")[0], // Short label for radar
+    subject: t.title.split(" ")[0],
     fullName: t.title,
     score: themeScores[t.id] ?? 0,
     fullMark: 100,
   }));
 
+  const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
   return (
     <div className="pt-16" style={{ background: "var(--background)" }}>
-      {/* Header */}
-      <section className="py-12 border-b" style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
+
+      {/* Print-only header — hidden on screen, shown when printing */}
+      <div className="print-header max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="font-bold text-xl" style={{ color: "#0a0f1e" }}>Infosec K2K</p>
+            <p className="text-sm" style={{ color: "#64748b" }}>IAM Maturity Assessment Report</p>
+          </div>
+          <div className="text-right text-sm" style={{ color: "#64748b" }}>
+            <p>{contact?.name} — {contact?.company}</p>
+            <p>{today}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Screen header */}
+      <section className="py-12 border-b no-print" style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-sm mb-1" style={{ color: "var(--muted)" }}>IAM Maturity Assessment — {contact?.company}</p>
           <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--foreground)" }}>
             Your results, {contact?.name?.split(" ")[0]}
           </h1>
           <p className="text-base" style={{ color: "var(--muted)" }}>
-            Completed {new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+            Completed {today}
           </p>
         </div>
       </section>
@@ -100,7 +114,7 @@ export default function AssessmentResultsPage() {
             </p>
             <div className="flex items-center gap-2 text-sm font-semibold" style={{ color: "var(--k2k-teal)" }}>
               <TrendingUp size={14} />
-              Recommended service: {band.recommendationLabel}
+              Recommended next step: {band.recommendationLabel}
             </div>
           </div>
         </div>
@@ -172,36 +186,66 @@ export default function AssessmentResultsPage() {
           </div>
         </div>
 
-        {/* Recommended service + CTA */}
-        <div className="rounded-2xl p-8 border mb-8"
-          style={{ background: "rgba(0,164,110,0.06)", borderColor: "rgba(0,164,110,0.2)" }}>
-          <CheckCircle size={24} className="mb-4" style={{ color: "var(--k2k-teal)" }} />
-          <h3 className="font-bold text-xl mb-2" style={{ color: "var(--foreground)" }}>
-            Recommended next step: {band.recommendationLabel}
-          </h3>
-          <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
-            Based on your score of {overallScore} ({band.label} maturity), our consultants recommend starting with a {band.recommendationLabel} engagement. This will address your top gaps and create a clear, prioritised path forward.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Link
-              href={`/book?name=${encodeURIComponent(contact?.name || "")}&email=${encodeURIComponent(contact?.email || "")}&company=${encodeURIComponent(contact?.company || "")}&role=${encodeURIComponent(contact?.role || "")}`}
-              className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold">
-              <Calendar size={16} /> Book a free advisory call
-            </Link>
-            <Link href={serviceLinks[band.recommendation]}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border font-semibold text-sm hover:opacity-80 transition-opacity"
-              style={{ color: "var(--foreground)", borderColor: "var(--border)" }}>
-              Learn about {band.recommendationLabel} <ArrowRight size={14} />
-            </Link>
+        {/* Recommended service card */}
+        <div className="rounded-2xl border mb-8 overflow-hidden"
+          style={{ borderColor: "rgba(0,164,110,0.3)" }}>
+          <div className="p-2 text-center text-xs font-bold uppercase tracking-wider text-white"
+            style={{ background: "var(--k2k-gradient)" }}>
+            Recommended for your maturity level
+          </div>
+          <div className="p-8" style={{ background: "rgba(0,164,110,0.04)" }}>
+            <div className="flex items-start gap-4 mb-5">
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: "var(--k2k-gradient)" }}>
+                <Shield size={18} color="white" />
+              </div>
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider mb-0.5" style={{ color: "var(--k2k-teal)" }}>
+                  {band.recommendationLabel}
+                </p>
+                <h3 className="font-bold text-xl" style={{ color: "var(--foreground)" }}>
+                  {service?.tagline}
+                </h3>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed mb-6" style={{ color: "var(--muted)" }}>
+              {heroDescFirstSentence} Based on your score of <strong>{overallScore}</strong> ({band.label} maturity), this is the engagement that will have the most immediate impact on your identity security posture.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 no-print">
+              <Link
+                href={`/book?name=${encodeURIComponent(contact?.name || "")}&email=${encodeURIComponent(contact?.email || "")}&company=${encodeURIComponent(contact?.company || "")}&role=${encodeURIComponent(contact?.role || "")}`}
+                className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold">
+                <Calendar size={16} /> Book a free advisory call
+              </Link>
+              <Link href={`/services/${band.recommendation}`}
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border font-semibold text-sm hover:opacity-80 transition-opacity"
+                style={{ color: "var(--foreground)", borderColor: "var(--border)" }}>
+                See what&apos;s included <ArrowRight size={14} />
+              </Link>
+            </div>
+          </div>
+          <div className="px-8 py-4 border-t" style={{ borderColor: "rgba(0,164,110,0.2)", background: "rgba(0,164,110,0.02)" }}>
+            <div className="flex items-center gap-3">
+              {[
+                "Free 30-min discovery call",
+                "No commitment required",
+                "Response within one business day",
+              ].map((point) => (
+                <div key={point} className="flex items-center gap-1.5 text-xs" style={{ color: "var(--muted)" }}>
+                  <CheckCircle size={12} style={{ color: "var(--k2k-teal)" }} />
+                  {point}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
-        {/* Download / share */}
-        <div className="text-center">
+        {/* Download */}
+        <div className="text-center no-print">
           <button onClick={() => window.print()}
             className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity"
             style={{ color: "var(--muted)" }}>
-            <Download size={14} /> Save / print results
+            <Download size={14} /> Download PDF report
           </button>
         </div>
       </div>

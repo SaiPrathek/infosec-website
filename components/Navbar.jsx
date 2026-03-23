@@ -152,6 +152,10 @@ export default function Navbar() {
               style={{ color: "var(--muted)" }}>
               Why Us
             </Link>
+            <Link href="/insights" className="text-sm font-medium transition-colors hover:text-teal-500"
+              style={{ color: "var(--muted)" }}>
+              Insights
+            </Link>
             <Link href="/case-studies" className="text-sm font-medium transition-colors hover:text-teal-500"
               style={{ color: "var(--muted)" }}>
               Case Studies
@@ -207,6 +211,7 @@ export default function Navbar() {
           <Link href="/tools/osint" className="block text-sm font-medium py-1" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>OSINT Hub</Link>
           <div className="pt-3 space-y-2">
             <Link href="/why-us" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Why Us</Link>
+            <Link href="/insights" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Insights</Link>
             <Link href="/contact" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Contact</Link>
             <Link href="/portal" className="block text-sm font-medium" style={{ color: "var(--foreground)" }} onClick={() => setMenuOpen(false)}>Client Portal</Link>
           </div>

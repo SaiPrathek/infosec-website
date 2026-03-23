@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Calendar, CheckCircle, ArrowRight } from "lucide-r
 
 export default function ContactPage() {
   const [form, setForm] = useState({
-    name: "", company: "", role: "", email: "", service: "", message: "",
+    name: "", company: "", role: "", email: "", service: "", message: "", consent: false,
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -14,6 +14,10 @@ export default function ContactPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!form.consent) {
+      setError("Please confirm you agree to our privacy policy before submitting.");
+      return;
+    }
     setSubmitting(true);
     setError("");
     try {
@@ -163,14 +167,25 @@ export default function ContactPage() {
                     style={{ background: "var(--background)", borderColor: "var(--border)", color: "var(--foreground)" }} />
                 </div>
 
+                {/* GDPR consent */}
+                <label className="flex items-start gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={form.consent}
+                    onChange={(e) => setForm((p) => ({ ...p, consent: e.target.checked }))}
+                    className="mt-0.5 w-4 h-4 rounded accent-teal-500 flex-shrink-0"
+                  />
+                  <span className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+                    I agree to Infosec K2K processing my contact details to respond to this enquiry, in line with our{" "}
+                    <Link href="/contact" className="underline" style={{ color: "var(--k2k-teal)" }}>Privacy Policy</Link>.
+                  </span>
+                </label>
+
                 {error && <p className="text-sm text-red-500">{error}</p>}
                 <button type="submit" disabled={submitting}
                   className="btn-primary w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 disabled:opacity-60">
                   {submitting ? "Sending..." : "Send message"} {!submitting && <ArrowRight size={16} />}
                 </button>
-                <p className="text-xs text-center" style={{ color: "var(--muted)" }}>
-                  We respect your privacy. Your information will never be shared.
-                </p>
               </form>
             )}
           </div>

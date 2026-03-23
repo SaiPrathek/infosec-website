@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import {
   BarChart3, CheckCircle, FileText, Shield, Upload,
 } from "lucide-react";
@@ -16,6 +17,19 @@ const sidebarItems = [
 
 export default function PortalLayout({ children }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [authChecked, setAuthChecked] = useState(false);
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem("k2k-portal-auth");
+    if (!auth) {
+      router.replace("/portal/login");
+    } else {
+      setAuthChecked(true);
+    }
+  }, [router]);
+
+  if (!authChecked) return null;
 
   return (
     <div className="pt-16 min-h-screen" style={{ background: "var(--background)" }}>
