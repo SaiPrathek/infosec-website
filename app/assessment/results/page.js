@@ -5,21 +5,54 @@ import Link from "next/link";
 import {
   RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Tooltip
 } from "recharts";
-import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle, Shield } from "lucide-react";
+import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle, Shield, Sparkles } from "lucide-react";
 import { assessmentThemes, maturityBands } from "@/lib/assessment-data";
 import { servicesData } from "@/lib/services-data";
 
 export default function AssessmentResultsPage() {
   const [data, setData] = useState(null);
   const [mounted, setMounted] = useState(false);
+  const [aiNarrative, setAiNarrative] = useState(null);
+  const [aiLoading, setAiLoading] = useState(false);
+  const [displayedNarrative, setDisplayedNarrative] = useState("");
 
   useEffect(() => {
     setMounted(true);
     const stored = sessionStorage.getItem("k2k-assessment-results");
     if (stored) {
-      setData(JSON.parse(stored));
+      const parsed = JSON.parse(stored);
+      setData(parsed);
+      // Fire AI report generation
+      setAiLoading(true);
+      fetch("/api/ai/report", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ contact: parsed.contact, scores: parsed.scores }),
+      })
+        .then((r) => r.json())
+        .then(({ narrative }) => {
+          if (narrative) setAiNarrative(narrative);
+        })
+        .catch(() => {})
+        .finally(() => setAiLoading(false));
     }
   }, []);
+
+  // Typewriter effect for AI narrative
+  useEffect(() => {
+    if (!aiNarrative) return;
+    setDisplayedNarrative("");
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < aiNarrative.length) {
+        setDisplayedNarrative(aiNarrative.slice(0, i + 1));
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 12);
+    return () => clearInterval(interval);
+  }, [aiNarrative]);
 
   if (!data) {
     return (
@@ -185,6 +218,40 @@ export default function AssessmentResultsPage() {
             ))}
           </div>
         </div>
+
+        {/* AI Narrative */}
+        {(aiLoading || aiNarrative) && (
+          <div className="rounded-2xl border mb-10 overflow-hidden"
+            style={{ borderColor: "rgba(139,92,246,0.3)" }}>
+            <div className="px-6 py-3 flex items-center gap-2 border-b"
+              style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", borderColor: "rgba(255,255,255,0.1)" }}>
+              <Sparkles size={14} color="white" />
+              <span className="text-xs font-bold uppercase tracking-wider text-white">AI Analysis — Generated for {contact?.name?.split(" ")[0] || "you"}</span>
+            </div>
+            <div className="p-8" style={{ background: "rgba(139,92,246,0.04)" }}>
+              {aiLoading && !aiNarrative ? (
+                <div className="space-y-3">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-3 rounded-full animate-pulse"
+                      style={{ background: "var(--border)", width: i === 3 ? "60%" : "100%" }} />
+                  ))}
+                  <p className="text-xs mt-3" style={{ color: "var(--muted)" }}>Generating your personalised analysis…</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {displayedNarrative.split("\n\n").filter(Boolean).map((para, i) => (
+                    <p key={i} className="text-sm leading-relaxed" style={{ color: "var(--foreground)" }}>
+                      {para}
+                    </p>
+                  ))}
+                  {displayedNarrative.length < (aiNarrative?.length || 0) && (
+                    <span className="inline-block w-0.5 h-4 bg-purple-500 animate-pulse ml-0.5" />
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Recommended service card */}
         <div className="rounded-2xl border mb-8 overflow-hidden"

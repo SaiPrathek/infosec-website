@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import {
   BarChart3, CheckCircle, FileText, Shield, Upload,
 } from "lucide-react";
+import PortalAIAssistant from "@/components/PortalAIAssistant";
 
 const sidebarItems = [
   { icon: BarChart3, label: "Dashboard", href: "/portal" },
@@ -83,6 +84,7 @@ export default function PortalLayout({ children }) {
           {children}
         </main>
       </div>
+      <PortalAIAssistant />
     </div>
   );
 }

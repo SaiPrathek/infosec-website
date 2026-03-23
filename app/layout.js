@@ -3,6 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AIChatWidget from "@/components/AIChatWidget";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -20,6 +21,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />
+          <AIChatWidget />
         </ThemeProvider>
       </body>
     </html>

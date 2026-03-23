@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, ArrowLeft, CheckCircle } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react";
 import { assessmentThemes } from "@/lib/assessment-data";
 import { calculateScores } from "@/lib/assessment-data";
 
@@ -14,6 +14,8 @@ export default function AssessmentStartPage() {
   const [contact, setContact] = useState({ name: "", company: "", role: "", email: "", consent: false });
   const [contactErrors, setContactErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);
+  const [sectionInsights, setSectionInsights] = useState({}); // keyed by theme id
+  const fetchingInsight = useRef(new Set());
 
   const totalThemes = assessmentThemes.length;
   const currentTheme = step < totalThemes ? assessmentThemes[step] : null;
@@ -45,10 +47,34 @@ export default function AssessmentStartPage() {
     return false;
   };
 
+  const fetchSectionInsight = (theme, sectionAnswers) => {
+    if (fetchingInsight.current.has(theme.id)) return;
+    fetchingInsight.current.add(theme.id);
+    setSectionInsights((prev) => ({ ...prev, [theme.id]: "loading" }));
+    fetch("/api/ai/insight", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sectionTitle: theme.title, answers: sectionAnswers }),
+    })
+      .then((r) => r.json())
+      .then(({ insight }) => {
+        if (insight) setSectionInsights((prev) => ({ ...prev, [theme.id]: insight }));
+        else setSectionInsights((prev) => { const n = { ...prev }; delete n[theme.id]; return n; });
+      })
+      .catch(() => {
+        setSectionInsights((prev) => { const n = { ...prev }; delete n[theme.id]; return n; });
+      });
+  };
+
   const nextQuestion = () => {
     if (questionIndex < currentTheme.questions.length - 1) {
       setQuestionIndex(questionIndex + 1);
     } else {
+      // Section complete — fire insight fetch
+      const sectionAnswers = {};
+      currentTheme.questions.forEach((q) => { if (answers[q.id] !== undefined) sectionAnswers[q.id] = answers[q.id]; });
+      fetchSectionInsight(currentTheme, sectionAnswers);
+
       // Move to next theme
       if (step < totalThemes - 1) {
         setStep(step + 1);
@@ -194,6 +220,18 @@ export default function AssessmentStartPage() {
       </div>
 
       <div className="max-w-2xl mx-auto px-4 py-24">
+        {/* Previous section insight — shown when moving to a new section */}
+        {step > 0 && sectionInsights[assessmentThemes[step - 1]?.id] && sectionInsights[assessmentThemes[step - 1]?.id] !== "loading" && (
+          <div className="mb-6 rounded-xl px-4 py-3 flex items-start gap-3 border"
+            style={{ background: "rgba(124,58,237,0.06)", borderColor: "rgba(124,58,237,0.25)" }}>
+            <Sparkles size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#7c3aed" }} />
+            <p className="text-xs leading-relaxed" style={{ color: "var(--foreground)" }}>
+              <span className="font-semibold" style={{ color: "#7c3aed" }}>AI insight: </span>
+              {sectionInsights[assessmentThemes[step - 1].id]}
+            </p>
+          </div>
+        )}
+
         {/* Theme header */}
         <div className="mb-8">
           <div className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: "var(--k2k-teal)" }}>
