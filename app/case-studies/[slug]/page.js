@@ -8,7 +8,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const cs = caseStudies.find((c) => c.id === params.slug);
+  const { slug } = await params;
+  const cs = caseStudies.find((c) => c.id === slug);
   if (!cs) return {};
   return {
     title: `${cs.title} | Infosec K2K`,
@@ -16,8 +17,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default function CaseStudyDetailPage({ params }) {
-  const cs = caseStudies.find((c) => c.id === params.slug);
+export default async function CaseStudyDetailPage({ params }) {
+  const { slug } = await params;
+  const cs = caseStudies.find((c) => c.id === slug);
   if (!cs) notFound();
 
   const Icon = cs.icon;
