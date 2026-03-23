@@ -75,6 +75,52 @@ body {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #5cdda2; border-radius: 3px; }
 
+/* ── Scroll reveal ─────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+
+/* ── Card glow lift ─────────────────────────────────────── */
+.card-glow {
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
+}
+.card-glow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 28px rgba(92,221,162,0.07);
+}
+
+/* ── Hero glitch animation ──────────────────────────────── */
+@keyframes glitch-frame {
+  0%, 87%, 100% { clip-path: none; transform: none; filter: none; }
+  88% { clip-path: inset(15% 0 55% 0); transform: translate(-3px, 0); filter: hue-rotate(55deg); }
+  89% { clip-path: inset(55% 0 15% 0); transform: translate(3px, 0); filter: hue-rotate(-55deg); }
+  90% { clip-path: inset(30% 0 30% 0); transform: translate(-1px, 0); }
+  91% { clip-path: none; transform: none; filter: none; }
+}
+.glitch-h1 { animation: glitch-frame 9s infinite; }
+
+/* ── Partner logo marquee ───────────────────────────────── */
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.logo-marquee {
+  display: flex;
+  width: max-content;
+  animation: logo-scroll 30s linear infinite;
+}
+.logo-marquee:hover { animation-play-state: paused; }
+
 .progress-bar {
   height: 3px;
   background: linear-gradient(135deg, #5cdda2 0%, #04a56f 100%);

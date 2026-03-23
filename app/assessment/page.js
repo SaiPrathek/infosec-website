@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Clock, BarChart3, FileText, CheckCircle, Shield } from "lucide-react";
+import RadarWidget from "@/components/RadarWidget";
+import ScrollReveal from "@/components/ScrollReveal";
 
 const features = [
   { icon: Clock, title: "10 minutes", desc: "Five themed sections, 22 questions total" },
@@ -66,11 +68,11 @@ export default function AssessmentLandingPage() {
         </div>
       </section>
 
-      {/* Assessment domains */}
+      {/* Assessment domains + Radar */}
       <section className="bg-[#090e1c] py-20 border-y border-[#3d4a42]/10">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-12 items-start">
+            <ScrollReveal>
               <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
                 Five Domains
               </span>
@@ -90,23 +92,11 @@ export default function AssessmentLandingPage() {
                   </li>
                 ))}
               </ul>
-            </div>
-            {/* Maturity bands preview */}
-            <div className="space-y-3">
-              <p className="text-sm font-bold mb-4 text-[#bccabf]">Your results will include:</p>
-              {[
-                { label: "Initial", color: "#ef4444", desc: "Significant gaps, urgent action needed" },
-                { label: "Developing", color: "#f97316", desc: "Partial controls, targeted improvements" },
-                { label: "Defined", color: "#eab308", desc: "Solid foundation, optimisation focus" },
-                { label: "Optimising", color: "#5cdda2", desc: "Mature posture, continuous improvement" },
-              ].map((band) => (
-                <div key={band.label} className="flex items-center gap-3 p-3 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10">
-                  <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: band.color }} />
-                  <span className="font-bold text-sm w-28 text-[#dee1f7]">{band.label}</span>
-                  <span className="text-xs text-[#bccabf]">{band.desc}</span>
-                </div>
-              ))}
-            </div>
+            </ScrollReveal>
+            {/* Live Radar benchmark */}
+            <ScrollReveal delay={2}>
+              <RadarWidget />
+            </ScrollReveal>
           </div>
         </div>
       </section>

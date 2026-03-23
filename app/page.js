@@ -5,6 +5,8 @@ import {
   BookOpen, TrendingUp, Search, Zap, RefreshCw, HeadphonesIcon,
   ChevronRight,
 } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
+import LogoCloud from "@/components/LogoCloud";
 
 const stats = [
   { value: "150+", label: "Clients Secured" },
@@ -137,7 +139,7 @@ export default function HomePage() {
               <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-5 block">
                 Identity &amp; Access Management Specialists
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter mb-6 text-[#dee1f7]">
+              <h1 className="glitch-h1 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter mb-6 text-[#dee1f7]">
                 Secure your{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
                   identity infrastructure.
@@ -216,7 +218,7 @@ export default function HomePage() {
       {/* Pain Points */}
       <section className="bg-[#0e1322] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <ScrollReveal className="text-center mb-14">
             <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#c3c0ff] mb-4 block">
               Current Landscape
             </span>
@@ -226,10 +228,10 @@ export default function HomePage() {
             <p className="text-base max-w-xl mx-auto text-[#bccabf]">
               Most organisations have gaps they don&apos;t know about. Our free assessment gives you the answers.
             </p>
-          </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-6 mb-10">
             {painPoints.map((p) => (
-              <div key={p.question} className="bg-[#161b2b] hover:bg-[#25293a] rounded-xl p-7 border border-[#3d4a42]/10 transition-colors">
+              <div key={p.question} className="card-glow bg-[#161b2b] hover:bg-[#25293a] rounded-xl p-7 border border-[#3d4a42]/10 transition-colors">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
                   <p.icon size={20} className="text-[#5cdda2]" />
                 </div>
@@ -250,7 +252,7 @@ export default function HomePage() {
       {/* Services Bento */}
       <section className="bg-[#090e1c] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <ScrollReveal className="text-center mb-14">
             <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
               End-to-End Delivery
             </span>
@@ -260,11 +262,11 @@ export default function HomePage() {
             <p className="text-base max-w-xl mx-auto text-[#bccabf]">
               Whether you&apos;re starting from scratch or optimising an existing programme, we have the right engagement model.
             </p>
-          </div>
+          </ScrollReveal>
           {/* Bento grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Large card */}
-            <div className="md:col-span-8 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-8 flex flex-col">
+            <div className="card-glow md:col-span-8 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-8 flex flex-col">
               <div className="flex items-start justify-between mb-6">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#5cdda2]/10">
                   <BarChart3 size={24} className="text-[#5cdda2]" />
@@ -281,7 +283,7 @@ export default function HomePage() {
               </Link>
             </div>
             {/* Roadmap */}
-            <div className="md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
+            <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#c3c0ff]/10">
                 <TrendingUp size={20} className="text-[#c3c0ff]" />
               </div>
@@ -292,7 +294,7 @@ export default function HomePage() {
               </Link>
             </div>
             {/* Implementation */}
-            <div className="md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
+            <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
                 <Shield size={20} className="text-[#5cdda2]" />
               </div>
@@ -303,7 +305,7 @@ export default function HomePage() {
               </Link>
             </div>
             {/* Optimisation */}
-            <div className="md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
+            <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
                 <Zap size={20} className="text-[#5cdda2]" />
               </div>
@@ -314,7 +316,7 @@ export default function HomePage() {
               </Link>
             </div>
             {/* Managed Services — green */}
-            <div className="md:col-span-4 bg-[#5cdda2] rounded-xl border border-[#5cdda2] p-7 flex flex-col">
+            <div className="card-glow md:col-span-4 bg-[#5cdda2] rounded-xl border border-[#5cdda2] p-7 flex flex-col">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#003823]/20">
                 <HeadphonesIcon size={20} className="text-[#003823]" />
               </div>
@@ -382,7 +384,7 @@ export default function HomePage() {
       {/* Sector Expertise */}
       <section className="bg-[#090e1c] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
+          <ScrollReveal className="text-center mb-14">
             <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
               Sector Expertise
             </span>
@@ -392,11 +394,11 @@ export default function HomePage() {
             <p className="text-base text-[#bccabf]">
               We understand the compliance pressures and threat landscape specific to your industry.
             </p>
-          </div>
+          </ScrollReveal>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
             {sectorCards.map((s) => (
               <Link key={s.label} href={s.href}
-                className="bg-[#1a1f2f] hover:bg-[#25293a] rounded-xl p-6 border border-[#3d4a42]/10 transition-colors group">
+                className="card-glow bg-[#1a1f2f] hover:bg-[#25293a] rounded-xl p-6 border border-[#3d4a42]/10 transition-colors group">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
                   <s.icon size={22} className="text-[#5cdda2]" />
                 </div>
@@ -407,6 +409,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Partner Logo Cloud */}
+      <LogoCloud />
 
       {/* Testimonial */}
       <section className="bg-[#0e1322] py-24">
@@ -533,7 +538,7 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-6">
             {insights.map((a) => (
               <Link key={a.title} href={a.href}
-                className="bg-[#1a1f2f] hover:bg-[#25293a] rounded-xl p-6 border border-[#3d4a42]/10 transition-colors block group">
+                className="card-glow bg-[#1a1f2f] hover:bg-[#25293a] rounded-xl p-6 border border-[#3d4a42]/10 transition-colors block group">
                 <span className="text-[0.7rem] font-bold px-3 py-1 rounded-full mb-4 inline-block bg-[#2f3445] text-[#5cdda2]">
                   {a.category}
                 </span>
