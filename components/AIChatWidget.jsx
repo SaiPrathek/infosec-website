@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { MessageCircle, X, Send, Bot, User, Loader2 } from "lucide-react";
 
 const INITIAL_MESSAGE = {
@@ -9,7 +10,11 @@ const INITIAL_MESSAGE = {
 };
 
 export default function AIChatWidget() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  // Don't render on portal pages — PortalAIAssistant handles those
+  if (pathname?.startsWith("/portal")) return null;
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);

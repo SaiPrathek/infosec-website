@@ -20,15 +20,20 @@ export default function PortalLayout({ children }) {
   const pathname = usePathname();
   const router = useRouter();
   const [authChecked, setAuthChecked] = useState(false);
+  const isLoginPage = pathname === "/portal/login";
 
   useEffect(() => {
+    if (isLoginPage) return; // login page doesn't need auth check
     const auth = sessionStorage.getItem("k2k-portal-auth");
     if (!auth) {
       router.replace("/portal/login");
     } else {
       setAuthChecked(true);
     }
-  }, [router]);
+  }, [router, isLoginPage]);
+
+  // Login page: render without sidebar or auth gate
+  if (isLoginPage) return <>{children}</>;
 
   if (!authChecked) return null;
 
