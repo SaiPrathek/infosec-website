@@ -6,23 +6,14 @@ const ThemeContext = createContext({ theme: "dark", toggleTheme: () => {} });
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("dark");
-  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("k2k-theme") || "dark";
-    setTheme(stored);
-    document.documentElement.classList.toggle("dark", stored === "dark");
+    // Always dark — ensure class is set in case of stale localStorage
+    document.documentElement.classList.add("dark");
+    localStorage.setItem("k2k-theme", "dark");
   }, []);
 
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("k2k-theme", next);
-    document.documentElement.classList.toggle("dark", next === "dark");
-  };
-
-  if (!mounted) return <div style={{ visibility: "hidden" }}>{children}</div>;
+  const toggleTheme = () => {};
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
