@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -29,7 +29,7 @@ const timeOptions = [
   { id: "flexible", label: "Flexible", sub: "Any time works" },
 ];
 
-export default function BookPage() {
+function BookPageInner() {
   const params = useSearchParams();
 
   const [step, setStep] = useState(1);
@@ -314,5 +314,13 @@ export default function BookPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function BookPage() {
+  return (
+    <Suspense fallback={<div className="pt-24 min-h-screen flex items-center justify-center" style={{ background: "var(--background)" }} />}>
+      <BookPageInner />
+    </Suspense>
   );
 }
