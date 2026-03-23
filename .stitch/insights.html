@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#86948a",
+              "on-tertiary-fixed-variant": "#5a00c6",
+              "secondary-fixed-dim": "#c3c0ff",
+              "tertiary-fixed": "#eaddff",
+              "on-primary": "#003823",
+              "surface-container-high": "#25293a",
+              "on-tertiary-container": "#36007d",
+              "on-secondary": "#1d00a5",
+              "on-primary-fixed": "#002113",
+              "surface-bright": "#343949",
+              "tertiary": "#d2bbff",
+              "primary-container": "#04a56f",
+              "on-surface": "#dee1f7",
+              "secondary-fixed": "#e2dfff",
+              "secondary": "#c3c0ff",
+              "on-background": "#dee1f7",
+              "inverse-on-surface": "#2b3040",
+              "surface-tint": "#5cdda2",
+              "inverse-primary": "#006c47",
+              "on-tertiary": "#3f008e",
+              "inverse-surface": "#dee1f7",
+              "surface-container-highest": "#2f3445",
+              "error-container": "#93000a",
+              "on-primary-container": "#00311e",
+              "on-error-container": "#ffdad6",
+              "on-error": "#690005",
+              "outline-variant": "#3d4a42",
+              "surface-container": "#1a1f2f",
+              "surface": "#0e1322",
+              "tertiary-container": "#a476ff",
+              "background": "#0e1322",
+              "on-secondary-container": "#b3b1ff",
+              "surface-dim": "#0e1322",
+              "on-primary-fixed-variant": "#005235",
+              "surface-container-low": "#161b2b",
+              "primary-fixed": "#7bfabc",
+              "primary-fixed-dim": "#5cdda2",
+              "on-tertiary-fixed": "#25005a",
+              "surface-container-lowest": "#090e1c",
+              "secondary-container": "#3626ce",
+              "error": "#ffb4ab",
+              "primary": "#5cdda2",
+              "surface-variant": "#2f3445",
+              "tertiary-fixed-dim": "#d2bbff",
+              "on-secondary-fixed": "#0f0069",
+              "on-surface-variant": "#bccabf",
+              "on-secondary-fixed-variant": "#3323cc"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #0e1322;
+            color: #dee1f7;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-nav {
+            background: rgba(14, 19, 34, 0.7);
+            backdrop-filter: blur(24px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e1322]/70 backdrop-blur-3xl border-b border-[#3d4a42]/15 shadow-[0_40px_40px_0_rgba(255,255,255,0.04)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto font-['Inter'] antialiased text-sm font-medium tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-[#5cdda2]">Infosec K2K</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Services</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Sectors</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Free Tools</a>
+<a class="text-[#5cdda2] border-b-2 border-[#5cdda2] pb-1" href="#">Resources</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Client Portal</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="scale-95 active:scale-100 transition-transform bg-primary text-on-primary px-5 py-2 rounded-lg font-bold hover:bg-[#5cdda2]/90">
+                    Secure Login
+                </button>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-8 max-w-screen-2xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-20 max-w-4xl">
+<span class="label-md text-primary tracking-[0.1em] font-bold text-[0.75rem] uppercase mb-4 block">THREAT INTELLIGENCE &amp; INSIGHTS</span>
+<h1 class="text-7xl font-extrabold tracking-tighter text-on-surface mb-6 leading-[1.1]">Latest insights &amp; news</h1>
+<p class="text-xl text-on-surface-variant leading-relaxed max-w-2xl">
+                Expert analysis on identity security, risk mitigation, and the evolving landscape of enterprise-grade cybersecurity.
+            </p>
+</header>
+<!-- Filters Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-bold text-sm transition-all duration-300">All Insights</button>
+<button class="px-6 py-2 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface-variant text-sm border border-outline-variant/15 transition-all duration-300">Guide</button>
+<button class="px-6 py-2 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface-variant text-sm border border-outline-variant/15 transition-all duration-300">Research</button>
+<button class="px-6 py-2 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface-variant text-sm border border-outline-variant/15 transition-all duration-300">Checklist</button>
+<button class="px-6 py-2 rounded-full bg-surface-container hover:bg-surface-container-highest text-on-surface-variant text-sm border border-outline-variant/15 transition-all duration-300">News</button>
+</div>
+<div class="relative w-full md:w-72">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/20 rounded-xl pl-12 pr-4 py-3 focus:ring-2 focus:ring-primary/10 focus:border-primary outline-none transition-all text-sm text-on-surface" placeholder="Search resources..." type="text"/>
+</div>
+</div>
+<!-- Bento Blog Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Featured Card (Asymmetric Layout Start) -->
+<article class="lg:col-span-2 group relative overflow-hidden rounded-xl bg-surface-container-low border border-outline-variant/10 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-1">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 h-64 md:h-auto overflow-hidden">
+<img alt="Identity Maturity Model" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Abstract digital visualization of complex node network in deep blue and green neon light, representing identity security architecture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB7Z2ZApqWyyDufUT5CFdTFXuS1iwR5As39u5BaF0VrZ07VC8qAQaYgH2zSIsqbC275M1TUFdtrM51TZ54m5IYbXKXgHpmmYypxSXURcfT5acjRX6vbRrzE164I_jX6-dp0tBSWu_axYhrvyKfTL-AHZZCgvmEFGnd-BAIBwHk9ja59uNCa2KV4R1xeO_UigfPJCQGWPu6jonAQeMSU2kjVaderc2C8N3Kg7MkwXCJG-mEAwoH5bvOat7evIeBz62bcynmA76yELtO"/>
+</div>
+<div class="md:w-1/2 p-10 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="bg-surface-container-highest text-primary text-[0.7rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Research</span>
+<span class="text-outline-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 12 min read
+                                </span>
+</div>
+<h2 class="text-3xl font-bold tracking-tight text-on-surface mb-4 group-hover:text-primary transition-colors">The Identity Security Maturity Model explained</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-8">A comprehensive deep-dive into the four stages of IAM evolution, from perimeter-based defense to autonomous identity governance.</p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm group/link" href="#">
+                            Read more 
+                            <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="group bg-surface-container-low border border-outline-variant/10 rounded-xl p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between">
+<div>
+<div class="mb-6 h-48 rounded-lg overflow-hidden">
+<img alt="Breach analysis" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Cybersecurity server room with glowing green status lights and technical equipment, moody atmospheric lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaZtC6NOI-uDa-m1-WF9JJMJCLk_IL-myJGDA4Fqkoy5n1uRrU7vZbjzlWMKqhAe6vo8XiK7a5BYBFBFsobDKlXpPzVAeAFzr8ZhjT-7yVHg49696-vUtamEnfFV_5AnRY9YgOBl5yDTsVKilzzuirycETQkaNAld050EWnffy9zdovyn0nedycvJ5jSimniEol3MOkxj662I6m81axOze1QjfYAyHtmKmmnCCAUNvcxblloffxYfy1rnuCBisQxQxkc6hUR43-0XI"/>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="bg-surface-container-highest text-secondary text-[0.7rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider">News</span>
+<span class="text-outline-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 5 min read
+                        </span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Why 70% of breaches start with a compromised identity</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">New industry telemetry reveals that static credentials remain the primary attack vector for modern threat actors.</p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm group/link" href="#">
+                    Read more 
+                    <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</article>
+<!-- Card 3 -->
+<article class="group bg-surface-container-low border border-outline-variant/10 rounded-xl p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-1 flex flex-col justify-between">
+<div>
+<div class="mb-6 h-48 rounded-lg overflow-hidden">
+<img alt="Checklist" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Professional workspace with focused lighting on a digital tablet displaying security checklists and encryption symbols" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYoEQUuP-4xbk5Nlo7tR5RrolRlLB8sEkLqZ_Cz3la5rl2eHuRp7I1IlIJHv5NRSzIgGu8bKS-ofK-gtkMb752l3rbGgZE8nChs3jg4fzFWlHOi0oX1oHSdYc3sKkXgV6yqMqFIkVi4Ao457PiEG86gpHbVEXkLL_S_lPz8lQfCls-3qeMRNNDd5zKdqZAV9aTV6-88vBMaIZ2LI5X1llUw15elI7RgGIS_TPRvQiMmHjoAHq37aZgpN48Pg5NI1Aef5Kl4oqXzet_"/>
+</div>
+<div class="flex justify-between items-center mb-4">
+<span class="bg-surface-container-highest text-tertiary text-[0.7rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Checklist</span>
+<span class="text-outline-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 8 min read
+                        </span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Preparing for Cyber Essentials Plus — an IAM checklist</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">A technical roadmap for achieving compliance with a focus on privilege management and multi-factor authentication.</p>
+</div>
+<a class="flex items-center gap-2 text-primary font-bold text-sm group/link" href="#">
+                    Read more 
+                    <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</article>
+<!-- Card 4 (Small) -->
+<article class="group bg-surface-container-low border border-outline-variant/10 rounded-xl p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-1">
+<div class="flex justify-between items-center mb-4">
+<span class="bg-surface-container-highest text-primary text-[0.7rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Guide</span>
+<span class="text-outline-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 15 min read
+                    </span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">Zero Trust: Moving beyond the marketing hype</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Separating implementation reality from vendor rhetoric in the world of Zero Trust Network Access.</p>
+<a class="flex items-center gap-2 text-primary font-bold text-sm group/link" href="#">
+                    Read more 
+                    <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</article>
+<!-- Card 5 (Small) -->
+<article class="group bg-surface-container-low border border-outline-variant/10 rounded-xl p-8 hover:bg-surface-container-high transition-all duration-500 hover:-translate-y-1">
+<div class="flex justify-between items-center mb-4">
+<span class="bg-surface-container-highest text-secondary text-[0.7rem] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Research</span>
+<span class="text-outline-variant text-xs flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 10 min read
+                    </span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">The 2024 State of Privileged Access Management</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">Our annual survey of CISOs highlights the top 5 challenges in managing high-risk identities.</p>
+<a class="flex items-center gap-2 text-primary font-bold text-sm group/link" href="#">
+                    Read more 
+                    <span class="material-symbols-outlined text-[18px] group-hover/link:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</article>
+</div>
+<!-- Load More Section -->
+<div class="mt-20 flex flex-col items-center">
+<button class="px-10 py-4 bg-transparent border border-primary/30 text-primary font-bold rounded-lg hover:bg-primary/5 transition-all duration-300 flex items-center gap-3">
+                Load more insights
+                <span class="material-symbols-outlined">expand_more</span>
+</button>
+<p class="mt-4 text-outline-variant text-sm">Showing 5 of 48 resources</p>
+</div>
+</main>
+<!-- Newsletter Section (The Sentinel Style) -->
+<section class="bg-surface-container-low border-t border-outline-variant/15 relative overflow-hidden py-24">
+<div class="absolute inset-0 pointer-events-none opacity-20">
+<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2"></div>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+<div class="lg:w-1/2">
+<span class="label-md text-primary tracking-[0.1em] font-bold text-[0.75rem] uppercase mb-4 block">STAY PROTECTED</span>
+<h2 class="text-5xl font-extrabold tracking-tighter text-on-surface mb-6 leading-tight">The Intelligence Hub</h2>
+<p class="text-lg text-on-surface-variant max-w-lg leading-relaxed">
+                    Join 10,000+ security professionals. Receive monthly field reports, threat intelligence briefs, and exclusive IAM toolkits directly in your inbox.
+                </p>
+</div>
+<div class="lg:w-1/2 w-full">
+<form class="flex flex-col sm:flex-row gap-4 p-2 bg-surface-container rounded-2xl border border-outline-variant/15">
+<input class="flex-grow bg-transparent border-none focus:ring-0 px-6 py-4 text-on-surface placeholder:text-outline-variant" placeholder="Your corporate email address" required="" type="email"/>
+<button class="bg-primary text-on-primary font-bold px-8 py-4 rounded-xl hover:bg-primary/90 transition-colors whitespace-nowrap" type="submit">
+                        Subscribe Now
+                    </button>
+</form>
+<p class="mt-4 text-xs text-outline-variant px-2">By subscribing, you agree to our Privacy Policy and consent to receiving marketing communications.</p>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#090e1c] w-full py-16 border-t border-[#3d4a42]/15 font-['Inter'] text-sm leading-relaxed">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 px-8 max-w-screen-2xl mx-auto">
+<div class="col-span-2 lg:col-span-1">
+<div class="text-xl font-bold text-[#5cdda2] mb-4">Infosec K2K</div>
+<p class="text-slate-500 max-w-xs mb-6">Expert IAM Assessment, Strategy, and Implementation for the Enterprise.</p>
+<div class="flex gap-4">
+<a class="text-slate-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">shield</span></a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">policy</span></a>
+<a class="text-slate-500 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">hub</span></a>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Solutions</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">IAM Assessment</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Roadmap &amp; Strategy</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Implementation</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Managed Services</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Sectors</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Enterprise</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Public Sector</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Maturity Assessment</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Resources</h4>
+<ul class="space-y-4">
+<li><a class="text-[#5cdda2] underline" href="#">Intelligence Hub</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Free Tools</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Contact</h4>
+<p class="text-slate-500 mb-2">London Head Office</p>
+<p class="text-slate-500 mb-6">+44 (0) 20 7946 0123</p>
+<button class="text-primary font-bold flex items-center gap-2 group">
+                    Book a consultation
+                    <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="text-slate-500 text-xs">© 2024 Infosec K2K. All Rights Reserved. OSINT Certified.</p>
+<div class="flex gap-8 text-xs text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Compliance</a>
+<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</body></html>

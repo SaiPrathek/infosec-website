@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#86948a",
+              "on-tertiary-fixed-variant": "#5a00c6",
+              "secondary-fixed-dim": "#c3c0ff",
+              "tertiary-fixed": "#eaddff",
+              "on-primary": "#003823",
+              "surface-container-high": "#25293a",
+              "on-tertiary-container": "#36007d",
+              "on-secondary": "#1d00a5",
+              "on-primary-fixed": "#002113",
+              "surface-bright": "#343949",
+              "tertiary": "#d2bbff",
+              "primary-container": "#04a56f",
+              "on-surface": "#dee1f7",
+              "secondary-fixed": "#e2dfff",
+              "secondary": "#c3c0ff",
+              "on-background": "#dee1f7",
+              "inverse-on-surface": "#2b3040",
+              "surface-tint": "#5cdda2",
+              "inverse-primary": "#006c47",
+              "on-tertiary": "#3f008e",
+              "inverse-surface": "#dee1f7",
+              "surface-container-highest": "#2f3445",
+              "error-container": "#93000a",
+              "on-primary-container": "#00311e",
+              "on-error-container": "#ffdad6",
+              "on-error": "#690005",
+              "outline-variant": "#3d4a42",
+              "surface-container": "#1a1f2f",
+              "surface": "#0e1322",
+              "tertiary-container": "#a476ff",
+              "background": "#0e1322",
+              "on-secondary-container": "#b3b1ff",
+              "surface-dim": "#0e1322",
+              "on-primary-fixed-variant": "#005235",
+              "surface-container-low": "#161b2b",
+              "primary-fixed": "#7bfabc",
+              "primary-fixed-dim": "#5cdda2",
+              "on-tertiary-fixed": "#25005a",
+              "surface-container-lowest": "#090e1c",
+              "secondary-container": "#3626ce",
+              "error": "#ffb4ab",
+              "primary": "#5cdda2",
+              "surface-variant": "#2f3445",
+              "tertiary-fixed-dim": "#d2bbff",
+              "on-secondary-fixed": "#0f0069",
+              "on-surface-variant": "#bccabf",
+              "on-secondary-fixed-variant": "#3323cc"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-effect {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        .custom-bezier {
+            transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e1322]/70 backdrop-blur-3xl border-b border-[#3d4a42]/15 shadow-[0_40px_40px_0_rgba(255,255,255,0.04)]">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto font-['Inter'] antialiased text-sm font-medium tracking-tight">
+<div class="text-2xl font-black tracking-tighter text-[#5cdda2]">Infosec K2K</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Services</a>
+<a class="text-[#5cdda2] border-b-2 border-[#5cdda2] pb-1" href="#">Sectors</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Free Tools</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Resources</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Client Portal</a>
+</div>
+<div class="flex items-center space-x-6">
+<button class="bg-primary text-on-primary px-5 py-2 rounded-md font-bold scale-95 active:scale-100 transition-transform custom-bezier">Secure Login</button>
+</div>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center px-8 max-w-screen-2xl mx-auto overflow-hidden">
+<div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+<div class="space-y-8">
+<div class="inline-block px-3 py-1 bg-surface-container-highest rounded-full">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-primary">Financial Sector Security</span>
+</div>
+<h1 class="text-[3.5rem] leading-[1.1] font-extrabold tracking-tight text-white">
+                        Fortifying the <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Future of Finance</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                        Navigating the complex intersection of regulatory compliance, relentless cyber threats, and the digital evolution of banking. We secure the trust that moves markets.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-md font-bold text-lg hover:bg-primary-fixed-dim custom-bezier transition-all">Speak to a financial sector expert</button>
+<button class="border border-primary/30 text-primary px-8 py-4 rounded-md font-bold text-lg hover:bg-primary/5 custom-bezier transition-all">Download Sector Report</button>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<div class="absolute -inset-4 bg-primary/10 blur-3xl rounded-full"></div>
+<div class="relative bg-surface-container rounded-xl overflow-hidden border border-outline-variant/15 shadow-2xl">
+<img class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700" data-alt="Abstract digital representation of financial data blocks and secure connections in a dark blue and neon green technological environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsc1TGVvT8dJ2fjexKGasPLS-smndGRxlqePIkLtvA_Q12512JLFm1-uLyODXYhjPXyQ5I0s6s2J8ShHJvjlb9dZopg-tiC7sOIrEKSHVHoTYkqYfstHk-1u1ATFvr0AZIKa-fGb0HAOFmrr1uKMVeq2j_eiCpgH8TR7SBqPvpufluSI2XWJWDIVJOMCVm8vF0qx11ZSsJ17eqQ65QZVIyPO-yLTUQVsXlt_InQWr3TP0Io6E_iu4D23Yf7owScr0Q_pF2wqAtkV3X"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8 p-6 bg-surface/80 backdrop-blur-md rounded-lg border border-outline-variant/20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">verified_user</span>
+<div>
+<p class="text-xs font-bold text-primary uppercase tracking-widest">Live Threat Metric</p>
+<p class="text-lg font-medium">99.9% Compliance Readiness achieved for Tier-1 Banks</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Compliance & Regulatory Section -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-2xl">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-secondary">Regulatory Excellence</span>
+<h2 class="text-[1.75rem] font-bold mt-4 leading-tight">Meeting the pressures of DORA, PSD2, and Global Standards.</h2>
+</div>
+<p class="text-on-surface-variant max-w-sm">Proactive posture management that turns compliance from a burden into a competitive advantage.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="bg-surface-container p-8 rounded-xl border border-outline-variant/15 hover:bg-surface-container-high transition-all custom-bezier -translate-y-0 hover:-translate-y-1">
+<div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-primary">policy</span>
+</div>
+<h3 class="text-xl font-bold mb-4">DORA Compliance</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Operational resilience frameworks specifically designed to meet the Digital Operational Resilience Act requirements for financial entities.</p>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container p-8 rounded-xl border border-outline-variant/15 hover:bg-surface-container-high transition-all custom-bezier -translate-y-0 hover:-translate-y-1">
+<div class="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-secondary">database</span>
+</div>
+<h3 class="text-xl font-bold mb-4">PSD2 &amp; Open Banking</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Secure API integration and strong customer authentication (SCA) strategies to protect the boundaries of open financial ecosystems.</p>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container p-8 rounded-xl border border-outline-variant/15 hover:bg-surface-container-high transition-all custom-bezier -translate-y-0 hover:-translate-y-1">
+<div class="w-12 h-12 bg-tertiary/10 rounded-lg flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-tertiary">gavel</span>
+</div>
+<h3 class="text-xl font-bold mb-4">Audit Readiness</h3>
+<p class="text-on-surface-variant text-sm leading-relaxed">Continuous monitoring and automated reporting that ensures you are always ready for regulatory scrutiny without the manual overhead.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Data & Privileged Access -->
+<section class="py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="grid lg:grid-cols-12 gap-6">
+<!-- Feature Large -->
+<div class="lg:col-span-7 bg-surface-container p-12 rounded-xl relative overflow-hidden group border border-outline-variant/15">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-primary">Data Protection</span>
+<h3 class="text-3xl font-bold mt-6 mb-4 max-w-md leading-tight">Securing Customer Data in the Age of Instant Payments</h3>
+<p class="text-on-surface-variant text-lg max-w-md">Our advanced encryption and tokenization protocols protect sensitive PII and financial records throughout the entire transaction lifecycle.</p>
+</div>
+<div class="mt-12">
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-sm font-medium">End-to-End Field Level Encryption</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-sm font-medium">Automated PII Discovery &amp; Masking</span>
+</li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span class="text-sm font-medium">Real-time Data Exfiltration Detection</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 group-hover:opacity-30 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="Close-up of high-speed fiber optic cables glowing with green and blue data lights in a dark server room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtyyYuo_-uUoHS0XPn6-E3lAuwFX2GsuBIq1SYo3_SzTFbJ0z2WArTN-xL8nZtQHSv-43kGo-x6g4zGZ4hTspnxOYiNkGlmIvdRHyuB_EgkkLUwD2YAFmrbapWN0-zQlb7fE-3Ehm3wf5F0F-hs9N3FbeztajwRDHnExLk3aUd6ldarAfZcHp3uNZbr2K89vx973-mIPbDIjV4_Jz2J0igXStqFAig8ML8ImljNB3p8B2XIPLURR6Aov3Pyf0BtxxxWiyO1ssRDGT1"/>
+</div>
+</div>
+<!-- Feature Small Stack -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-high p-8 rounded-xl flex-1 border border-outline-variant/15">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-tertiary">Privileged Access</span>
+<h3 class="text-xl font-bold mt-4 mb-3">High-Risk Environment Isolation</h3>
+<p class="text-on-surface-variant text-sm">Isolating administrative sessions for core banking systems to prevent lateral movement from compromised endpoints.</p>
+</div>
+<div class="bg-primary p-8 rounded-xl flex-1 text-on-primary">
+<h3 class="text-xl font-bold mb-3">Zero Trust for Finance</h3>
+<p class="text-on-primary/80 text-sm mb-6">Transition from perimeter-based security to an identity-centric model that verifies every request, every time.</p>
+<a class="inline-flex items-center font-bold text-sm gap-2" href="#">
+                                Read Strategy <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Case Study Slider Placeholder -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-16">
+<span class="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-secondary">Success Stories</span>
+<h2 class="text-[1.75rem] font-bold mt-4">Proven Resilience in the Financial Sector</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="space-y-6">
+<div class="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Modern architectural glass building of a corporate bank reflecting the clear blue sky and metropolitan skyline" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCREoLGPokXDVvLb2q4Lom3ZsCHhsilSin-EcOS1v4_jxUNBFqfn2OrqxG0YxNRECBFqhd3Xh4IJjPtlWSwVEO5NK69P9ZlYg0Zct1i29XmrMaXIlW-Z9_SNiNZO4MEiRRTfcjw9it1mmk80tG1X3G5BJQZenBXAyWWvGZo1V-jUFCNXXdL_-jJR02m4eYKpQsFu3WDmnXOWzLONFr9Mo6CoriRFBbnFUKLwIFqidikJuMnwPW8yetRL78K4RPwA6yOHoRXSRcH79GJ"/>
+</div>
+<div>
+<span class="text-xs font-bold text-primary">TIER-1 RETAIL BANK</span>
+<h4 class="text-2xl font-bold mt-2">DORA Gap Analysis &amp; Remediation</h4>
+<p class="text-on-surface-variant mt-4">We conducted a comprehensive audit for a major European bank, identifying 47 critical gaps in operational resilience and implementing an automated remediation roadmap that met DORA standards 6 months ahead of schedule.</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="aspect-video bg-surface-container rounded-xl overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="Sophisticated office interior with professional workspace and high-end digital screens showing financial charts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdRc20LHi510BbGO33MKU4xpSBf2TPJwuK7VRSfrGIs_bWj8nY45yeubsa6RrP9I7zqkSzoKYV2QxH-PixVWsn7sf8s5qgt_rqhmnPSy0ekzpL8LQrBz4r2OltyCD5ig5IoLjkYS0XOgTd3c5FHDUnec1xNuxaq6OqKW7dSFwNImVLsZ4K2HidT3xiYpykozJWbqiPWAE-bFhS9ZKUFu1TJeRrYj-RMZJIpI5QljNh_ffj-mdl8QFTv5DKo859m0cvnnsRDVPxBR_P"/>
+</div>
+<div>
+<span class="text-xs font-bold text-secondary">FINTECH UNICORN</span>
+<h4 class="text-2xl font-bold mt-2">Securing the Open Banking Edge</h4>
+<p class="text-on-surface-variant mt-4">Deploying a custom-built API security layer for a high-growth fintech, reducing unauthorized access attempts by 89% while maintaining millisecond-level transaction latency.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recommended Services -->
+<section class="py-24">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="text-center max-w-3xl mx-auto mb-20">
+<h2 class="text-3xl font-bold">Specialized Services for Financial Institutions</h2>
+<p class="text-on-surface-variant mt-4">Engineered solutions that address the specific threat landscape of the modern financial world.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/15 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-4">security</span>
+<h4 class="font-bold text-lg mb-2">IAM Managed Services</h4>
+<p class="text-sm text-on-surface-variant">Expert management of privileged identities and customer access portals.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/15 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-4">speed</span>
+<h4 class="font-bold text-lg mb-2">Threat Intelligence</h4>
+<p class="text-sm text-on-surface-variant">Financial-specific threat feeds and dark web monitoring for stolen credentials.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/15 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-4">terminal</span>
+<h4 class="font-bold text-lg mb-2">Pentesting</h4>
+<p class="text-sm text-on-surface-variant">Deep-dive technical testing of core banking systems and mobile applications.</p>
+</div>
+<div class="p-6 bg-surface-container rounded-xl border border-outline-variant/15 hover:border-primary/50 transition-colors">
+<span class="material-symbols-outlined text-primary mb-4">analytics</span>
+<h4 class="font-bold text-lg mb-2">Maturity Assessment</h4>
+<p class="text-sm text-on-surface-variant">Strategic benchmarking against industry standards and peer institutions.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-8">
+<div class="max-w-screen-2xl mx-auto bg-gradient-to-br from-surface-container-high to-surface-container rounded-3xl p-12 lg:p-24 relative overflow-hidden text-center border border-outline-variant/20">
+<div class="absolute inset-0 opacity-10 pointer-events-none">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_50%,#5cdda2_0%,transparent_50%)]"></div>
+</div>
+<div class="relative z-10 max-w-3xl mx-auto">
+<h2 class="text-[2.5rem] font-black tracking-tight leading-tight mb-8">Ready to secure your <span class="text-primary">financial frontier?</span></h2>
+<p class="text-xl text-on-surface-variant mb-12">Consult with our sector-specific team to build a roadmap for resilient, compliant, and secure growth.</p>
+<button class="bg-primary text-on-primary px-10 py-5 rounded-md font-bold text-xl hover:scale-105 active:scale-95 transition-all custom-bezier">Speak to a financial sector expert</button>
+<p class="mt-8 text-sm text-slate-500 font-medium">Trusted by leading banks, fintechs, and insurance providers globally.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#090e1c] w-full py-16 border-t border-[#3d4a42]/15">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 px-8 max-w-screen-2xl mx-auto font-['Inter'] text-sm leading-relaxed">
+<div class="col-span-2 lg:col-span-1">
+<div class="text-xl font-bold text-[#5cdda2] mb-4">Infosec K2K</div>
+<p class="text-slate-500 mb-6">Securing the global financial ecosystem with enterprise-grade identity and access management solutions.</p>
+</div>
+<div class="flex flex-col space-y-3">
+<span class="text-white font-bold mb-2">Services</span>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">IAM Assessment</a>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Roadmap &amp; Strategy</a>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Implementation</a>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Managed Services</a>
+</div>
+<div class="flex flex-col space-y-3">
+<span class="text-white font-bold mb-2">Solutions</span>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Enterprise</a>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Public Sector</a>
+<a class="text-[#5cdda2] underline" href="#">Financial Services</a>
+</div>
+<div class="flex flex-col space-y-3">
+<span class="text-white font-bold mb-2">Resources</span>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Intelligence Hub</a>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Maturity Assessment</a>
+<a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-transform duration-300" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 pt-12 mt-12 border-t border-outline-variant/10 text-slate-600 text-xs">
+            © 2024 Infosec K2K. All Rights Reserved. OSINT Certified.
+        </div>
+</footer>
+</body></html>

@@ -34,42 +34,45 @@ const sectors = [
 
 export default function SectorsPage() {
   return (
-    <div className="pt-16" style={{ background: "var(--background)" }}>
-      <section className="py-16 border-b" style={{ borderColor: "var(--border)", background: "var(--card-bg)" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4" style={{ color: "var(--foreground)" }}>
-            Sector <span className="gradient-text">expertise</span>
+    <div className="pt-16 bg-[#0e1322] min-h-screen">
+      <section className="bg-[#090e1c] py-20 border-b border-[#3d4a42]/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#5cdda2]/5 blur-[80px] pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
+            Sector Focus
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+            Sector{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
+              expertise
+            </span>
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--muted)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-[#bccabf]">
             Identity security isn&apos;t generic. The right approach depends on your sector, your compliance obligations and your threat landscape.
           </p>
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="bg-[#0e1322] py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
           {sectors.map((s) => (
             <Link key={s.slug} href={`/sectors/${s.slug}`}
-              className="rounded-2xl p-8 border group hover:shadow-xl hover:-translate-y-0.5 transition-all block"
-              style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
-              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "rgba(0,164,110,0.12)" }}>
-                <s.icon size={22} style={{ color: "var(--k2k-teal)" }} />
+              className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors group block p-8">
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#5cdda2]/10">
+                <s.icon size={22} className="text-[#5cdda2]" />
               </div>
-              <h2 className="font-bold text-xl mb-2 group-hover:text-teal-500 transition-colors"
-                style={{ color: "var(--foreground)" }}>
+              <h2 className="font-extrabold text-xl tracking-tight mb-2 text-[#dee1f7] group-hover:text-[#5cdda2] transition-colors">
                 {s.title}
               </h2>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>{s.desc}</p>
+              <p className="text-sm leading-relaxed mb-4 text-[#bccabf]">{s.desc}</p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {s.tags.map((tag) => (
-                  <span key={tag} className="text-xs px-2 py-0.5 rounded-full border"
-                    style={{ color: "var(--muted)", borderColor: "var(--border)" }}>
+                  <span key={tag} className="text-xs px-2.5 py-0.5 rounded-full border border-[#3d4a42]/30 text-[#bccabf]">
                     {tag}
                   </span>
                 ))}
               </div>
-              <span className="text-sm font-semibold text-teal-500 flex items-center gap-1">
+              <span className="text-sm font-bold text-[#5cdda2] flex items-center gap-1">
                 View sector page <ArrowRight size={12} />
               </span>
             </Link>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#86948a",
+              "on-tertiary-fixed-variant": "#5a00c6",
+              "secondary-fixed-dim": "#c3c0ff",
+              "tertiary-fixed": "#eaddff",
+              "on-primary": "#003823",
+              "surface-container-high": "#25293a",
+              "on-tertiary-container": "#36007d",
+              "on-secondary": "#1d00a5",
+              "on-primary-fixed": "#002113",
+              "surface-bright": "#343949",
+              "tertiary": "#d2bbff",
+              "primary-container": "#04a56f",
+              "on-surface": "#dee1f7",
+              "secondary-fixed": "#e2dfff",
+              "secondary": "#c3c0ff",
+              "on-background": "#dee1f7",
+              "inverse-on-surface": "#2b3040",
+              "surface-tint": "#5cdda2",
+              "inverse-primary": "#006c47",
+              "on-tertiary": "#3f008e",
+              "inverse-surface": "#dee1f7",
+              "surface-container-highest": "#2f3445",
+              "error-container": "#93000a",
+              "on-primary-container": "#00311e",
+              "on-error-container": "#ffdad6",
+              "on-error": "#690005",
+              "outline-variant": "#3d4a42",
+              "surface-container": "#1a1f2f",
+              "surface": "#0e1322",
+              "tertiary-container": "#a476ff",
+              "background": "#0e1322",
+              "on-secondary-container": "#b3b1ff",
+              "surface-dim": "#0e1322",
+              "on-primary-fixed-variant": "#005235",
+              "surface-container-low": "#161b2b",
+              "primary-fixed": "#7bfabc",
+              "primary-fixed-dim": "#5cdda2",
+              "on-tertiary-fixed": "#25005a",
+              "surface-container-lowest": "#090e1c",
+              "secondary-container": "#3626ce",
+              "error": "#ffb4ab",
+              "primary": "#5cdda2",
+              "surface-variant": "#2f3445",
+              "tertiary-fixed-dim": "#d2bbff",
+              "on-secondary-fixed": "#0f0069",
+              "on-surface-variant": "#bccabf",
+              "on-secondary-fixed-variant": "#3323cc"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(14, 19, 34, 0.7);
+            backdrop-filter: blur(24px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e1322;
+            color: #dee1f7;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#0e1322]/70 backdrop-blur-3xl border-b border-[#3d4a42]/15 shadow-[0_40px_40px_0_rgba(255,255,255,0.04)] font-['Inter'] antialiased text-sm font-medium tracking-tight">
+<div class="flex justify-between items-center px-8 py-4 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#5cdda2]">Infosec K2K</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Services</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Sectors</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Free Tools</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Resources</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Client Portal</a>
+</div>
+<div class="flex items-center gap-6">
+<button class="text-[#5cdda2] font-semibold hover:bg-[#1a1f2f] px-4 py-2 rounded transition-all duration-300 scale-95 active:scale-100">Secure Login</button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface via-surface to-primary/5 -z-10"></div>
+<div class="max-w-screen-2xl mx-auto px-8 grid lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<span class="label-md uppercase tracking-[0.1em] text-primary font-bold mb-6 block">Identity &amp; Access Management Specialists</span>
+<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 leading-[1.1]">
+                    Secure your <span class="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-container">identity infrastructure.</span> Reduce your attack surface.
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mb-12 leading-relaxed">
+                    Infosec K2K helps UK organisations take control of identity security — from initial assessment and strategic roadmap through to hands-on implementation and ongoing managed services.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-md font-bold text-lg hover:bg-primary-fixed-dim transition-all duration-300 shadow-lg shadow-primary/10">Start Free IAM Assessment</button>
+<button class="border border-primary/30 text-primary px-8 py-4 rounded-md font-bold text-lg hover:bg-primary/5 transition-all duration-300">Book an advisory call</button>
+</div>
+<div class="mt-16 flex flex-wrap gap-8 items-center opacity-60">
+<span class="text-sm font-semibold tracking-widest uppercase">Certified:</span>
+<span class="text-sm">ISO 27001</span>
+<span class="text-sm">Cyber Essentials+</span>
+<span class="text-sm">CREST</span>
+<span class="text-sm">NCSC Assured</span>
+</div>
+</div>
+<div class="lg:col-span-5 relative hidden lg:block">
+<div class="aspect-square rounded-full bg-primary/10 blur-[100px] absolute -top-20 -right-20"></div>
+<div class="relative z-10 p-8 border border-outline-variant/20 rounded-xl bg-surface-container/50 backdrop-blur-xl">
+<img class="w-full h-auto rounded-lg shadow-2xl" data-alt="futuristic digital security interface with holographic shield and glowing circuit data patterns in emerald green and deep navy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2NdNGk-nN-FON5sSDxVS2ntdvqJuYkZPQiyn1C5s_0WnUN55AkeJKPrgJm5AkcjWk9UVon_sohBv_CG6Mp6m-IRJEFQRmOfQEirwY65ZEBXtYz2U_IlGLH28ROzFsNZrZ73L-BhaeWlHGEVztSyMkXIcu-kguO_cHaBjweffC9Av2bqtTolgA-_OoZZIfsNGCozdiKUsBUMKiT6-wQhu9aIh-NrGXGgnQNsOnxf44_WlSkAvdYw7LTcGxKVwBI_zGexIcZnOqK8ZW"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Stats Section -->
+<section class="py-20 bg-surface-container-lowest">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="text-center">
+<div class="text-4xl md:text-5xl font-black text-primary mb-2">150+</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest font-bold">Clients secured</div>
+</div>
+<div class="text-center">
+<div class="text-4xl md:text-5xl font-black text-primary mb-2">500+</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest font-bold">IAM assessments</div>
+</div>
+<div class="text-center">
+<div class="text-4xl md:text-5xl font-black text-primary mb-2">12+</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest font-bold">Years expertise</div>
+</div>
+<div class="text-center">
+<div class="text-4xl md:text-5xl font-black text-primary mb-2">98%</div>
+<div class="text-sm text-on-surface-variant uppercase tracking-widest font-bold">Client satisfaction</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pain Points Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="mb-16">
+<span class="label-md uppercase tracking-[0.1em] text-secondary font-bold mb-4 block">Current Landscape</span>
+<h2 class="text-4xl font-bold">Is this your organisation?</h2>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="p-8 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 border border-outline-variant/10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="lock_open">lock_open</span>
+<h3 class="text-xl font-bold mb-4">Fragmented User Access</h3>
+<p class="text-on-surface-variant leading-relaxed">Multiple legacy systems and cloud apps with disconnected login credentials leading to security gaps and high helpdesk costs.</p>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 border border-outline-variant/10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="security_update_warning">security_update_warning</span>
+<h3 class="text-xl font-bold mb-4">Regulatory Compliance Risk</h3>
+<p class="text-on-surface-variant leading-relaxed">Struggling to meet the rigorous IAM requirements for ISO 27001, SOC2, or specific industry cybersecurity mandates.</p>
+</div>
+<div class="p-8 rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 border border-outline-variant/10">
+<span class="material-symbols-outlined text-4xl text-primary mb-6" data-icon="person_alert">person_alert</span>
+<h3 class="text-xl font-bold mb-4">Privileged Account Sprawl</h3>
+<p class="text-on-surface-variant leading-relaxed">Lack of visibility into who has 'God-mode' access, leaving your most sensitive infrastructure vulnerable to identity-based attacks.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Bento Grid -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+<div>
+<span class="label-md uppercase tracking-[0.1em] text-primary font-bold mb-4 block">End-to-End Delivery</span>
+<h2 class="text-4xl md:text-5xl font-bold">Services built around your maturity</h2>
+</div>
+<p class="text-on-surface-variant max-w-md">We don't believe in one-size-fits-all. Our approach adapts to where you are on your security journey.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-12 gap-6">
+<!-- Large Card -->
+<div class="md:col-span-6 lg:col-span-8 bg-surface-container rounded-xl p-10 border border-outline-variant/10 flex flex-col justify-between group">
+<div>
+<div class="flex justify-between items-start mb-12">
+<span class="material-symbols-outlined text-5xl text-primary" data-icon="analytics">analytics</span>
+<span class="text-xs font-bold bg-surface-container-highest px-3 py-1 rounded-full uppercase tracking-tighter">Strategic Phase</span>
+</div>
+<h3 class="text-3xl font-bold mb-4">IAM Assessment</h3>
+<p class="text-on-surface-variant text-lg max-w-xl">A deep-dive technical and process audit of your current Identity infrastructure. Identify gaps, risks, and quick wins to immediately harden your perimeter.</p>
+</div>
+<div class="mt-12 flex items-center text-primary font-bold group-hover:gap-4 gap-2 transition-all cursor-pointer">
+                        Discover Assessment <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+<!-- Tall Card -->
+<div class="md:col-span-6 lg:col-span-4 bg-surface-container-high rounded-xl p-10 border border-outline-variant/10 flex flex-col justify-between group relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-secondary/5 blur-3xl rounded-full"></div>
+<div>
+<span class="material-symbols-outlined text-4xl text-secondary mb-8" data-icon="route">route</span>
+<h3 class="text-2xl font-bold mb-4">Roadmap &amp; Strategy</h3>
+<p class="text-on-surface-variant">A multi-year execution plan aligned with your business goals. We bridge the gap between technical identity requirements and board-level risk management.</p>
+</div>
+</div>
+<!-- Grid Row 2 -->
+<div class="md:col-span-3 lg:col-span-4 bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 group">
+<span class="material-symbols-outlined text-3xl text-primary mb-6" data-icon="terminal">terminal</span>
+<h3 class="text-xl font-bold mb-3">Implementation</h3>
+<p class="text-on-surface-variant text-sm">Deployment of market-leading IAM, PAM, and IGA solutions by certified UK-based engineers.</p>
+</div>
+<div class="md:col-span-3 lg:col-span-4 bg-surface-container-low rounded-xl p-8 border border-outline-variant/10 group">
+<span class="material-symbols-outlined text-3xl text-primary mb-6" data-icon="settings_suggest">settings_suggest</span>
+<h3 class="text-xl font-bold mb-3">Optimisation</h3>
+<p class="text-on-surface-variant text-sm">Fine-tuning existing deployments to ensure you are getting full ROI and maximum security coverage.</p>
+</div>
+<div class="md:col-span-6 lg:col-span-4 bg-primary text-on-primary rounded-xl p-8 shadow-2xl shadow-primary/20 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-3xl mb-6" data-icon="support_agent" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+<h3 class="text-xl font-bold mb-3">Managed Services</h3>
+<p class="text-on-primary/80 text-sm">24/7/365 proactive identity monitoring, administration, and response for peace of mind.</p>
+</div>
+<div class="mt-8 flex items-center font-bold gap-2">
+                        Learn More <span class="material-symbols-outlined" data-icon="arrow_outward">arrow_outward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Infosec K2K? -->
+<section class="py-24 bg-surface relative overflow-hidden">
+<div class="max-w-screen-2xl mx-auto px-8 grid lg:grid-cols-2 gap-20 items-center">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/10 rounded-2xl blur-2xl"></div>
+<img class="relative z-10 rounded-2xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="team of professional cybersecurity analysts working in a modern dimly lit operations center with large data screens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqoWmkfkwkWN26-__XyDujD7Fv4tdNjxgI4-BXIFaib5YiJRGOnSnMjGPC7LoQ6a0TiAxE4M__5ooyZkPtB52Z0S2narG9QTroGqxM-K58iEK1UDCyhJWY0NQGLtvy386dB5YHSBfc4HSqYqwYlFhHq0KaVjMHVFOh3BTKifyvAR0MBIrk-jSb8i7bykERRC0PV6DmrhJdFy-x1KREs2WcoSKlnu1mk_6aMt_bpRQiD9P3lhmfJsXWc_2L2QBn86wGLBqeq6JsASrA"/>
+</div>
+<div>
+<span class="label-md uppercase tracking-[0.1em] text-primary font-bold mb-4 block">The K2K Advantage</span>
+<h2 class="text-4xl font-bold mb-8">Why Infosec K2K?</h2>
+<div class="space-y-8">
+<div class="flex gap-6">
+<div class="mt-1 flex-shrink-0 w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="verified_user">verified_user</span>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-1">UK-Based Expertise</h4>
+<p class="text-on-surface-variant">All our consultants and engineers are SC-cleared and based in the UK, ensuring compliance and local accountability.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="mt-1 flex-shrink-0 w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="partner_exchange">partner_exchange</span>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-1">Vendor Agnostic</h4>
+<p class="text-on-surface-variant">We recommend the best solution for your specific needs, not the one that pays the highest commission.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="mt-1 flex-shrink-0 w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="speed">speed</span>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-1">Accelerated ROI</h4>
+<p class="text-on-surface-variant">Our pre-built frameworks and automation scripts mean we deploy secure IAM solutions faster than anyone else.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sector Expertise -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="max-w-screen-2xl mx-auto px-8 text-center mb-16">
+<h2 class="text-4xl font-bold mb-4">Sector Expertise</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Specialised identity frameworks tailored to the unique regulatory and operational demands of your industry.</p>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface rounded-xl p-8 text-center border border-outline-variant/10 hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4" data-icon="account_balance">account_balance</span>
+<h3 class="font-bold">Financial Services</h3>
+</div>
+<div class="bg-surface rounded-xl p-8 text-center border border-outline-variant/10 hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4" data-icon="health_and_safety">health_and_safety</span>
+<h3 class="font-bold">Healthcare &amp; NHS</h3>
+</div>
+<div class="bg-surface rounded-xl p-8 text-center border border-outline-variant/10 hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4" data-icon="foundation">foundation</span>
+<h3 class="font-bold">Public Sector</h3>
+</div>
+<div class="bg-surface rounded-xl p-8 text-center border border-outline-variant/10 hover:border-primary/40 transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-4" data-icon="factory">factory</span>
+<h3 class="font-bold">Critical Infrastructure</h3>
+</div>
+</div>
+</section>
+<!-- Testimonials -->
+<section class="py-24 bg-surface">
+<div class="max-w-screen-xl mx-auto px-8">
+<div class="bg-surface-container rounded-2xl p-12 md:p-20 relative border border-outline-variant/10">
+<span class="material-symbols-outlined text-6xl text-primary/20 absolute top-10 left-10" data-icon="format_quote">format_quote</span>
+<div class="relative z-10">
+<p class="text-2xl md:text-3xl font-medium mb-10 leading-relaxed italic text-on-surface">
+                        "Infosec K2K didn't just sell us a tool; they transformed how we think about identity. Their IAM assessment was a wake-up call, and their roadmap provided the clarity we needed to secure our 10,000+ user estate."
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a chief information security officer in a dark suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9mTs4dHoMAXIqrN-0U5uWlZY-CWQ7NErZnojz4t_6xXgOHG6keeaqijBMTqFTPFpmDlEq-b4dOKW2rz6Ya0ZSvNEwv2Boy-Vy2MIshwXoO8wJ__N137CIkBHPPD9jaTkNU0Tk_YpLbb_n1sJem_g-ULmc7TZ6fG8PE8AlhDfP1JOFJumG90pkzTLB0CKz2dOJPm36psSVatwxchy68uHhX337cexICl3eUt4k4BSDQ3yeIYvXhur84nsMFE_oXaVTLrnsVRwbtKHr"/>
+</div>
+<div>
+<div class="font-bold text-lg">David Henderson</div>
+<div class="text-on-surface-variant">CISO, Global Logistics Group</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Free Tools / Knowledge -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="text-center mb-16">
+<span class="label-md uppercase tracking-[0.1em] text-primary font-bold mb-4 block">Intelligence Tools</span>
+<h2 class="text-4xl font-bold">Know your risk before you spend a penny</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="bg-surface p-1 rounded-2xl overflow-hidden flex flex-col group border border-outline-variant/10">
+<img class="w-full aspect-video object-cover rounded-t-xl opacity-60 group-hover:opacity-100 transition-opacity" data-alt="dashboard showing identity maturity score charts and security compliance radar graph" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrDYmt35vqgud_1WcMt8Kjk24uXxNYrwXpt--CviRjoDvnRguPyTjUg-cRCVqTYLERKWyel-ELZpnBiq4hh-kdwhqziQFLZKIVwLsXDE7Ru9b4gL6ZS6PwDci3SYUMViXQeXQylc00KAyoPUA0HHplirDaQm7Uh1AsSZvW0wRgylAkIphssXgQnBxlugow2sYTh2ojQn1WQmc4ECq_odm841anCsybzDzUIPkOyrcglBmnqWU-GNO9JySWmJb4ruMxyA-yjD5iR1u8"/>
+<div class="p-8">
+<h3 class="text-2xl font-bold mb-4">IAM Maturity Assessment</h3>
+<p class="text-on-surface-variant mb-6">Our proprietary diagnostic tool benchmarks your identity posture against industry standards and provides an instant maturity score.</p>
+<a class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all" href="#">Start Assessment <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span></a>
+</div>
+</div>
+<div class="bg-surface p-1 rounded-2xl overflow-hidden flex flex-col group border border-outline-variant/10">
+<img class="w-full aspect-video object-cover rounded-t-xl opacity-60 group-hover:opacity-100 transition-opacity" data-alt="abstract dark network map with illuminated nodes representing global data points" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-d5G7weLhuN8RGIQujXunAJy24UJOliXtrj0E0ee7vbS4-fzrXlqnzuheX-BcWpVKuR6elCLfX1WlmO28tDpCoixRiC3Yw6k4v2u040Jucn_a27-gHb6nnyTTNW0NUZkVXTAay4mLNVUrz8OCHyPJ3OwDCmkt7om2NbtPDCkYtgVHJa17q1ViKK7HwXgqTTgzGsemckw3EOVRVmmLKX4CUhkWMwf_-aylxQuiL9QPZnjZQqdwv5PDEQZndtuTImVgSJ5pjspUNuJJ"/>
+<div class="p-8">
+<h3 class="text-2xl font-bold mb-4">OSINT Intelligence Hub</h3>
+<p class="text-on-surface-variant mb-6">Access our live database of identity-based threats, leaked credential trends, and emerging attack vectors from the dark web.</p>
+<a class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all" href="#">Enter Intelligence Hub <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 relative overflow-hidden">
+<div class="absolute inset-0 bg-primary/5 -z-10"></div>
+<div class="max-w-screen-xl mx-auto px-8 text-center bg-surface-container p-16 rounded-3xl border border-primary/20 shadow-2xl">
+<h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to secure your identity?</h2>
+<p class="text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto">Get an expert overview of your current security posture. No commitment required.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<button class="bg-primary text-on-primary px-10 py-5 rounded-md font-bold text-lg hover:bg-primary-fixed-dim transition-all">Know your IAM risk in 10 minutes</button>
+<button class="bg-surface-container-highest text-on-surface px-10 py-5 rounded-md font-bold text-lg hover:bg-surface-bright transition-all">Contact an Engineer</button>
+</div>
+</div>
+</section>
+<!-- Latest Insights -->
+<section class="py-24 bg-surface">
+<div class="max-w-screen-2xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<h2 class="text-4xl font-bold">Latest insights</h2>
+<a class="text-primary font-bold hidden md:block" href="#">View All Resources</a>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<article class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close up of a digital keyboard with a glowing green secure key" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYtprNnf2IkWdHYjdeJhC6E8WrXe_LeHN3oOuCV31ay1bRm0zZ_poU-FYSjK3gqjc41vRjazGEwkdLEsnk_afft0-QB1-shaNEn2swX_owmvd0G17dB8yVou0GEQeatpeo3Y1mU21noOlhxKrRjJTwAgXaVFvSQfbd_HwQOvRvNozIY8H3Ik8z9MlaPElND2sejySTMkNw_lPOIuxozRATxVeSfzcWfzR6JJ4B9wNnjLFnsDftt4ZD43QBgTpl-zA-MuaeBLQvMAK8"/>
+</div>
+<span class="text-xs font-bold text-secondary tracking-widest uppercase mb-2 block">Whitepaper</span>
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">The State of UK Identity Security 2024</h3>
+</article>
+<article class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="high contrast image of server rack lights blinking in a dark data center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeEukhMZYO_iBdidSyjJGcXCWnV3LgJDTqV_actbBnl8_HwyO2kK6CiMMZ8pVOTpjRBXtvCFoPSh6cXs_KsgOAc7tOllP5SR_kcUhP5vp6shLpbqVYqCRdNhfTjaCt3AZLIi5q7iV0QM1ZuTdW0DjLGyxxf4H1AfFKehehDzlZQwZyR9uxoTulJOR9EJ4Hdd4yPPKwajZemdTDRFbgjo6PfeS3yXdXWH05TVX_0idY-BHWGeHWrwlHX5HFfyoY2XSdZ5J1pEXM8DqC"/>
+</div>
+<span class="text-xs font-bold text-secondary tracking-widest uppercase mb-2 block">Case Study</span>
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Solving PAM Sprawl for a Tier-1 Bank</h3>
+</article>
+<article class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden mb-6">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="abstract representation of biometric facial recognition scanning lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0uG51IL3WBshXAenWU8J9ci9CL3Sje9-dq1YNkS19E9hGMSiFrcCWzeTPFcmYiZ-qJxl6tBCvtYq0c59rbqvrE8BxYRT3O5G6V4fmB_ujDlEVVDrU1-7Sd2bX_mqOU0GAcMXOexA9t7bh6h1Oo6vWcFopRn1yNwJ76kNnjAjjoQGHnM_MTwrJ_EJx3a4R_Stcfqx8eB0XZvA12uSWBzvwbfLyTm8-y9CHCtuZyZciYXTh4GFQ17DK-trcAROIrPhYjFlhgMLFGniu"/>
+</div>
+<span class="text-xs font-bold text-secondary tracking-widest uppercase mb-2 block">Technical Guide</span>
+<h3 class="text-xl font-bold group-hover:text-primary transition-colors">Zero Trust: Moving Beyond the Password</h3>
+</article>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#090e1c] w-full py-16 border-t border-[#3d4a42]/15 font-['Inter'] text-sm leading-relaxed">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 px-8 max-w-screen-2xl mx-auto">
+<div class="col-span-2 lg:col-span-2">
+<div class="text-xl font-bold text-[#5cdda2] mb-4">Infosec K2K</div>
+<p class="text-slate-500 max-w-xs mb-8">Specialist identity and access management consultancy for security-conscious UK enterprises. OSINT Certified and NCSC Assured.</p>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-slate-500 hover:text-primary cursor-pointer" data-icon="share">share</span>
+<span class="material-symbols-outlined text-slate-500 hover:text-primary cursor-pointer" data-icon="language">language</span>
+</div>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Services</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">IAM Assessment</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Roadmap &amp; Strategy</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Implementation</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Managed Services</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Company</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Enterprise</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Public Sector</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Maturity Assessment</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Intelligence Hub</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-white font-bold mb-6">Legal</h4>
+<ul class="space-y-4">
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Cookie Policy</a></li>
+<li><a class="text-slate-500 hover:text-[#c3c0ff] hover:translate-x-1 transition-all inline-block" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-screen-2xl mx-auto px-8 mt-16 pt-8 border-t border-outline-variant/10 text-slate-600 text-xs flex flex-col md:flex-row justify-between items-center gap-4">
+<div>© 2024 Infosec K2K. All Rights Reserved. OSINT Certified.</div>
+<div class="flex gap-8">
+<span>London HQ: +44 (0) 20 8123 4567</span>
+<span>ISO 27001 Accredited</span>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { Shield, Search, ArrowRight, Clock, BarChart3, FileText, Lock } from "lucide-react";
+import { Shield, Search, ArrowRight, Clock, BarChart3 } from "lucide-react";
 
 const tools = [
   {
     id: "assessment",
-    icon: Shield,
+    icon: BarChart3,
     tag: "IAM SECURITY",
     title: "IAM Maturity Assessment",
     description:
@@ -20,8 +20,8 @@ const tools = [
     time: "~10 minutes",
     cta: "Start Assessment",
     href: "/assessment",
-    gradient: "linear-gradient(135deg, #00a46e 0%, #00b5df 100%)",
-    highlight: true,
+    gradient: "from-[#5cdda2] to-[#04a56f]",
+    iconColor: "#003823",
   },
   {
     id: "osint",
@@ -39,56 +39,59 @@ const tools = [
     time: "Results in seconds",
     cta: "Open OSINT Hub",
     href: "/tools/osint",
-    gradient: "linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)",
-    highlight: false,
+    gradient: "from-[#3b82f6] to-[#8b5cf6]",
+    iconColor: "white",
   },
 ];
 
 export default function ToolsPage() {
   return (
-    <div className="pt-24 min-h-screen" style={{ background: "var(--background)" }}>
+    <div className="pt-16 min-h-screen bg-[#0e1322]">
       {/* Header */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold mb-4 border"
-          style={{ color: "var(--k2k-teal)", borderColor: "rgba(0,164,110,0.3)", background: "rgba(0,164,110,0.06)" }}>
-          FREE TOOLS
+      <section className="bg-[#090e1c] py-20 border-b border-[#3d4a42]/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#5cdda2]/5 blur-[80px] pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
+            Free Tools
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+            Know your risk before you{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
+              spend a penny
+            </span>
+          </h1>
+          <p className="text-lg max-w-2xl mx-auto text-[#bccabf]">
+            Two free tools used by 500+ UK security teams. No account required. Immediate results.
+          </p>
         </div>
-        <h1 className="text-4xl font-bold mb-4" style={{ color: "var(--foreground)" }}>
-          Know your risk before you <span className="gradient-text">spend a penny</span>
-        </h1>
-        <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--muted)" }}>
-          Two free tools used by 500+ UK security teams. No account required. Immediate results.
-        </p>
-      </div>
+      </section>
 
       {/* Tool cards */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 gap-8">
           {tools.map((tool) => {
             const Icon = tool.icon;
             return (
               <div key={tool.id}
-                className="rounded-2xl border overflow-hidden flex flex-col"
-                style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
+                className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 overflow-hidden flex flex-col hover:bg-[#25293a] transition-colors">
                 {/* Card header */}
-                <div className="p-6 pb-0">
+                <div className="p-7 pb-0">
                   <div className="flex items-start gap-4 mb-5">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: tool.gradient }}>
-                      <Icon size={22} color="white" />
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br ${tool.gradient}`}>
+                      <Icon size={22} color={tool.iconColor} />
                     </div>
                     <div>
-                      <p className="text-xs font-bold tracking-wider mb-0.5" style={{ color: "var(--muted)" }}>{tool.tag}</p>
-                      <h2 className="text-xl font-bold" style={{ color: "var(--foreground)" }}>{tool.title}</h2>
+                      <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-0.5">{tool.tag}</p>
+                      <h2 className="text-xl font-extrabold tracking-tight text-[#dee1f7]">{tool.title}</h2>
                     </div>
                   </div>
-                  <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--muted)" }}>{tool.description}</p>
+                  <p className="text-sm leading-relaxed mb-5 text-[#bccabf]">{tool.description}</p>
 
                   {/* Features */}
                   <ul className="space-y-2 mb-5">
                     {tool.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm" style={{ color: "var(--foreground)" }}>
-                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "var(--k2k-teal)" }} />
+                      <li key={f} className="flex items-center gap-2 text-sm text-[#dee1f7]">
+                        <div className="w-1.5 h-1.5 rounded-full flex-shrink-0 bg-[#5cdda2]" />
                         {f}
                       </li>
                     ))}
@@ -96,17 +99,16 @@ export default function ToolsPage() {
                 </div>
 
                 {/* Card footer */}
-                <div className="p-6 pt-4 mt-auto">
+                <div className="p-7 pt-4 mt-auto">
                   <div className="flex items-center gap-2 mb-4">
-                    <Clock size={13} style={{ color: "var(--muted)" }} />
-                    <span className="text-xs" style={{ color: "var(--muted)" }}>{tool.time}</span>
-                    <span className="text-xs px-2 py-0.5 rounded-full font-semibold ml-2"
-                      style={{ background: "rgba(0,164,110,0.1)", color: "var(--k2k-teal)" }}>
+                    <Clock size={13} className="text-[#bccabf]" />
+                    <span className="text-xs text-[#bccabf]">{tool.time}</span>
+                    <span className="text-xs px-2.5 py-0.5 rounded-full font-bold ml-2 bg-[#2f3445] text-[#5cdda2]">
                       Free
                     </span>
                   </div>
                   <Link href={tool.href}
-                    className="w-full py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 btn-primary">
+                    className="w-full py-3 rounded-md font-bold text-sm flex items-center justify-center gap-2 btn-primary">
                     {tool.cta} <ArrowRight size={15} />
                   </Link>
                 </div>
@@ -116,16 +118,15 @@ export default function ToolsPage() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="mt-16 rounded-2xl p-8 text-center"
-          style={{ background: "rgba(0,164,110,0.06)", border: "1px solid rgba(0,164,110,0.2)" }}>
-          <h2 className="text-xl font-bold mb-2" style={{ color: "var(--foreground)" }}>
+        <div className="mt-16 bg-[#1a1f2f] rounded-3xl border border-[#5cdda2]/20 p-10 text-center">
+          <h2 className="text-xl font-extrabold tracking-tight mb-2 text-[#dee1f7]">
             Seen enough? Talk to an expert.
           </h2>
-          <p className="mb-6" style={{ color: "var(--muted)" }}>
+          <p className="mb-6 text-[#bccabf]">
             Our teams in the UK, India and Germany are available for a free 30-minute advisory call.
           </p>
           <Link href="/book"
-            className="inline-flex items-center gap-2 btn-primary px-6 py-3 rounded-xl font-semibold text-sm">
+            className="inline-flex items-center gap-2 btn-primary px-8 py-4 rounded-md font-bold text-sm">
             Book a free call <ArrowRight size={15} />
           </Link>
         </div>

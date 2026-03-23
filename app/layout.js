@@ -15,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} h-full dark`} suppressHydrationWarning>
       <body className="min-h-screen flex flex-col antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />

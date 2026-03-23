@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, TrendingUp, Shield, Lock, ShieldAlert, CheckCircle } from "lucide-react";
+import { ArrowRight, BarChart3, TrendingUp, Shield, Lock, ShieldAlert, CheckCircle, Zap, HeadphonesIcon } from "lucide-react";
 
 const services = [
   {
@@ -34,7 +34,7 @@ const services = [
   },
   {
     slug: "implementation",
-    icon: Lock,
+    icon: Zap,
     title: "Optimisation",
     tagline: "More value from tools you already own",
     desc: "Many organisations have IAM tooling in place that isn't being used to its potential. We tune, expand and improve existing deployments.",
@@ -44,7 +44,7 @@ const services = [
   },
   {
     slug: "managed",
-    icon: ShieldAlert,
+    icon: HeadphonesIcon,
     title: "Managed Services",
     tagline: "Ongoing identity security, without the overhead",
     desc: "Continuous monitoring, access reviews, incident response and periodic health assessments — delivered as a flexible managed service.",
@@ -56,58 +56,62 @@ const services = [
 
 export default function ServicesPage() {
   return (
-    <div className="pt-16" style={{ background: "var(--background)" }}>
+    <div className="pt-16 bg-[#0e1322] min-h-screen">
       {/* Hero */}
-      <section className="py-16 border-b" style={{ borderColor: "var(--border)", background: "var(--card-bg)" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl font-bold mb-4" style={{ color: "var(--foreground)" }}>
-            Services built around <span className="gradient-text">your maturity</span>
+      <section className="bg-[#090e1c] py-20 border-b border-[#3d4a42]/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#5cdda2]/5 blur-[80px] pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
+            End-to-End Delivery
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+            Services built around{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
+              your maturity
+            </span>
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--muted)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-[#bccabf]">
             Every engagement starts with understanding where you are. Our services are designed to meet you there and move you forward.
           </p>
         </div>
       </section>
 
       {/* Services list */}
-      <section className="py-16">
+      <section className="bg-[#0e1322] py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           {services.map((s, i) => (
-            <div key={i} className="rounded-2xl p-8 border hover:shadow-lg transition-shadow"
-              style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
+            <div key={i} className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-8">
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center"
-                    style={{ background: "rgba(0,164,110,0.12)" }}>
-                    <s.icon size={22} style={{ color: "var(--k2k-teal)" }} />
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#5cdda2]/10">
+                    <s.icon size={22} className="text-[#5cdda2]" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <h2 className="font-bold text-xl" style={{ color: "var(--foreground)" }}>{s.title}</h2>
+                    <h2 className="font-extrabold text-xl tracking-tight text-[#dee1f7]">{s.title}</h2>
                     {s.badge && (
-                      <span className="text-xs px-2 py-0.5 rounded-full font-semibold"
-                        style={{ background: "rgba(0,164,110,0.15)", color: "var(--k2k-teal)" }}>
+                      <span className="text-xs px-3 py-1 rounded-full font-bold bg-[#2f3445] text-[#5cdda2]">
                         {s.badge}
                       </span>
                     )}
                   </div>
-                  <p className="text-sm font-semibold mb-2" style={{ color: "var(--k2k-teal)" }}>{s.tagline}</p>
-                  <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>{s.desc}</p>
+                  <p className="text-sm font-bold mb-2 text-[#5cdda2]">{s.tagline}</p>
+                  <p className="text-sm leading-relaxed mb-4 text-[#bccabf]">{s.desc}</p>
                   <div className="flex flex-wrap gap-3 mb-4">
                     {s.outcomes.map((o) => (
                       <div key={o} className="flex items-center gap-1.5 text-xs">
-                        <CheckCircle size={12} style={{ color: "var(--k2k-teal)" }} />
-                        <span style={{ color: "var(--foreground)" }}>{o}</span>
+                        <CheckCircle size={12} className="text-[#5cdda2]" />
+                        <span className="text-[#dee1f7]">{o}</span>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
-                    <span className="text-xs px-3 py-1 rounded-full border" style={{ color: "var(--muted)", borderColor: "var(--border)" }}>
+                    <span className="text-xs px-3 py-1 rounded-full border border-[#3d4a42]/30 text-[#bccabf]">
                       Typical: {s.time}
                     </span>
                     <Link href={`/services/${s.slug}`}
-                      className="text-sm font-semibold text-teal-500 hover:text-teal-400 transition-colors flex items-center gap-1">
+                      className="text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors flex items-center gap-1">
                       Learn more <ArrowRight size={12} />
                     </Link>
                   </div>
@@ -119,20 +123,22 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 text-center" style={{ background: "var(--card-bg)" }}>
-        <div className="max-w-xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-3" style={{ color: "var(--foreground)" }}>Not sure where to start?</h2>
-          <p className="text-base mb-6" style={{ color: "var(--muted)" }}>
-            Take our free assessment and we&apos;ll tell you exactly which service fits your current maturity.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/assessment" className="btn-primary px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2">
-              Start free assessment <ArrowRight size={14} />
-            </Link>
-            <Link href="/contact" className="px-6 py-3 rounded-xl border font-semibold text-sm inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
-              style={{ color: "var(--foreground)", borderColor: "var(--border)" }}>
-              Talk to us
-            </Link>
+      <section className="bg-[#090e1c] py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#1a1f2f] rounded-3xl border border-[#5cdda2]/20 p-12 text-center">
+            <h2 className="text-2xl font-extrabold tracking-tighter mb-3 text-[#dee1f7]">Not sure where to start?</h2>
+            <p className="text-base mb-8 text-[#bccabf]">
+              Take our free assessment and we&apos;ll tell you exactly which service fits your current maturity.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/assessment" className="btn-primary px-8 py-4 rounded-md font-bold inline-flex items-center gap-2">
+                Start free assessment <ArrowRight size={14} />
+              </Link>
+              <Link href="/contact"
+                className="px-8 py-4 rounded-md border border-[#5cdda2]/30 font-bold text-sm inline-flex items-center gap-2 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">
+                Talk to us
+              </Link>
+            </div>
           </div>
         </div>
       </section>

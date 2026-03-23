@@ -1,19 +1,28 @@
 import Link from "next/link";
-import { ArrowRight, Shield, Users, BarChart3, Monitor, CheckCircle, Star } from "lucide-react";
+import { ArrowRight, Shield, Users, BarChart3, Monitor, CheckCircle, Star, Zap, RefreshCw } from "lucide-react";
 
-const pillars = [
+const differentiators = [
   {
     icon: Shield,
-    title: "Delivery methodology",
-    desc: "Our engagement model is structured, repeatable and auditable. Every project follows the same rigorous approach — from discovery through to handover. Built on NIST, ISO 27001 and twelve years of delivery experience.",
-    points: ["Consistent delivery framework", "Named consultants throughout", "No handoffs to junior staff mid-project"],
+    title: "UK-Based Expertise",
+    desc: "Our consultants have delivered IAM programmes at major financial institutions, government agencies and global enterprises. They lead, they don't review.",
+    points: ["Named consultants throughout", "12+ years average experience", "No handoffs to junior staff mid-project"],
   },
   {
-    icon: Users,
-    title: "Sector depth",
-    desc: "We don't consult across every security domain. We focus on identity. That depth means we understand the specific compliance pressures, threat models and political realities of your sector.",
-    points: ["Financial services, public sector, enterprise and regulated industries", "Compliance-aware recommendations", "Sector-specific case studies and benchmarks"],
+    icon: RefreshCw,
+    title: "Vendor Agnostic",
+    desc: "We work across all major IAM platforms — Microsoft Entra, SailPoint, CyberArk, Okta and BeyondTrust. Our recommendations are driven by your needs, not our partnerships.",
+    points: ["Platform-independent advice", "No vendor incentives", "Best fit for your environment"],
   },
+  {
+    icon: Zap,
+    title: "Accelerated ROI",
+    desc: "Our structured methodology and client portal transparency means projects deliver faster. You can see exactly where your project stands — milestones, actions, deliverables — in real time.",
+    points: ["Structured delivery framework", "Real-time milestone tracking", "Stakeholder-ready reporting"],
+  },
+];
+
+const pillars = [
   {
     icon: BarChart3,
     title: "Commercial honesty",
@@ -28,94 +37,135 @@ const pillars = [
   },
 ];
 
-const team = [
-  {
-    name: "Principal Consultants",
-    desc: "Our consultants have delivered IAM programmes at major financial institutions, government agencies and global enterprises. They lead, they don't review.",
-  },
-  {
-    name: "Average experience",
-    stat: "12+ years",
-    desc: "in identity security and IAM delivery.",
-  },
-  {
-    name: "Certifications",
-    desc: "CISMs, CISSPs and platform specialists in Microsoft Entra, SailPoint, CyberArk, Okta and BeyondTrust.",
-  },
-];
-
 export default function WhyUsPage() {
   return (
-    <div className="pt-16" style={{ background: "var(--background)" }}>
+    <div className="pt-16 bg-[#0e1322] min-h-screen">
       {/* Hero */}
-      <section className="py-16 border-b dark-mesh" style={{ borderColor: "var(--border)", background: "var(--card-bg)" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4" style={{ color: "var(--foreground)" }}>
-            Why <span className="gradient-text">Infosec K2K</span>?
+      <section className="bg-[#090e1c] py-20 border-b border-[#3d4a42]/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#5cdda2]/5 blur-[100px] pointer-events-none" />
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
+            Why Choose Us
+          </span>
+          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-5 text-[#dee1f7]">
+            Why{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
+              Infosec K2K
+            </span>
+            ?
           </h1>
-          <p className="text-lg max-w-2xl mx-auto" style={{ color: "var(--muted)" }}>
+          <p className="text-lg max-w-2xl mx-auto text-[#bccabf]">
             There are many security consultancies. Very few focus exclusively on identity. Fewer still have delivered across the breadth of sectors and programmes we have.
           </p>
         </div>
       </section>
 
-      {/* Pillars */}
-      <section className="py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-6">
-          {pillars.map((p) => (
-            <div key={p.title} className="rounded-2xl p-8 border"
-              style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5"
-                style={{ background: "rgba(0,164,110,0.12)" }}>
-                <p.icon size={20} style={{ color: "var(--k2k-teal)" }} />
-              </div>
-              <h2 className="font-bold text-lg mb-3" style={{ color: "var(--foreground)" }}>{p.title}</h2>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--muted)" }}>{p.desc}</p>
-              <ul className="space-y-2">
-                {p.points.map((point) => (
-                  <li key={point} className="flex items-center gap-2 text-xs">
-                    <CheckCircle size={12} style={{ color: "var(--k2k-teal)" }} />
-                    <span style={{ color: "var(--foreground)" }}>{point}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Stats bar */}
-      <section className="py-12 border-y" style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              { value: "150+", label: "Clients secured" },
-              { value: "500+", label: "IAM assessments" },
-              { value: "12+", label: "Years delivering" },
-              { value: "98%", label: "Would recommend us" },
-            ].map((s) => (
-              <div key={s.label}>
-                <div className="text-3xl font-bold mb-1 gradient-text">{s.value}</div>
-                <div className="text-sm" style={{ color: "var(--muted)" }}>{s.label}</div>
+      {/* 3 Differentiators */}
+      <section className="bg-[#0e1322] py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block text-center">
+            Our Differentiators
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tighter mb-12 text-[#dee1f7] text-center">
+            What sets us apart
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6">
+            {differentiators.map((d) => (
+              <div key={d.title} className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-8">
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#5cdda2]/10">
+                  <d.icon size={22} className="text-[#5cdda2]" />
+                </div>
+                <h3 className="font-extrabold text-lg tracking-tight mb-3 text-[#dee1f7]">{d.title}</h3>
+                <p className="text-sm leading-relaxed mb-5 text-[#bccabf]">{d.desc}</p>
+                <ul className="space-y-2">
+                  {d.points.map((point) => (
+                    <li key={point} className="flex items-center gap-2 text-xs">
+                      <CheckCircle size={12} className="text-[#5cdda2] flex-shrink-0" />
+                      <span className="text-[#dee1f7]">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Team */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-8 text-center" style={{ color: "var(--foreground)" }}>Our people</h2>
+      {/* Stats bar */}
+      <section className="bg-[#090e1c] py-16 border-y border-[#3d4a42]/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: "150+", label: "Clients Secured" },
+              { value: "500+", label: "IAM Assessments" },
+              { value: "12+", label: "Years Delivering" },
+              { value: "98%", label: "Would Recommend" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-4xl font-extrabold tracking-tighter mb-2 text-[#5cdda2]">{s.value}</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-[#bccabf]">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional pillars */}
+      <section className="bg-[#0e1322] py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-2 gap-6">
+            {pillars.map((p) => (
+              <div key={p.title} className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-8">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-5 bg-[#5cdda2]/10">
+                  <p.icon size={20} className="text-[#5cdda2]" />
+                </div>
+                <h2 className="font-extrabold text-lg tracking-tight mb-3 text-[#dee1f7]">{p.title}</h2>
+                <p className="text-sm leading-relaxed mb-4 text-[#bccabf]">{p.desc}</p>
+                <ul className="space-y-2">
+                  {p.points.map((point) => (
+                    <li key={point} className="flex items-center gap-2 text-xs">
+                      <CheckCircle size={12} className="text-[#5cdda2] flex-shrink-0" />
+                      <span className="text-[#dee1f7]">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Team / approach */}
+      <section className="bg-[#090e1c] py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block text-center">
+            Our People
+          </span>
+          <h2 className="text-3xl font-extrabold tracking-tighter mb-12 text-[#dee1f7] text-center">
+            The team behind your project
+          </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            {team.map((t) => (
-              <div key={t.name} className="rounded-2xl p-6 border text-center"
-                style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
+            {[
+              {
+                name: "Principal Consultants",
+                desc: "Our consultants have delivered IAM programmes at major financial institutions, government agencies and global enterprises. They lead, they don't review.",
+              },
+              {
+                name: "Average experience",
+                stat: "12+ years",
+                desc: "in identity security and IAM delivery.",
+              },
+              {
+                name: "Certifications",
+                desc: "CISMs, CISSPs and platform specialists in Microsoft Entra, SailPoint, CyberArk, Okta and BeyondTrust.",
+              },
+            ].map((t) => (
+              <div key={t.name} className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-7 text-center">
                 {t.stat && (
-                  <div className="text-3xl font-bold mb-2 gradient-text">{t.stat}</div>
+                  <div className="text-4xl font-extrabold tracking-tighter mb-2 text-[#5cdda2]">{t.stat}</div>
                 )}
-                <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--foreground)" }}>{t.name}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>{t.desc}</p>
+                <h3 className="font-bold text-sm mb-3 text-[#dee1f7]">{t.name}</h3>
+                <p className="text-xs leading-relaxed text-[#bccabf]">{t.desc}</p>
               </div>
             ))}
           </div>
@@ -123,36 +173,38 @@ export default function WhyUsPage() {
       </section>
 
       {/* Testimonial */}
-      <section className="py-16" style={{ background: "var(--card-bg)" }}>
+      <section className="bg-[#0e1322] py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center gap-1 mb-6">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} size={18} fill="var(--k2k-teal)" style={{ color: "var(--k2k-teal)" }} />
+              <Star key={i} size={18} fill="#5cdda2" className="text-[#5cdda2]" />
             ))}
           </div>
-          <p className="text-xl italic font-medium leading-relaxed mb-6" style={{ color: "var(--foreground)" }}>
+          <p className="text-xl italic font-semibold leading-relaxed mb-6 text-[#dee1f7]">
             &ldquo;We&apos;ve worked with three IAM consultancies over the past decade. Infosec K2K are the only ones who told us the truth about our programme from day one — and then delivered exactly what they promised.&rdquo;
           </p>
-          <p className="font-semibold text-sm" style={{ color: "var(--foreground)" }}>CISO</p>
-          <p className="text-xs" style={{ color: "var(--muted)" }}>Major UK Insurance Group</p>
+          <p className="font-bold text-sm text-[#dee1f7]">CISO</p>
+          <p className="text-xs text-[#bccabf]">Major UK Insurance Group</p>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-16 text-center" style={{ background: "var(--background)" }}>
-        <div className="max-w-xl mx-auto px-4">
-          <h2 className="text-2xl font-bold mb-3" style={{ color: "var(--foreground)" }}>Ready to work together?</h2>
-          <p className="text-base mb-6" style={{ color: "var(--muted)" }}>
-            Start with a free assessment, or book a call to talk through your requirements.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/assessment" className="btn-primary px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2">
-              Start free assessment <ArrowRight size={14} />
-            </Link>
-            <Link href="/contact" className="px-6 py-3 rounded-xl border font-semibold text-sm inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
-              style={{ color: "var(--foreground)", borderColor: "var(--border)" }}>
-              Talk to us
-            </Link>
+      <section className="bg-[#090e1c] py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#1a1f2f] rounded-3xl border border-[#5cdda2]/20 p-12 text-center">
+            <h2 className="text-3xl font-extrabold tracking-tighter mb-3 text-[#dee1f7]">Ready to work together?</h2>
+            <p className="text-base mb-8 text-[#bccabf]">
+              Start with a free assessment, or book a call to talk through your requirements.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Link href="/assessment" className="btn-primary px-8 py-4 rounded-md font-bold inline-flex items-center gap-2">
+                Start free assessment <ArrowRight size={14} />
+              </Link>
+              <Link href="/contact"
+                className="px-8 py-4 rounded-md border border-[#5cdda2]/30 font-bold text-sm inline-flex items-center gap-2 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">
+                Talk to us
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -9,6 +9,20 @@ const config = {
   theme: {
     extend: {
       colors: {
+        "stitch-primary": "#5cdda2",
+        "stitch-primary-dark": "#04a56f",
+        "stitch-on-primary": "#003823",
+        "stitch-secondary": "#c3c0ff",
+        "stitch-tertiary": "#d2bbff",
+        "stitch-surface": "#0e1322",
+        "stitch-surface-low": "#161b2b",
+        "stitch-surface-container": "#1a1f2f",
+        "stitch-surface-high": "#25293a",
+        "stitch-surface-highest": "#2f3445",
+        "stitch-surface-lowest": "#090e1c",
+        "stitch-on-surface": "#dee1f7",
+        "stitch-on-surface-variant": "#bccabf",
+        "stitch-outline": "#3d4a42",
         teal: {
           400: "#2dd4bf",
           500: "#14b8a6",
@@ -27,10 +41,10 @@ const config = {
         },
       },
       backgroundImage: {
-        "k2k-gradient": "linear-gradient(135deg, #00a46e 0%, #00b5df 100%)",
-        "k2k-gradient-hover": "linear-gradient(135deg, #00b87e 0%, #00c9f5 100%)",
+        "k2k-gradient": "linear-gradient(135deg, #5cdda2 0%, #04a56f 100%)",
+        "k2k-gradient-hover": "linear-gradient(135deg, #7bfabc 0%, #5cdda2 100%)",
         "dark-mesh":
-          "radial-gradient(ellipse at 20% 50%, rgba(0,164,110,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0,181,223,0.08) 0%, transparent 50%)",
+          "radial-gradient(ellipse at 20% 50%, rgba(92,221,162,0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(92,221,162,0.04) 0%, transparent 50%)",
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
