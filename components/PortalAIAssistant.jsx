@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Bot, X, Send, Loader2, ChevronDown } from "lucide-react";
-import { SYSTEM_PROMPTS } from "@/lib/claude";
+import { SYSTEM_PROMPTS } from "@/lib/prompts";
 
 const INITIAL_MESSAGE = {
   role: "assistant",
