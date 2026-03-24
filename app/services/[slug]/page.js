@@ -1,7 +1,40 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowRight, CheckCircle, Quote, BarChart3 } from "lucide-react";
+import { ArrowRight, CheckCircle, Quote } from "lucide-react";
 import { servicesData } from "@/lib/services-data";
+
+const categoryConfig = {
+  "Identity Security": {
+    label: "Identity Security",
+    color: "#5cdda2",
+    border: "border-[#5cdda2]/30",
+    bg: "bg-[#5cdda2]/10",
+  },
+  "Detection & Intelligence": {
+    label: "Detection & Intelligence",
+    color: "#3b82f6",
+    border: "border-[#3b82f6]/30",
+    bg: "bg-[#3b82f6]/10",
+  },
+  "Assurance": {
+    label: "Assurance & Compliance",
+    color: "#c3c0ff",
+    border: "border-[#c3c0ff]/30",
+    bg: "bg-[#c3c0ff]/10",
+  },
+  "Delivery": {
+    label: "Resource Delivery",
+    color: "#e8a87c",
+    border: "border-[#e8a87c]/30",
+    bg: "bg-[#e8a87c]/10",
+  },
+};
+const DEFAULT_CATEGORY = {
+  label: "Infosec K2K",
+  color: "#5cdda2",
+  border: "border-[#5cdda2]/30",
+  bg: "bg-[#5cdda2]/10",
+};
 
 export function generateStaticParams() {
   return Object.keys(servicesData).map((slug) => ({ slug }));
@@ -19,6 +52,8 @@ export default async function ServicePage({ params }) {
   const service = servicesData[slug];
   if (!service) notFound();
 
+  const cat = categoryConfig[service.category] || DEFAULT_CATEGORY;
+
   return (
     <div className="pt-16 bg-[#0e1322] min-h-screen">
       {/* Hero */}
@@ -29,8 +64,9 @@ export default async function ServicePage({ params }) {
             ← All services
           </Link>
           <div className="max-w-3xl">
-            <span className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full border border-[#5cdda2]/30 bg-[#5cdda2]/10 text-[#5cdda2] mb-6">
-              <BarChart3 size={12} /> IAM Consultancy
+            <span className={`inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full border ${cat.border} ${cat.bg} mb-6`}
+              style={{ color: cat.color }}>
+              {cat.label}
             </span>
             <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
@@ -150,6 +186,25 @@ export default async function ServicePage({ params }) {
         </div>
       </section>
 
+      {/* Compliance relevance tags */}
+      {service.complianceRelevance && service.complianceRelevance.length > 0 && (
+        <section className="bg-[#0e1322] py-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-[0.7rem] font-bold uppercase tracking-[0.12em] text-[#bccabf] mb-4">
+              Compliance &amp; Regulatory Relevance
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {service.complianceRelevance.map((tag) => (
+                <span key={tag}
+                  className="text-xs px-3 py-1 rounded-full border border-[#3d4a42]/30 text-[#bccabf]">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Case study quote */}
       <section className="bg-[#090e1c] py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -162,6 +217,33 @@ export default async function ServicePage({ params }) {
           </div>
         </div>
       </section>
+
+      {/* Related services cross-sell */}
+      {service.relatedServices && service.relatedServices.length > 0 && (
+        <section className="bg-[#0e1322] py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-5 block">
+              Related Services
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {service.relatedServices.map((relSlug) => {
+                const rel = servicesData[relSlug];
+                if (!rel) return null;
+                return (
+                  <Link key={relSlug} href={`/services/${relSlug}`}
+                    className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-5 flex items-center justify-between gap-3">
+                    <div>
+                      <p className="text-sm font-bold text-[#dee1f7] mb-0.5">{rel.title}</p>
+                      <p className="text-xs text-[#bccabf] leading-snug">{rel.tagline}</p>
+                    </div>
+                    <ArrowRight size={14} className="text-[#5cdda2] flex-shrink-0" />
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="bg-[#0e1322] py-16">

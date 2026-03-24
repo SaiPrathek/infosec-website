@@ -12,7 +12,7 @@ export default function Footer() {
               <span className="text-2xl font-black tracking-tighter text-[#5cdda2]">Infosec K2K</span>
             </Link>
             <p className="text-sm leading-relaxed mb-5 text-[#bccabf]">
-              Expert Identity &amp; Access Management consultancy. Helping organisations secure what matters most.
+              Cyber risk, identity security and assurance specialists. Helping organisations understand and close their security gaps.
             </p>
             <div className="flex gap-3 mb-6">
               <a href="#" className="p-2 rounded-lg border border-[#3d4a42]/30 text-[#bccabf] hover:text-[#5cdda2] hover:border-[#5cdda2]/40 transition-colors">
@@ -80,7 +80,7 @@ export default function Footer() {
             <h4 className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4">Free Tools</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "IAM Assessment", href: "/assessment" },
+                { label: "Cyber Risk Assessment", href: "/assessment" },
                 { label: "OSINT Hub", href: "/tools/osint" },
                 { label: "All Tools", href: "/tools" },
               ].map((item) => (
@@ -99,6 +99,7 @@ export default function Footer() {
             <ul className="space-y-2.5">
               {[
                 { label: "Why Us", href: "/why-us" },
+                { label: "Partners", href: "/partners" },
                 { label: "Insights", href: "/insights" },
                 { label: "Case Studies", href: "/case-studies" },
                 { label: "Contact", href: "/contact" },

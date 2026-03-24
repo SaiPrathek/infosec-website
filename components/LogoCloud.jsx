@@ -1,8 +1,8 @@
 "use client";
 
 const partners = [
-  "CyberArk", "Okta", "SailPoint", "BeyondTrust", "Ping Identity",
-  "Microsoft Entra", "ForgeRock", "CrowdStrike", "Thales", "One Identity",
+  "CyberArk", "Cyolo", "Picus Security", "Qualys",
+  "DomainTools", "LevelBlue", "WSO2",
 ];
 
 // Double the array so the marquee loops seamlessly
@@ -12,7 +12,7 @@ export default function LogoCloud() {
   return (
     <section className="bg-[#090e1c] border-y border-[#3d4a42]/10 py-10 overflow-hidden">
       <p className="text-center text-[0.65rem] font-bold uppercase tracking-[0.18em] text-[#3d4a42] mb-7">
-        Vendor-Agnostic · Technology Partners
+        Technology Partner Ecosystem
       </p>
       <div className="overflow-hidden relative">
         {/* fade edges */}

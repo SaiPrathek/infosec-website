@@ -80,7 +80,7 @@ const insights = [
   },
 ];
 
-const iamPlatformBadges = ["CyberArk", "BeyondTrust", "Delinea", "SailPoint", "Saviynt", "Okta", "Microsoft Entra", "Duo Security"];
+const iamPlatformBadges = ["CyberArk", "BeyondTrust", "Delinea", "SailPoint", "Saviynt", "Okta", "Microsoft Entra", "Duo Security", "WSO2", "Cyolo"];
 
 const iamDepthStats = [
   { value: "120+", label: "IAM/PAM programmes delivered" },
@@ -109,7 +109,7 @@ const deliveryGeographies = [
     ],
   },
   {
-    flag: "🇮🇳", country: "India", city: "Bangalore", color: "#e8a87c",
+    flag: "🇮🇳", country: "India", city: "Ahmedabad & Hyderabad", color: "#e8a87c",
     highlights: [
       "Extended-hours monitoring coverage",
       "Cost-efficient programme resource",
@@ -551,7 +551,7 @@ export default function HomePage() {
             </Link>
             <Link href="/book?service=assessment"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-bold text-sm border border-[#5cdda2]/30 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">
-              Talk to an IAM specialist <ArrowRight size={14} />
+              Talk to a specialist <ArrowRight size={14} />
             </Link>
           </div>
         </div>

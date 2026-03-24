@@ -20,7 +20,7 @@ const expertiseOptions = [
 
 const regionOptions = [
   { id: "uk", label: "UK Team", sub: "London — GMT/BST", flag: "🇬🇧" },
-  { id: "india", label: "India Team", sub: "Bangalore — IST (UTC+5:30)", flag: "🇮🇳" },
+  { id: "india", label: "India Team", sub: "Ahmedabad & Hyderabad — IST (UTC+5:30)", flag: "🇮🇳" },
   { id: "germany", label: "Germany Team", sub: "Berlin — CET/CEST (UTC+1/2)", flag: "🇩🇪" },
   { id: "none", label: "No preference", sub: "We'll match you with the best available expert", flag: "🌐" },
 ];

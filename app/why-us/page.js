@@ -55,7 +55,7 @@ export default function WhyUsPage() {
             ?
           </h1>
           <p className="text-lg max-w-2xl mx-auto text-[#bccabf]">
-            There are many security consultancies. Very few focus exclusively on identity. Fewer still have delivered across the breadth of sectors and programmes we have.
+            There are many security consultancies. Very few combine deep identity specialism with broader cyber risk capability. Fewer still have delivered across the sectors and programme scales we have.
           </p>
         </div>
       </section>
@@ -97,7 +97,7 @@ export default function WhyUsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
               { value: "150+", label: "Clients Secured" },
-              { value: "500+", label: "IAM Assessments" },
+              { value: "500+", label: "Security Assessments" },
               { value: "12+", label: "Years Delivering" },
               { value: "98%", label: "Would Recommend" },
             ].map((s) => (
@@ -148,12 +148,12 @@ export default function WhyUsPage() {
             {[
               {
                 name: "Principal Consultants",
-                desc: "Our consultants have delivered IAM programmes at major financial institutions, government agencies and global enterprises. They lead, they don't review.",
+                desc: "Our consultants have delivered security programmes across identity, detection, assurance and offensive security at major financial institutions, government agencies and global enterprises. They lead, they don't review.",
               },
               {
                 name: "Average experience",
                 stat: "12+ years",
-                desc: "in identity security and IAM delivery.",
+                desc: "in cyber risk, identity security and programme delivery.",
               },
               {
                 name: "Certifications",
@@ -181,7 +181,7 @@ export default function WhyUsPage() {
             ))}
           </div>
           <p className="text-xl italic font-semibold leading-relaxed mb-6 text-[#dee1f7]">
-            &ldquo;We&apos;ve worked with three IAM consultancies over the past decade. Infosec K2K are the only ones who told us the truth about our programme from day one — and then delivered exactly what they promised.&rdquo;
+            &ldquo;We&apos;ve worked with three security consultancies over the past decade. Infosec K2K are the only ones who told us the truth about our programme from day one — and then delivered exactly what they promised.&rdquo;
           </p>
           <p className="font-bold text-sm text-[#dee1f7]">CISO</p>
           <p className="text-xs text-[#bccabf]">Major UK Insurance Group</p>

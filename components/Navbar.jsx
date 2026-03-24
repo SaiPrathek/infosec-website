@@ -8,7 +8,7 @@ import {
 import { useTheme } from "@/components/ThemeProvider";
 
 const services = [
-  { label: "Identity Security", href: "/services/assessment", desc: "IAM assessment, roadmap & implementation", isCore: true },
+  { label: "Identity Security", href: "/services/assessment", desc: "Identity security assessment, roadmap & implementation", isCore: true },
   { label: "Managed Detection", href: "/services/managed-detection", desc: "24/7 SOC powered by LevelBlue / AlienVault" },
   { label: "Domain Intelligence & OSINT", href: "/services/domain-intelligence", desc: "External exposure monitoring via DomainTools" },
   { label: "Security Assurance", href: "/services/assurance", desc: "ISO 27001, DORA, FCA & Cyber Essentials+" },
@@ -165,6 +165,7 @@ export default function Navbar() {
                   <div className={`rounded-xl p-2 border ${dropdownBg}`}>
                     {[
                       { label: "Why Us", href: "/why-us" },
+                      { label: "Partners", href: "/partners" },
                       { label: "Insights", href: "/insights" },
                       { label: "Case Studies", href: "/case-studies" },
                     ].map((s) => (
@@ -242,6 +243,7 @@ export default function Navbar() {
           <Link href="/tools/osint" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Domain Intelligence</Link>
           <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Resources</p>
           <Link href="/why-us" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Why Us</Link>
+          <Link href="/partners" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Partners</Link>
           <Link href="/insights" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Insights</Link>
           <Link href="/case-studies" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Case Studies</Link>
           <div className="pt-3 space-y-2">
