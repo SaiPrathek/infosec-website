@@ -8,7 +8,7 @@ const capabilities = [
   { icon: Database, label: "Credential exposure", desc: "Leaked passwords and email addresses from data breaches" },
   { icon: Globe, label: "Domain footprint", desc: "Subdomains, exposed services, and DNS records" },
   { icon: Search, label: "Infrastructure mapping", desc: "Open ports, technologies, and public-facing assets" },
-  { icon: Shield, label: "Posture signals", desc: "Indicators of shadow IT and unmanaged exposure" },
+  { icon: Globe, label: "Domain intelligence", desc: "Domain history, registrant data and infrastructure linkage" },
 ];
 
 export default function OsintPage() {
@@ -45,8 +45,8 @@ export default function OsintPage() {
           email: form.email,
           company: form.company,
           role: "",
-          service: "OSINT Hub",
-          message: "Accessed OSINT Intelligence Hub",
+          service: "Domain Intelligence Hub",
+          message: "Accessed Domain Intelligence Hub",
         }),
       });
     } catch {
@@ -72,8 +72,8 @@ export default function OsintPage() {
             <Search size={14} color="white" />
           </div>
           <div>
-            <p className="font-bold text-sm text-[#dee1f7]">OSINT Intelligence Hub</p>
-            <p className="text-xs text-[#bccabf]">Open-source threat intelligence — Free tool by Infosec K2K</p>
+            <p className="font-bold text-sm text-[#dee1f7]">Domain Intelligence Hub</p>
+            <p className="text-xs text-[#bccabf]">Domain Intelligence & OSINT — Infosec K2K, powered by DomainTools</p>
           </div>
         </div>
         <div className="flex items-center gap-3">
@@ -111,22 +111,22 @@ export default function OsintPage() {
           <div className="mt-auto">
             <div className="bg-[#1a1f2f] rounded-xl border border-[#5cdda2]/20 p-4">
               <p className="text-xs font-bold mb-1.5 text-[#dee1f7]">
-                Concerned about what you find?
+                Ready to move from free to managed?
               </p>
               <p className="text-xs mb-3 text-[#bccabf]">
-                Our experts can help you remediate exposure and strengthen your identity posture.
+                Our Domain Intelligence service provides continuous monitoring, analyst triage and monthly briefings — powered by DomainTools.
               </p>
-              <Link href="/book"
+              <Link href="/services/domain-intelligence"
                 className="w-full py-2 rounded-md text-xs font-bold btn-primary flex items-center justify-center gap-1">
-                Book a free call <ArrowRight size={11} />
+                Explore Domain Intelligence <ArrowRight size={11} />
               </Link>
             </div>
 
             <div className="mt-4 pt-4 border-t border-[#3d4a42]/10">
-              <p className="text-xs mb-2 text-[#bccabf]">Also try our IAM assessment:</p>
-              <Link href="/assessment"
+              <p className="text-xs mb-2 text-[#bccabf]">Start with a free risk assessment:</p>
+              <Link href="/assessment/select"
                 className="flex items-center gap-2 text-xs font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
-                <Shield size={12} /> IAM Maturity Assessment →
+                <Shield size={12} /> Cyber Risk Assessment →
               </Link>
             </div>
           </div>
@@ -160,10 +160,10 @@ export default function OsintPage() {
                   <Search size={18} color="white" />
                 </div>
                 <h2 className="text-xl font-extrabold tracking-tight mb-1 text-[#dee1f7]">
-                  Access the OSINT Intelligence Hub
+                  Access the Domain Intelligence Hub
                 </h2>
                 <p className="text-sm mb-6 text-[#bccabf]">
-                  Enter your details to get free access. We&apos;ll send you a summary of what to look for.
+                  Enter your details to access the tool. We&apos;ll follow up with a summary of your domain exposure findings.
                 </p>
 
                 <form onSubmit={handleGateSubmit} className="space-y-3">

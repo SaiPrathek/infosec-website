@@ -1,79 +1,35 @@
 import Link from "next/link";
 import {
-  ArrowRight, CheckCircle, Users, KeyRound,
+  ArrowRight, CheckCircle, Users, Eye,
   BarChart3, ShieldAlert, Building2, Landmark, Shield,
-  BookOpen, TrendingUp, Search, Zap, RefreshCw, HeadphonesIcon,
-  ChevronRight,
+  BookOpen, TrendingUp, Search, RefreshCw, Globe,
+  ChevronRight, Radio, CreditCard, CreditCard as CardIcon,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import LogoCloud from "@/components/LogoCloud";
 
 const stats = [
   { value: "150+", label: "Clients Secured" },
-  { value: "500+", label: "IAM Assessments" },
+  { value: "500+", label: "Cyber Risk Assessments" },
   { value: "12+", label: "Years Expertise" },
   { value: "98%", label: "Client Satisfaction" },
 ];
 
 const painPoints = [
   {
-    question: "Do you know who has access to what across your organisation?",
-    icon: Users,
-    desc: "Uncontrolled access sprawl is the number one cause of identity breaches.",
-  },
-  {
-    question: "Could you detect and respond to a compromised admin account within minutes?",
+    question: "Do you have a clear picture of your most critical cyber risks — right now?",
     icon: ShieldAlert,
-    desc: "Most organisations can't. Our assessments reveal exactly how exposed you are.",
+    desc: "Most organisations prioritise security spend on instinct. Our assessments surface the risks that matter most to your specific environment.",
   },
   {
-    question: "Are your privileged accounts, service accounts and secrets all inventoried and governed?",
-    icon: KeyRound,
-    desc: "Ungoverned privileged access is an open door for attackers.",
-  },
-];
-
-const services = [
-  {
-    icon: BarChart3,
-    title: "IAM Assessment",
-    desc: "Understand your current identity security posture with a structured maturity assessment across five key domains.",
-    href: "/services/assessment",
-    badge: "Strategic Phase",
-    large: true,
+    question: "Could you detect a threat actor moving laterally inside your network within hours?",
+    icon: Eye,
+    desc: "Detection gaps are the difference between a contained incident and a headline breach. Managed detection closes that window.",
   },
   {
-    icon: TrendingUp,
-    title: "Roadmap & Strategy",
-    desc: "Get a prioritised, budget-aware roadmap that moves your organisation from current state to target maturity.",
-    href: "/services/roadmap",
-    badge: null,
-    large: false,
-  },
-  {
-    icon: Shield,
-    title: "Implementation",
-    desc: "Hands-on delivery of IAM tools and processes — from PAM and MFA rollouts to IGA platform deployments.",
-    href: "/services/implementation",
-    badge: null,
-    large: false,
-  },
-  {
-    icon: Zap,
-    title: "Optimisation",
-    desc: "Improve the performance, coverage and efficiency of existing identity tools already in your environment.",
-    href: "/services/tooling-strategy",
-    badge: null,
-    large: false,
-  },
-  {
-    icon: HeadphonesIcon,
-    title: "Managed Services",
-    desc: "Ongoing identity security operations — monitoring, access reviews, incident response and continuous assurance.",
-    href: "/services/managed",
-    badge: null,
-    large: false,
-    highlight: true,
+    question: "Is your domain and external attack surface actively monitored for compromise signals?",
+    icon: Globe,
+    desc: "Leaked credentials, exposed subdomains and supplier breaches all appear in open sources before they appear in your SIEM.",
   },
 ];
 
@@ -86,10 +42,10 @@ const differentiators = [
   {
     icon: RefreshCw,
     title: "Vendor Agnostic",
-    desc: "We recommend what's right for you — not what earns us a commission. We work across all major IAM platforms.",
+    desc: "We recommend what's right for you — not what earns us a commission. We work across all major security platforms.",
   },
   {
-    icon: Zap,
+    icon: TrendingUp,
     title: "Accelerated ROI",
     desc: "Our structured methodology delivers measurable outcomes faster. Every engagement is tracked through our client portal.",
   },
@@ -104,7 +60,7 @@ const sectorCards = [
 
 const insights = [
   {
-    title: "The Identity Security Maturity Model explained",
+    title: "The Cyber Risk Assessment Maturity Model explained",
     category: "Guide",
     readTime: "6 min read",
     href: "#",
@@ -116,10 +72,55 @@ const insights = [
     href: "#",
   },
   {
-    title: "Preparing for Cyber Essentials Plus — an IAM checklist",
+    title: "Preparing for Cyber Essentials Plus — a risk assessment checklist",
     category: "Checklist",
     readTime: "5 min read",
     href: "#",
+  },
+];
+
+const journeySteps = [
+  {
+    step: "01",
+    label: "Discover",
+    icon: Search,
+    color: "#5cdda2",
+    desc: "Surface your external exposure and existing risk signals via our Domain Intelligence tool or initial advisory call.",
+  },
+  {
+    step: "02",
+    label: "Assess",
+    icon: BarChart3,
+    color: "#5cdda2",
+    desc: "Complete a free Cyber Risk Assessment covering identity, detection, domain intelligence, assurance and payments.",
+  },
+  {
+    step: "03",
+    label: "Score",
+    icon: TrendingUp,
+    color: "#c3c0ff",
+    desc: "Receive a risk score and maturity profile across each of the five solution pathways relevant to your organisation.",
+  },
+  {
+    step: "04",
+    label: "Route",
+    icon: ChevronRight,
+    color: "#c3c0ff",
+    desc: "We recommend which pathway — or combination — matches your risk profile, budget and compliance obligations.",
+  },
+  {
+    step: "05",
+    label: "Engage",
+    icon: Users,
+    color: "#5cdda2",
+    desc: "Named consultants kick off your programme. Every milestone tracked in your client portal with full transparency.",
+  },
+  {
+    step: "06",
+    label: "Convert",
+    icon: CheckCircle,
+    color: "#5cdda2",
+    desc: "Risk findings become closed gaps. Maturity scores improve. Board reports become evidence-led.",
   },
 ];
 
@@ -137,22 +138,22 @@ export default function HomePage() {
             {/* Left — 7 cols */}
             <div className="lg:col-span-7">
               <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-5 block">
-                Identity &amp; Access Management Specialists
+                Cyber Risk Assessment &amp; Managed Security
               </span>
               <h1 className="glitch-h1 text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter mb-6 text-[#dee1f7]">
-                Secure your{" "}
+                Understand your{" "}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
-                  identity infrastructure.
+                  cyber risk.
                 </span>{" "}
-                Reduce your attack surface.
+                Prioritise the right actions.
               </h1>
               <p className="text-lg leading-relaxed mb-8 text-[#bccabf] max-w-2xl">
-                Infosec K2K helps UK organisations take control of identity security — from initial assessment and strategic roadmap through to hands-on implementation and ongoing managed services.
+                Infosec K2K helps UK organisations understand their full cyber risk exposure — then move into the right security programme. From cyber risk assessment and identity security to managed detection, domain intelligence and payments assurance.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 mb-10">
-                <Link href="/assessment"
+                <Link href="/assessment/select"
                   className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md font-bold text-base">
-                  Start Free IAM Assessment <ArrowRight size={16} />
+                  Start Cyber Risk Assessment <ArrowRight size={16} />
                 </Link>
                 <Link href="/book"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-md font-bold text-base border border-[#5cdda2]/30 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">
@@ -170,7 +171,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right — 5 cols: glass card placeholder */}
+            {/* Right — 5 cols: glass card */}
             <div className="lg:col-span-5 relative">
               <div className="absolute -inset-4 bg-[#5cdda2]/5 blur-[60px] rounded-full" />
               <div className="relative bg-[#0e1322]/70 backdrop-blur-xl border border-[#3d4a42]/20 rounded-xl p-6">
@@ -179,15 +180,15 @@ export default function HomePage() {
                     <div className="w-16 h-16 rounded-full bg-[#5cdda2]/10 flex items-center justify-center mx-auto mb-3">
                       <Shield size={28} className="text-[#5cdda2]" />
                     </div>
-                    <p className="text-sm text-[#bccabf]">IAM Security Dashboard</p>
+                    <p className="text-sm text-[#bccabf]">Cyber Risk Dashboard</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { label: "Maturity Score", value: "3.8/5", color: "text-[#5cdda2]" },
-                    { label: "Controls Active", value: "87%", color: "text-[#c3c0ff]" },
-                    { label: "Critical Gaps", value: "2", color: "text-orange-400" },
-                    { label: "Risk Level", value: "Low", color: "text-[#5cdda2]" },
+                    { label: "Risk Score", value: "3.8/5", color: "text-[#5cdda2]" },
+                    { label: "Detection Coverage", value: "74%", color: "text-[#c3c0ff]" },
+                    { label: "Critical Gaps", value: "4", color: "text-orange-400" },
+                    { label: "Risk Level", value: "Medium", color: "text-orange-400" },
                   ].map((stat) => (
                     <div key={stat.label} className="bg-[#1a1f2f] rounded-lg p-3 border border-[#3d4a42]/10">
                       <p className="text-xs text-[#bccabf] mb-1">{stat.label}</p>
@@ -241,88 +242,106 @@ export default function HomePage() {
             ))}
           </div>
           <div className="text-center">
-            <Link href="/assessment"
+            <Link href="/assessment/select"
               className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold">
-              Find out with a free assessment <ArrowRight size={16} />
+              Start your Cyber Risk Assessment <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Services Bento */}
+      {/* Solution Pathways */}
       <section className="bg-[#090e1c] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-14">
             <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
-              End-to-End Delivery
+              Solution Pathways
             </span>
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
-              Services built around your maturity
+              Five solution pathways. One starting point.
             </h2>
             <p className="text-base max-w-xl mx-auto text-[#bccabf]">
-              Whether you&apos;re starting from scratch or optimising an existing programme, we have the right engagement model.
+              Every engagement begins with a Cyber Risk Assessment. We then route you into the programme that matches your risk profile and business context.
             </p>
           </ScrollReveal>
+
           {/* Bento grid */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-            {/* Large card */}
+            {/* Large card — Identity Security */}
             <div className="card-glow md:col-span-8 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-8 flex flex-col">
               <div className="flex items-start justify-between mb-6">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#5cdda2]/10">
                   <BarChart3 size={24} className="text-[#5cdda2]" />
                 </div>
-                <span className="text-xs px-3 py-1 rounded-full bg-[#2f3445] text-[#5cdda2] font-bold">Strategic Phase</span>
+                <span className="text-xs px-3 py-1 rounded-full bg-[#2f3445] text-[#5cdda2] font-bold">Assessment-Led</span>
               </div>
-              <h3 className="text-xl font-bold tracking-tight mb-3 text-[#dee1f7]">IAM Assessment</h3>
+              <h3 className="text-xl font-bold tracking-tight mb-3 text-[#dee1f7]">Identity Security</h3>
               <p className="text-sm leading-relaxed text-[#bccabf] mb-6">
-                Understand your current identity security posture with a structured maturity assessment across five key domains. Get a maturity score, gap analysis and prioritised recommendations in under 2 weeks.
+                Structured IAM maturity assessment, roadmap and implementation — from privileged access to identity governance and MFA. The foundation of any security programme.
               </p>
               <Link href="/services/assessment"
                 className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
-                Learn more <ArrowRight size={14} />
+                Explore Identity Security <ArrowRight size={14} />
               </Link>
             </div>
-            {/* Roadmap */}
+
+            {/* Managed Detection */}
             <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#c3c0ff]/10">
-                <TrendingUp size={20} className="text-[#c3c0ff]" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#c3c0ff]/10">
+                  <Radio size={20} className="text-[#c3c0ff]" />
+                </div>
+                <span className="text-[0.6rem] px-2 py-0.5 rounded-full bg-[#2f3445] text-[#c3c0ff] font-bold uppercase tracking-wide">Powered by LevelBlue</span>
               </div>
-              <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Roadmap & Strategy</h3>
-              <p className="text-sm text-[#bccabf] mb-4">A prioritised, budget-aware roadmap that moves your organisation forward.</p>
-              <Link href="/services/roadmap" className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#c3c0ff] hover:text-white transition-colors">
+              <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Managed Detection</h3>
+              <p className="text-sm text-[#bccabf] mb-4">24/7 threat detection and response. Purpose-built for UK organisations without an in-house SOC.</p>
+              <Link href="/services/managed-detection"
+                className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#c3c0ff] hover:text-white transition-colors">
                 Learn more <ArrowRight size={13} />
               </Link>
             </div>
-            {/* Implementation */}
+
+            {/* Domain Intelligence */}
+            <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center" style={{background: "rgba(59,130,246,0.1)"}}>
+                  <Globe size={20} style={{color: "#3b82f6"}} />
+                </div>
+                <span className="text-[0.6rem] px-2 py-0.5 rounded-full bg-[#2f3445] text-blue-400 font-bold uppercase tracking-wide">Powered by DomainTools</span>
+              </div>
+              <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Domain Intelligence & OSINT</h3>
+              <p className="text-sm text-[#bccabf] mb-4">Continuous external exposure monitoring. Know what attackers know about you.</p>
+              <Link href="/services/domain-intelligence"
+                className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-blue-400 hover:text-blue-300 transition-colors">
+                Learn more <ArrowRight size={13} />
+              </Link>
+            </div>
+
+            {/* Security Assurance */}
             <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
-                <Shield size={20} className="text-[#5cdda2]" />
+                <ShieldAlert size={20} className="text-[#5cdda2]" />
               </div>
-              <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Implementation</h3>
-              <p className="text-sm text-[#bccabf] mb-4">Hands-on delivery of IAM tools and processes — from PAM to IGA.</p>
-              <Link href="/services/implementation" className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
+              <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Security Assurance</h3>
+              <p className="text-sm text-[#bccabf] mb-4">ISO 27001, DORA, FCA, Cyber Essentials+ and SWIFT CSP. Audit-ready for boards and regulators.</p>
+              <Link href="/services/assurance"
+                className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
                 Learn more <ArrowRight size={13} />
               </Link>
             </div>
-            {/* Optimisation */}
-            <div className="card-glow md:col-span-4 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-7 flex flex-col">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
-                <Zap size={20} className="text-[#5cdda2]" />
-              </div>
-              <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Optimisation</h3>
-              <p className="text-sm text-[#bccabf] mb-4">More value from tools you already own. Tune, expand and improve.</p>
-              <Link href="/services/tooling-strategy" className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
-                Learn more <ArrowRight size={13} />
-              </Link>
-            </div>
-            {/* Managed Services — green */}
+
+            {/* SWIFT & Payments Assurance — accent card */}
             <div className="card-glow md:col-span-4 bg-[#5cdda2] rounded-xl border border-[#5cdda2] p-7 flex flex-col">
-              <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-[#003823]/20">
-                <HeadphonesIcon size={20} className="text-[#003823]" />
+              <div className="flex items-start justify-between mb-4">
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[#003823]/20">
+                  <CreditCard size={20} className="text-[#003823]" />
+                </div>
+                <span className="text-[0.6rem] px-2 py-0.5 rounded-full bg-[#003823]/20 text-[#003823] font-bold uppercase tracking-wide">Regulated</span>
               </div>
-              <h3 className="text-base font-bold tracking-tight mb-2 text-[#003823]">Managed Services</h3>
-              <p className="text-sm text-[#003823]/80 mb-4">Ongoing identity security operations, monitoring and assurance.</p>
-              <Link href="/services/managed" className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#003823] hover:opacity-70 transition-opacity">
+              <h3 className="text-base font-bold tracking-tight mb-2 text-[#003823]">SWIFT & Payments Assurance</h3>
+              <p className="text-sm text-[#003823]/80 mb-4">Dedicated CSP readiness, gap analysis and attestation support for payment infrastructure.</p>
+              <Link href="/services/swift-assurance"
+                className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#003823] hover:opacity-70 transition-opacity">
                 Learn more <ArrowRight size={13} />
               </Link>
             </div>
@@ -330,8 +349,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Why K2K */}
+      {/* Customer Journey */}
       <section className="bg-[#0e1322] py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#c3c0ff] mb-4 block">
+              How it works
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+              From first conversation to active programme
+            </h2>
+            <p className="text-base max-w-xl mx-auto text-[#bccabf]">
+              Every client follows the same structured journey. No guesswork, no generic slide decks — just a clear path from risk discovery to the right programme.
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connector line — desktop only */}
+            <div className="hidden md:block absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#5cdda2]/30 to-transparent" style={{top: "2rem"}} />
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-6 md:gap-4">
+              {journeySteps.map((s) => {
+                const Icon = s.icon;
+                return (
+                  <div key={s.label} className="flex flex-col items-center text-center relative">
+                    <div className="relative z-10 mb-4">
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center border-2"
+                        style={{ background: `${s.color}10`, borderColor: `${s.color}40` }}>
+                        <Icon size={22} style={{color: s.color}} />
+                      </div>
+                      <span className="absolute -top-1 -right-1 text-[0.6rem] font-black px-1.5 py-0.5 rounded-full"
+                        style={{background: s.color, color: "#003823"}}>
+                        {s.step}
+                      </span>
+                    </div>
+                    <h4 className="font-extrabold text-sm tracking-tight mb-2 text-[#dee1f7]">{s.label}</h4>
+                    <p className="text-xs leading-relaxed text-[#bccabf]">{s.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/assessment/select"
+              className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold">
+              Begin with a Cyber Risk Assessment <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Why K2K */}
+      <section className="bg-[#090e1c] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             {/* Left: image placeholder */}
@@ -352,7 +421,7 @@ export default function HomePage() {
                 Why Infosec K2K
               </span>
               <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-6 text-[#dee1f7]">
-                Identity security specialists. Not generalists.
+                Cyber security specialists. Built around your risk.
               </h2>
               <p className="text-base leading-relaxed mb-8 text-[#bccabf]">
                 We don&apos;t just assess and advise. We deliver outcomes — and you can hold us to it through our client portal where every milestone, deliverable and action is tracked transparently.
@@ -382,7 +451,7 @@ export default function HomePage() {
       </section>
 
       {/* Sector Expertise */}
-      <section className="bg-[#090e1c] py-24">
+      <section className="bg-[#0e1322] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-14">
             <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
@@ -419,7 +488,7 @@ export default function HomePage() {
           <div className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-10 md:p-14 text-center">
             <div className="text-6xl font-black text-[#5cdda2]/30 leading-none mb-4">&ldquo;</div>
             <p className="text-xl md:text-2xl font-semibold italic leading-relaxed mb-8 text-[#dee1f7]">
-              Infosec K2K transformed how we think about identity security. The assessment gave us a clear, honest picture and the roadmap was immediately actionable.
+              Infosec K2K transformed how we think about cyber risk. The assessment gave us a clear, honest picture and the roadmap was immediately actionable.
             </p>
             <div className="flex items-center justify-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#5cdda2] to-[#04a56f] flex items-center justify-center text-[#003823] font-bold text-sm">C</div>
@@ -443,36 +512,38 @@ export default function HomePage() {
               Know your risk before you spend a penny
             </h2>
             <p className="text-base max-w-2xl mx-auto text-[#bccabf]">
-              Two tools used by 500+ UK security teams. Get immediate, actionable intelligence about your identity and external exposure.
+              Two tools used by 500+ UK security teams. Get immediate, actionable intelligence about your cyber risk and external exposure.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               {
-                tag: "IAM SECURITY",
-                title: "IAM Maturity Assessment",
-                desc: "22 questions across 5 identity domains. Get your maturity score, gap analysis and prioritised recommendations in under 10 minutes.",
+                tag: "CYBER RISK ASSESSMENT",
+                title: "Cyber Risk Assessment",
+                desc: "22 questions across five cyber risk domains. Get your risk score, gap analysis and recommended programme pathway — completely free, takes under 10 minutes.",
                 time: "~10 minutes",
-                href: "/assessment",
+                href: "/assessment/select",
                 cta: "Start assessment",
                 gradient: "from-[#5cdda2] to-[#04a56f]",
                 iconColor: "#003823",
+                isAssessment: true,
               },
               {
-                tag: "THREAT INTELLIGENCE",
-                title: "OSINT Intelligence Hub",
-                desc: "Surface your organisation's external exposure — leaked credentials, exposed infrastructure, and open-source threat signals.",
+                tag: "DOMAIN INTELLIGENCE",
+                title: "Domain Intelligence Hub",
+                desc: "Surface your external attack surface — leaked credentials, exposed infrastructure, subdomain footprint and domain intelligence signals. Powered by DomainTools technology.",
                 time: "Results in seconds",
                 href: "/tools/osint",
-                cta: "Open OSINT Hub",
+                cta: "Explore Domain Intelligence",
                 gradient: "from-[#3b82f6] to-[#8b5cf6]",
                 iconColor: "white",
+                isAssessment: false,
               },
             ].map((tool) => (
               <div key={tool.title} className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-7 flex flex-col">
                 <div className="flex items-start gap-4 mb-5">
                   <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br ${tool.gradient}`}>
-                    {tool.tag.includes("IAM") ? <BarChart3 size={20} color={tool.iconColor} /> : <Search size={20} color={tool.iconColor} />}
+                    {tool.isAssessment ? <BarChart3 size={20} color={tool.iconColor} /> : <Globe size={20} color={tool.iconColor} />}
                   </div>
                   <div>
                     <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-0.5">{tool.tag}</p>
@@ -500,15 +571,15 @@ export default function HomePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-[#1a1f2f] rounded-3xl border border-[#5cdda2]/20 p-12 md:p-16 text-center">
             <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
-              Know your IAM risk in 10 minutes
+              Know your cyber risk in 10 minutes
             </h2>
             <p className="text-base text-[#bccabf] mb-10 max-w-xl mx-auto">
-              Our free assessment covers five domains, generates a maturity score and delivers personalised recommendations — no commitment required.
+              Our free Cyber Risk Assessment covers identity, detection, domain intelligence, assurance and payments. Get a risk score and recommended pathway — no commitment required.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link href="/assessment"
+              <Link href="/assessment/select"
                 className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold">
-                Start free assessment <ArrowRight size={16} />
+                Start Cyber Risk Assessment <ArrowRight size={16} />
               </Link>
               <Link href="/book"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold border border-[#5cdda2]/30 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">

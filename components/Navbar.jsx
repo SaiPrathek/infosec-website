@@ -8,11 +8,11 @@ import {
 import { useTheme } from "@/components/ThemeProvider";
 
 const services = [
-  { label: "Assessment", href: "/services/assessment", desc: "IAM, SWIFT, compliance & maturity" },
-  { label: "Tooling Strategy & Support", href: "/services/tooling-strategy", desc: "Vendor-agnostic architecture & delivery" },
-  { label: "Managed Services", href: "/services/managed", desc: "Managed detection, IAM/PAM & vuln mgmt" },
-  { label: "Assurance Services", href: "/services/assurance", desc: "Evidence, controls & audit-ready packs" },
-  { label: "Offensive Security", href: "/services/offensive-security", desc: "Pentesting, vuln assessment & retesting" },
+  { label: "Identity Security", href: "/services/assessment", desc: "IAM assessment, roadmap & implementation" },
+  { label: "Managed Detection", href: "/services/managed-detection", desc: "24/7 SOC powered by LevelBlue / AlienVault" },
+  { label: "Domain Intelligence & OSINT", href: "/services/domain-intelligence", desc: "External exposure monitoring via DomainTools" },
+  { label: "Security Assurance", href: "/services/assurance", desc: "ISO 27001, DORA, FCA & Cyber Essentials+" },
+  { label: "SWIFT & Payments Assurance", href: "/services/swift-assurance", desc: "SWIFT CSP readiness & attestation support" },
 ];
 
 const sectors = [
@@ -109,15 +109,15 @@ export default function Navbar() {
               {toolsOpen && (
                 <div className="absolute top-full left-0 w-56 pt-2">
                   <div className={`rounded-xl p-2 border ${dropdownBg}`}>
-                    <Link href="/assessment"
+                    <Link href="/assessment/select"
                       className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg transition-colors ${dropdownItem}`}
                       onClick={() => setToolsOpen(false)}>
                       <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#5cdda2] to-[#04a56f]">
                         <Shield size={13} color="#003823" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium">IAM Assessment</p>
-                        <p className={`text-xs ${dropdownMuted}`}>Know your risk in 10 min</p>
+                        <p className="text-sm font-medium">Cyber Risk Assessment</p>
+                        <p className={`text-xs ${dropdownMuted}`}>Risk score across 5 domains</p>
                       </div>
                     </Link>
                     <Link href="/tools/osint"
@@ -127,8 +127,8 @@ export default function Navbar() {
                         <Search size={13} color="white" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium">OSINT Hub</p>
-                        <p className={`text-xs ${dropdownMuted}`}>External exposure check</p>
+                        <p className="text-sm font-medium">Domain Intelligence</p>
+                        <p className={`text-xs ${dropdownMuted}`}>External exposure & OSINT signals</p>
                       </div>
                     </Link>
                     <div className={`border-t mt-1 pt-1 ${dividerColor}`}>
@@ -186,9 +186,9 @@ export default function Navbar() {
               style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "white" }}>
               <Sparkles size={11} /> Sales AI
             </Link>
-            <Link href="/assessment"
+            <Link href="/assessment/select"
               className="hidden md:inline-flex items-center gap-1 text-sm font-bold px-4 py-2 rounded-md btn-primary">
-              Free Assessment <ArrowRight size={14} />
+              Free Risk Assessment <ArrowRight size={14} />
             </Link>
             <button className={`md:hidden p-2 rounded-lg ${menuBtnColor}`} onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
@@ -215,8 +215,8 @@ export default function Navbar() {
             </Link>
           ))}
           <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Free Tools</p>
-          <Link href="/assessment" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>IAM Assessment</Link>
-          <Link href="/tools/osint" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>OSINT Hub</Link>
+          <Link href="/assessment/select" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Cyber Risk Assessment</Link>
+          <Link href="/tools/osint" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Domain Intelligence</Link>
           <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Resources</p>
           <Link href="/why-us" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Why Us</Link>
           <Link href="/insights" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Insights</Link>
@@ -229,10 +229,10 @@ export default function Navbar() {
               <Sparkles size={11} /> Sales AI
             </Link>
           </div>
-          <Link href="/assessment"
+          <Link href="/assessment/select"
             className="btn-primary block text-center text-sm font-bold px-4 py-2.5 rounded-md mt-2"
             onClick={() => setMenuOpen(false)}>
-            Free Assessment
+            Free Risk Assessment
           </Link>
           {/* Mobile theme toggle */}
           <button

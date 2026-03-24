@@ -5,17 +5,17 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 const features = [
   { icon: Clock, title: "10 minutes", desc: "Five themed sections, 22 questions total" },
-  { icon: BarChart3, title: "Maturity score", desc: "Scored across five IAM domains" },
-  { icon: FileText, title: "Personalised output", desc: "Gap analysis and service recommendations" },
+  { icon: BarChart3, title: "Risk score", desc: "Scored across five cyber risk domains" },
+  { icon: FileText, title: "Personalised output", desc: "Gap analysis and programme pathway recommendations" },
   { icon: Shield, title: "No obligation", desc: "Free to complete, no sales call required" },
 ];
 
 const domains = [
-  "Identity Governance",
-  "Privileged Access",
-  "Authentication",
-  "Endpoints & Secrets",
-  "Operations & Assurance",
+  "Identity & Access Security",
+  "Privileged Access & Secrets",
+  "Authentication & MFA Maturity",
+  "Endpoint & Infrastructure Exposure",
+  "Detection, Operations & Assurance",
 ];
 
 export default function AssessmentLandingPage() {
@@ -26,17 +26,17 @@ export default function AssessmentLandingPage() {
         <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#5cdda2]/5 blur-[100px] pointer-events-none" />
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full border border-[#5cdda2]/30 bg-[#5cdda2]/10 text-[#5cdda2] mb-6">
-            <BarChart3 size={12} /> Free IAM Maturity Assessment
+            <BarChart3 size={12} /> Free Cyber Risk Assessment
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tighter mb-6 text-[#dee1f7]">
             Know your{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
-              identity security posture
+              cyber risk profile
             </span>{" "}
             in 10 minutes
           </h1>
           <p className="text-lg leading-relaxed mb-8 max-w-2xl mx-auto text-[#bccabf]">
-            Answer 22 structured questions across five IAM domains. Get an instant maturity score, gap analysis and tailored recommendations — completely free, no commitment required.
+            Answer structured questions across five cyber risk domains. Get an instant risk score, gap analysis and a recommended programme pathway — completely free, no commitment required.
           </p>
           <Link href="/assessment/select"
             className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold text-base">
@@ -77,10 +77,10 @@ export default function AssessmentLandingPage() {
                 Five Domains
               </span>
               <h2 className="text-2xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
-                Five domains. Complete picture.
+                Five domains. Your complete risk picture.
               </h2>
               <p className="text-base leading-relaxed mb-6 text-[#bccabf]">
-                Our assessment is built on the same framework our consultants use in paid engagements. You get the same structured evaluation — instantly.
+                Our Cyber Risk Assessment uses the same structured framework our consultants apply in paid engagements. You get the same rigorous evaluation — instantly, free, with no account required.
               </p>
               <ul className="space-y-3">
                 {domains.map((d, i) => (
@@ -110,11 +110,11 @@ export default function AssessmentLandingPage() {
               Ready to find out where you stand?
             </h2>
             <p className="text-base mb-8 text-[#bccabf]">
-              Join 500+ organisations that have used our assessment to prioritise their identity security investment.
+              Join 500+ UK organisations that have used our assessment to understand their cyber risk and prioritise the right security programme.
             </p>
             <Link href="/assessment/select"
               className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold text-base">
-              Start free assessment <ArrowRight size={16} />
+              Start Cyber Risk Assessment <ArrowRight size={16} />
             </Link>
           </div>
         </div>

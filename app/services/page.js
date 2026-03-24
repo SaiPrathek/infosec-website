@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, TrendingUp, Shield, ShieldAlert, CheckCircle, Zap, HeadphonesIcon, Wrench, ClipboardCheck, Crosshair } from "lucide-react";
+import { ArrowRight, BarChart3, TrendingUp, Shield, ShieldAlert, CheckCircle, Zap, HeadphonesIcon, Wrench, ClipboardCheck, Crosshair, Radio, Globe, CreditCard } from "lucide-react";
 import { servicesData } from "@/lib/services-data";
 
 const iconMap = {
@@ -12,6 +12,9 @@ const iconMap = {
   Wrench,
   ClipboardCheck,
   Crosshair,
+  Radio,
+  Globe,
+  CreditCard,
 };
 
 const services = Object.entries(servicesData).map(([slug, s]) => ({
@@ -27,6 +30,9 @@ const services = Object.entries(servicesData).map(([slug, s]) => ({
       : slug === "tooling-strategy" ? "4–8 weeks"
       : slug === "assurance" ? "4–8 weeks"
       : slug === "offensive-security" ? "2–4 weeks"
+      : slug === "managed-detection" ? "Ongoing subscription"
+      : slug === "domain-intelligence" ? "Ongoing subscription"
+      : slug === "swift-assurance" ? "4–6 weeks"
       : "Project-based",
   badge: s.badge || null,
 }));
