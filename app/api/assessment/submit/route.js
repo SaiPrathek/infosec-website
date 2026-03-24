@@ -41,7 +41,7 @@ export async function POST(request) {
     }
 
     // Notify the team
-    await notifyAssessmentComplete({ contact, scores });
+    await notifyAssessmentComplete({ contact, scores, assessmentType: typeLabel });
 
     return Response.json({ success: true, leadId: lead.id });
   } catch (error) {

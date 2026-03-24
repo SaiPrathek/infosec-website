@@ -4,7 +4,7 @@ import { notifyBookingRequest } from "@/lib/email";
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { contact, expertise, region, availability, message } = body;
+    const { contact, service, expertise, region, availability, message } = body;
 
     if (!contact?.email || !contact?.name) {
       return Response.json({ error: "Missing required fields" }, { status: 400 });
@@ -12,6 +12,7 @@ export async function POST(request) {
 
     const description = [
       `Expert Booking Request`,
+      service ? `Service Line: ${service}` : null,
       `Expertise Needed: ${expertise || "Not specified"}`,
       `Preferred Region: ${region || "No preference"}`,
       `Availability: ${availability || "Flexible"}`,
@@ -20,12 +21,17 @@ export async function POST(request) {
       .filter(Boolean)
       .join("\n");
 
+    // Build lead source including service if available
+    const leadSource = service
+      ? `Website - Booking (${service})`
+      : "Website - Expert Booking";
+
     const lead = await createLead({
       name: contact.name,
       company: contact.company,
       email: contact.email,
       role: contact.role,
-      source: "Website - Expert Booking",
+      source: leadSource,
       description,
     });
 
@@ -36,7 +42,7 @@ export async function POST(request) {
       });
     }
 
-    await notifyBookingRequest({ contact, expertise, region, availability, message });
+    await notifyBookingRequest({ contact, service, expertise, region, availability, message });
 
     return Response.json({ success: true });
   } catch (error) {

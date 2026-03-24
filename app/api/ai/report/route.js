@@ -1,28 +1,16 @@
-import { generateText, SYSTEM_PROMPTS } from "@/lib/claude";
+import { generateText } from "@/lib/claude";
+import { reportPromptBuilders } from "@/lib/prompts";
 
 export async function POST(request) {
   try {
-    const { contact, scores } = await request.json();
+    const { contact, scores, assessmentType } = await request.json();
 
-    const { overallScore, band, themeScores, gaps } = scores;
+    const typeId = assessmentType || "iam";
+    const builder = reportPromptBuilders[typeId] || reportPromptBuilders.iam;
 
-    const gapNames = (gaps || []).slice(0, 2).map((g) => g.title).join(" and ");
-    const domainSummary = Object.entries(themeScores || {})
-      .map(([id, score]) => `${id}: ${score}%`)
-      .join(", ");
+    const { systemPrompt, userPrompt } = builder({ contact, scores });
 
-    const prompt = `Generate an executive IAM maturity assessment brief for the following prospect:
-
-Name: ${contact?.name || "the client"}
-Company: ${contact?.company || "their organisation"}
-Role: ${contact?.role || "security professional"}
-Overall IAM maturity score: ${overallScore}% (${band?.label} band)
-Top gaps: ${gapNames || "multiple domains"}
-Domain scores: ${domainSummary}
-
-Write 3 paragraphs following the instructions in your system prompt.`;
-
-    const narrative = await generateText(prompt, SYSTEM_PROMPTS.assessmentReport);
+    const narrative = await generateText(userPrompt, systemPrompt);
 
     return Response.json({ narrative });
   } catch (err) {

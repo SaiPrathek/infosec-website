@@ -9,10 +9,11 @@ import {
 } from "lucide-react";
 
 const expertiseOptions = [
-  { id: "assessment", label: "IAM Assessment & Roadmap", desc: "Understand your current maturity and define a prioritised improvement path" },
-  { id: "implementation", label: "Implementation & Delivery", desc: "Hands-on deployment of IAM controls, tools and processes" },
-  { id: "managed", label: "Managed Identity Services", desc: "Ongoing management and operation of your identity security environment" },
-  { id: "pam", label: "Privileged Access Management", desc: "Secure and govern privileged accounts and credentials" },
+  { id: "assessment", label: "Assessment Services", desc: "IAM maturity, SWIFT CSP readiness, compliance maturity, operating model & control reviews" },
+  { id: "tooling-strategy", label: "Tooling Strategy & Support", desc: "Vendor-agnostic tool review, architecture, roadmap, optimisation and implementation planning" },
+  { id: "managed", label: "Managed Services", desc: "Ongoing IAM/PAM governance, managed detection, continuous monitoring & vulnerability management" },
+  { id: "assurance", label: "Assurance Services", desc: "Evidence tracking, control mapping, compliance packs and audit-ready outputs" },
+  { id: "offensive-security", label: "Offensive Security", desc: "Penetration testing, vulnerability assessments, remediation planning and retesting" },
   { id: "unsure", label: "Not sure — help me decide", desc: "Speak with an expert who will guide you to the right service" },
 ];
 
@@ -50,6 +51,13 @@ function BookPageInner() {
     if (name || email) {
       setContact({ name: name || "", email: email || "", company: company || "", role: role || "" });
     }
+
+    // Pre-select service from URL param (e.g. ?service=assurance)
+    const serviceParam = params.get("service");
+    if (serviceParam) {
+      const match = expertiseOptions.find((o) => o.id === serviceParam);
+      if (match) setExpertise(match.id);
+    }
   }, [params]);
 
   const contactValid = contact.name && contact.email && contact.company;
@@ -63,6 +71,7 @@ function BookPageInner() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           contact,
+          service: expertise,
           expertise: expertiseOptions.find((e) => e.id === expertise)?.label,
           region: regionOptions.find((r) => r.id === region)?.label,
           availability: timeOptions.find((t) => t.id === availability.time)?.label,
