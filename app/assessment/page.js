@@ -38,7 +38,7 @@ export default function AssessmentLandingPage() {
           <p className="text-lg leading-relaxed mb-8 max-w-2xl mx-auto text-[#bccabf]">
             Answer 22 structured questions across five IAM domains. Get an instant maturity score, gap analysis and tailored recommendations — completely free, no commitment required.
           </p>
-          <Link href="/assessment/start"
+          <Link href="/assessment/select"
             className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold text-base">
             Start the assessment <ArrowRight size={18} />
           </Link>
@@ -112,7 +112,7 @@ export default function AssessmentLandingPage() {
             <p className="text-base mb-8 text-[#bccabf]">
               Join 500+ organisations that have used our assessment to prioritise their identity security investment.
             </p>
-            <Link href="/assessment/start"
+            <Link href="/assessment/select"
               className="btn-primary inline-flex items-center gap-2 px-8 py-4 rounded-md font-bold text-base">
               Start free assessment <ArrowRight size={16} />
             </Link>

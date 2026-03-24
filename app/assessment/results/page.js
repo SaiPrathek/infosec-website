@@ -6,7 +6,7 @@ import {
   RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Tooltip
 } from "recharts";
 import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle, Shield, Sparkles } from "lucide-react";
-import { assessmentThemes, maturityBands } from "@/lib/assessment-data";
+import { assessmentThemes, maturityBands, assessmentTypes } from "@/lib/assessment-data";
 import { servicesData } from "@/lib/services-data";
 
 export default function AssessmentResultsPage() {
@@ -58,7 +58,7 @@ export default function AssessmentResultsPage() {
     return (
       <div className="pt-24 text-center min-h-screen flex flex-col items-center justify-center" style={{ background: "var(--background)" }}>
         <p className="text-base mb-4" style={{ color: "var(--muted)" }}>No assessment results found.</p>
-        <Link href="/assessment/start" className="btn-primary px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2">
+        <Link href="/assessment/select" className="btn-primary px-6 py-3 rounded-xl font-semibold inline-flex items-center gap-2">
           Take the assessment <ArrowRight size={16} />
         </Link>
       </div>
@@ -66,12 +66,17 @@ export default function AssessmentResultsPage() {
   }
 
   const { scores, contact } = data;
+  const assessmentTypeId = data.assessmentType || "iam";
+  const currentType = assessmentTypes.find((t) => t.id === assessmentTypeId) || assessmentTypes[0];
+  const assessmentTitle = currentType.title;
+  const activeThemes = currentType.themes || assessmentThemes;
+
   const { themeScores, overallScore, band, gaps } = scores;
 
   const service = servicesData[band.recommendation];
   const heroDescFirstSentence = service?.heroDesc?.split(".")[0] + ".";
 
-  const radarData = assessmentThemes.map((t) => ({
+  const radarData = activeThemes.map((t) => ({
     subject: t.title.split(" ")[0],
     fullName: t.title,
     score: themeScores[t.id] ?? 0,
@@ -88,7 +93,7 @@ export default function AssessmentResultsPage() {
         <div className="flex items-center justify-between">
           <div>
             <p className="font-bold text-xl" style={{ color: "#0a0f1e" }}>Infosec K2K</p>
-            <p className="text-sm" style={{ color: "#64748b" }}>IAM Maturity Assessment Report</p>
+            <p className="text-sm" style={{ color: "#64748b" }}>{assessmentTitle} Report</p>
           </div>
           <div className="text-right text-sm" style={{ color: "#64748b" }}>
             <p>{contact?.name} — {contact?.company}</p>
@@ -100,7 +105,7 @@ export default function AssessmentResultsPage() {
       {/* Screen header */}
       <section className="py-12 border-b no-print" style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm mb-1" style={{ color: "var(--muted)" }}>IAM Maturity Assessment — {contact?.company}</p>
+          <p className="text-sm mb-1" style={{ color: "var(--muted)" }}>{assessmentTitle} — {contact?.company}</p>
           <h1 className="text-3xl font-bold mb-2" style={{ color: "var(--foreground)" }}>
             Your results, {contact?.name?.split(" ")[0]}
           </h1>
@@ -174,7 +179,7 @@ export default function AssessmentResultsPage() {
               </ResponsiveContainer>}
             </div>
             <div className="space-y-3">
-              {assessmentThemes.map((t) => {
+              {activeThemes.map((t) => {
                 const score = themeScores[t.id] ?? 0;
                 const color = score < 35 ? "#ef4444" : score < 60 ? "#f97316" : score < 80 ? "#eab308" : "#22c55e";
                 return (

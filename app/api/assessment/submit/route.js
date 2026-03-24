@@ -4,22 +4,23 @@ import { notifyAssessmentComplete } from "@/lib/email";
 export async function POST(request) {
   try {
     const body = await request.json();
-    const { contact, scores } = body;
+    const { contact, scores, assessmentType } = body;
 
     if (!contact?.email || !contact?.name) {
       return Response.json({ error: "Missing required fields" }, { status: 400 });
     }
 
     // Build assessment note content
-    const domainSummary = scores.domains
-      .map((d) => `${d.name}: ${d.score}%`)
+    const domainSummary = scores.themeScores
+      ? Object.entries(scores.themeScores).map(([id, score]) => `${id}: ${score}%`).join("\n")
+      : "";
+
+    const gapSummary = (scores.gaps || [])
+      .map((g) => `- ${g.title} (${g.score}%)`)
       .join("\n");
 
-    const gapSummary = scores.gaps
-      .map((g) => `- ${g.name} (${g.score}%)`)
-      .join("\n");
-
-    const description = `IAM Assessment completed via website.\n\nOverall Score: ${scores.overall}%\nMaturity Band: ${scores.band?.label}\n\nDomain Scores:\n${domainSummary}\n\nTop Gaps:\n${gapSummary}\n\nRecommended Service: ${scores.band?.recommendation}`;
+    const typeLabel = assessmentType || "iam";
+    const description = `${typeLabel.toUpperCase()} Assessment completed via website.\n\nOverall Score: ${scores.overallScore}%\nMaturity Band: ${scores.band?.label}\n\nDomain Scores:\n${domainSummary}\n\nTop Gaps:\n${gapSummary}\n\nRecommended Service: ${scores.band?.recommendation}`;
 
     // Create or update Zoho CRM lead
     const lead = await createLead({
@@ -27,14 +28,14 @@ export async function POST(request) {
       company: contact.company,
       email: contact.email,
       role: contact.role,
-      source: "Website - IAM Assessment",
+      source: `Website - ${typeLabel.toUpperCase()} Assessment`,
       description,
     });
 
     // Attach detailed note with scores
     if (lead.id && !lead.demo) {
       await addNote(lead.id, {
-        title: `IAM Assessment Results — ${scores.band?.label} (${scores.overall}%)`,
+        title: `${typeLabel.toUpperCase()} Assessment Results — ${scores.band?.label} (${scores.overallScore}%)`,
         content: description,
       });
     }

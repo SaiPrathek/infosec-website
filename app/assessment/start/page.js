@@ -1,13 +1,21 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, Suspense } from "react";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { ArrowRight, ArrowLeft, CheckCircle, Sparkles } from "lucide-react";
-import { assessmentThemes } from "@/lib/assessment-data";
+import { assessmentThemes, assessmentTypes } from "@/lib/assessment-data";
 import { calculateScores } from "@/lib/assessment-data";
 
-export default function AssessmentStartPage() {
+function AssessmentStartInner() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const typeId = searchParams.get("type") || "iam";
+  const selectedType = assessmentTypes.find((t) => t.id === typeId) || assessmentTypes[0];
+  // For IAM type, resolve themes from imported assessmentThemes; others use their own themes
+  const activeThemes = selectedType.themes || assessmentThemes;
+  const assessmentTitle = selectedType.title;
+
   const [step, setStep] = useState(0); // 0 = theme 0 questions, 4 = theme 4, 5 = contact gate
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
@@ -17,12 +25,12 @@ export default function AssessmentStartPage() {
   const [sectionInsights, setSectionInsights] = useState({}); // keyed by theme id
   const fetchingInsight = useRef(new Set());
 
-  const totalThemes = assessmentThemes.length;
-  const currentTheme = step < totalThemes ? assessmentThemes[step] : null;
+  const totalThemes = activeThemes.length;
+  const currentTheme = step < totalThemes ? activeThemes[step] : null;
   const currentQuestion = currentTheme ? currentTheme.questions[questionIndex] : null;
 
   // Calculate overall progress
-  const totalQuestions = assessmentThemes.reduce((acc, t) => acc + t.questions.length, 0);
+  const totalQuestions = activeThemes.reduce((acc, t) => acc + t.questions.length, 0);
   const answeredCount = Object.keys(answers).length;
   const progressPct = Math.round((answeredCount / totalQuestions) * 100);
 
@@ -90,7 +98,7 @@ export default function AssessmentStartPage() {
     if (questionIndex > 0) {
       setQuestionIndex(questionIndex - 1);
     } else if (step > 0) {
-      const prevTheme = assessmentThemes[step - 1];
+      const prevTheme = activeThemes[step - 1];
       setStep(step - 1);
       setQuestionIndex(prevTheme.questions.length - 1);
     }
@@ -110,14 +118,14 @@ export default function AssessmentStartPage() {
   const handleSubmit = async () => {
     if (!validateContact()) return;
     setSubmitting(true);
-    const scores = calculateScores(answers);
+    const scores = calculateScores(answers, activeThemes);
     // Store in sessionStorage for results page (always, so results work even if API fails)
-    sessionStorage.setItem("k2k-assessment-results", JSON.stringify({ scores, contact }));
+    sessionStorage.setItem("k2k-assessment-results", JSON.stringify({ scores, contact, assessmentType: typeId }));
     // Push to CRM + notify team (fire-and-forget, don't block the user)
     fetch("/api/assessment/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contact, scores }),
+      body: JSON.stringify({ contact, scores, assessmentType: typeId }),
     }).catch(() => {}); // graceful degradation
     router.push("/assessment/results");
   };
@@ -192,7 +200,16 @@ export default function AssessmentStartPage() {
 
   // Question screen
   const totalQuestionsInTheme = currentTheme?.questions.length || 0;
-  const themeProgress = Math.round(((questionIndex + 1) / totalQuestionsInTheme) * 100);
+
+  // Helper: get the display label for a radio option (handles both {label,score} objects and plain strings)
+  const getOptionLabel = (opt) => (typeof opt === "object" && opt !== null ? opt.label : opt);
+  // Helper: get the stored score for a radio option
+  // For {label,score} objects (IAM): use opt.score
+  // For plain strings (non-IAM): use 4 - index (first option = 4, last = 1)
+  const getOptionScore = (opt, index) => {
+    if (typeof opt === "object" && opt !== null && opt.score !== undefined) return opt.score;
+    return 4 - index;
+  };
 
   return (
     <div className="pt-16 min-h-screen" style={{ background: "var(--background)" }}>
@@ -209,7 +226,7 @@ export default function AssessmentStartPage() {
           </div>
           {/* Theme dots */}
           <div className="flex gap-1.5 mb-2">
-            {assessmentThemes.map((t, i) => (
+            {activeThemes.map((t, i) => (
               <div key={t.id} className="flex-1 h-1.5 rounded-full transition-all"
                 style={{
                   background: i < step ? "var(--k2k-teal)" : i === step ? "var(--k2k-gradient)" : "var(--border)"
@@ -221,13 +238,13 @@ export default function AssessmentStartPage() {
 
       <div className="max-w-2xl mx-auto px-4 py-24">
         {/* Previous section insight — shown when moving to a new section */}
-        {step > 0 && sectionInsights[assessmentThemes[step - 1]?.id] && sectionInsights[assessmentThemes[step - 1]?.id] !== "loading" && (
+        {step > 0 && sectionInsights[activeThemes[step - 1]?.id] && sectionInsights[activeThemes[step - 1]?.id] !== "loading" && (
           <div className="mb-6 rounded-xl px-4 py-3 flex items-start gap-3 border"
             style={{ background: "rgba(124,58,237,0.06)", borderColor: "rgba(124,58,237,0.25)" }}>
             <Sparkles size={14} className="flex-shrink-0 mt-0.5" style={{ color: "#7c3aed" }} />
             <p className="text-xs leading-relaxed" style={{ color: "var(--foreground)" }}>
               <span className="font-semibold" style={{ color: "#7c3aed" }}>AI insight: </span>
-              {sectionInsights[assessmentThemes[step - 1].id]}
+              {sectionInsights[activeThemes[step - 1].id]}
             </p>
           </div>
         )}
@@ -256,26 +273,30 @@ export default function AssessmentStartPage() {
           {/* Radio options */}
           {currentQuestion?.type === "radio" && (
             <div className="space-y-3">
-              {currentQuestion.options.map((opt, i) => (
-                <button key={i}
-                  onClick={() => handleAnswer(currentQuestion.id, opt.score)}
-                  className="w-full text-left px-4 py-3 rounded-xl border-2 transition-all text-sm font-medium"
-                  style={{
-                    background: answers[currentQuestion.id] === opt.score ? "rgba(0,164,110,0.1)" : "var(--background)",
-                    borderColor: answers[currentQuestion.id] === opt.score ? "var(--k2k-teal)" : "var(--border)",
-                    color: "var(--foreground)",
-                  }}>
-                  <span className="inline-flex items-center gap-3">
-                    <span className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
-                      style={{ borderColor: answers[currentQuestion.id] === opt.score ? "var(--k2k-teal)" : "var(--border)" }}>
-                      {answers[currentQuestion.id] === opt.score && (
-                        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "var(--k2k-teal)" }} />
-                      )}
+              {currentQuestion.options.map((opt, i) => {
+                const label = getOptionLabel(opt);
+                const score = getOptionScore(opt, i);
+                return (
+                  <button key={i}
+                    onClick={() => handleAnswer(currentQuestion.id, score)}
+                    className="w-full text-left px-4 py-3 rounded-xl border-2 transition-all text-sm font-medium"
+                    style={{
+                      background: answers[currentQuestion.id] === score ? "rgba(0,164,110,0.1)" : "var(--background)",
+                      borderColor: answers[currentQuestion.id] === score ? "var(--k2k-teal)" : "var(--border)",
+                      color: "var(--foreground)",
+                    }}>
+                    <span className="inline-flex items-center gap-3">
+                      <span className="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0"
+                        style={{ borderColor: answers[currentQuestion.id] === score ? "var(--k2k-teal)" : "var(--border)" }}>
+                        {answers[currentQuestion.id] === score && (
+                          <span className="w-2.5 h-2.5 rounded-full" style={{ background: "var(--k2k-teal)" }} />
+                        )}
+                      </span>
+                      {label}
                     </span>
-                    {opt.label}
-                  </span>
-                </button>
-              ))}
+                  </button>
+                );
+              })}
             </div>
           )}
 
@@ -283,6 +304,7 @@ export default function AssessmentStartPage() {
           {currentQuestion?.type === "checkbox" && (
             <div className="space-y-3">
               {currentQuestion.options.map((opt, i) => {
+                const label = getOptionLabel(opt);
                 const checked = Array.isArray(answers[currentQuestion.id]) && answers[currentQuestion.id].includes(i);
                 return (
                   <button key={i}
@@ -298,7 +320,7 @@ export default function AssessmentStartPage() {
                         style={{ borderColor: checked ? "var(--k2k-teal)" : "var(--border)", background: checked ? "var(--k2k-teal)" : "transparent" }}>
                         {checked && <CheckCircle size={12} color="white" />}
                       </span>
-                      {opt.label}
+                      {label}
                     </span>
                   </button>
                 );
@@ -350,5 +372,13 @@ export default function AssessmentStartPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AssessmentStartPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" style={{ background: "var(--background)" }} />}>
+      <AssessmentStartInner />
+    </Suspense>
   );
 }
