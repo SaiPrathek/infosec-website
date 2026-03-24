@@ -3,12 +3,12 @@
 import { Shield, AlertTriangle, Clock, CheckCircle } from "lucide-react";
 
 const raidItems = [
-  { id: "R-001", type: "Risk", title: "Client AD export delayed beyond kick-off", severity: "High", status: "Open", owner: "Jane Smith", date: "15 Mar 2025" },
-  { id: "R-002", type: "Risk", title: "Key stakeholder availability during assessment window", severity: "Medium", status: "Mitigated", owner: "K2K PM", date: "12 Mar 2025" },
-  { id: "A-001", type: "Assumption", title: "Cloud SSO is Entra ID (Azure AD)", severity: "Medium", status: "Open", owner: "K2K", date: "10 Mar 2025" },
-  { id: "I-001", type: "Issue", title: "VPN access not yet provisioned for K2K consultants", severity: "High", status: "Open", owner: "IT Team", date: "18 Mar 2025" },
-  { id: "D-001", type: "Dependency", title: "Pentest results from third party due before roadmap phase", severity: "Low", status: "Tracking", owner: "Client", date: "10 Mar 2025" },
-  { id: "I-002", type: "Issue", title: "Conflicting documentation on MFA rollout status", severity: "Medium", status: "Resolved", owner: "K2K", date: "14 Mar 2025" },
+  { id: "R-001", type: "Risk", title: "Client AD export delayed beyond kick-off", severity: "High", status: "Open", owner: "Jane Smith", date: "15 Mar 2026" },
+  { id: "R-002", type: "Risk", title: "Key stakeholder availability during assessment window", severity: "Medium", status: "Mitigated", owner: "K2K PM", date: "12 Mar 2026" },
+  { id: "A-001", type: "Assumption", title: "Cloud SSO is Entra ID (Azure AD)", severity: "Medium", status: "Open", owner: "K2K", date: "10 Mar 2026" },
+  { id: "I-001", type: "Issue", title: "VPN access not yet provisioned for K2K consultants", severity: "High", status: "Open", owner: "IT Team", date: "18 Mar 2026" },
+  { id: "D-001", type: "Dependency", title: "Pentest results from third party due before roadmap phase", severity: "Low", status: "Tracking", owner: "Client", date: "10 Mar 2026" },
+  { id: "I-002", type: "Issue", title: "Conflicting documentation on MFA rollout status", severity: "Medium", status: "Resolved", owner: "K2K", date: "14 Mar 2026" },
 ];
 
 const typeColors = {
@@ -89,7 +89,7 @@ export default function RaidPage() {
                 <span className="text-xs font-medium" style={{ color: si.color }}>{item.status}</span>
               </div>
               <span className="col-span-2 text-xs" style={{ color: "var(--muted)" }}>{item.owner}</span>
-              <span className="col-span-1 text-xs" style={{ color: "var(--muted)" }}>{item.date.replace(" 2025", "")}</span>
+              <span className="col-span-1 text-xs" style={{ color: "var(--muted)" }}>{item.date.replace(" 2026", "")}</span>
             </div>
           );
         })}

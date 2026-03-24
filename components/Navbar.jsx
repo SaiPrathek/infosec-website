@@ -8,10 +8,11 @@ import {
 import { useTheme } from "@/components/ThemeProvider";
 
 const services = [
-  { label: "IAM Assessment", href: "/services/assessment", desc: "Know your risk in 10 minutes" },
-  { label: "Roadmap & Strategy", href: "/services/roadmap", desc: "Prioritised path to maturity" },
-  { label: "Implementation", href: "/services/implementation", desc: "Hands-on delivery" },
-  { label: "Managed Services", href: "/services/managed", desc: "Ongoing identity security" },
+  { label: "Assessment", href: "/services/assessment", desc: "IAM, SWIFT, compliance & maturity" },
+  { label: "Tooling Strategy & Support", href: "/services/tooling-strategy", desc: "Vendor-agnostic architecture & delivery" },
+  { label: "Managed Services", href: "/services/managed", desc: "Managed detection, IAM/PAM & vuln mgmt" },
+  { label: "Assurance Services", href: "/services/assurance", desc: "Evidence, controls & audit-ready packs" },
+  { label: "Offensive Security", href: "/services/offensive-security", desc: "Pentesting, vuln assessment & retesting" },
 ];
 
 const sectors = [
@@ -19,6 +20,7 @@ const sectors = [
   { label: "Financial Services", href: "/sectors/financial-services" },
   { label: "Public Sector", href: "/sectors/public-sector" },
   { label: "Regulated Industries", href: "/sectors/regulated" },
+  { label: "Healthcare & NHS", href: "/sectors/healthcare" },
 ];
 
 export default function Navbar() {
@@ -58,7 +60,7 @@ export default function Navbar() {
                 Services <ChevronDown size={14} />
               </button>
               {servicesOpen && (
-                <div className="absolute top-full left-0 w-64 pt-2">
+                <div className="absolute top-full left-0 w-72 pt-2">
                   <div className={`rounded-xl p-2 border ${dropdownBg}`}>
                     {services.map((s) => (
                       <Link key={s.href} href={s.href}

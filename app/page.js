@@ -62,7 +62,7 @@ const services = [
     icon: Zap,
     title: "Optimisation",
     desc: "Improve the performance, coverage and efficiency of existing identity tools already in your environment.",
-    href: "/services/implementation",
+    href: "/services/tooling-strategy",
     badge: null,
     large: false,
   },
@@ -97,7 +97,7 @@ const differentiators = [
 
 const sectorCards = [
   { label: "Financial Services", icon: Landmark, href: "/sectors/financial-services", desc: "FCA, DORA, PCI DSS compliance" },
-  { label: "Healthcare & NHS", icon: Shield, href: "/sectors/public-sector", desc: "DSPT, CQC and NHS Cyber standards" },
+  { label: "Healthcare & NHS", icon: Shield, href: "/sectors/healthcare", desc: "DSPT, CQC and NHS Cyber standards" },
   { label: "Public Sector", icon: Building2, href: "/sectors/public-sector", desc: "CAF, Cyber Essentials+, UK GDPR" },
   { label: "Critical Infrastructure", icon: ShieldAlert, href: "/sectors/regulated", desc: "NIS2, ISO 27001, GxP" },
 ];
@@ -311,7 +311,7 @@ export default function HomePage() {
               </div>
               <h3 className="text-base font-bold tracking-tight mb-2 text-[#dee1f7]">Optimisation</h3>
               <p className="text-sm text-[#bccabf] mb-4">More value from tools you already own. Tune, expand and improve.</p>
-              <Link href="/services/implementation" className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
+              <Link href="/services/tooling-strategy" className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
                 Learn more <ArrowRight size={13} />
               </Link>
             </div>

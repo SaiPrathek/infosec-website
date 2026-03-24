@@ -1,58 +1,35 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, TrendingUp, Shield, Lock, ShieldAlert, CheckCircle, Zap, HeadphonesIcon } from "lucide-react";
+import { ArrowRight, BarChart3, TrendingUp, Shield, ShieldAlert, CheckCircle, Zap, HeadphonesIcon, Wrench, ClipboardCheck, Crosshair } from "lucide-react";
+import { servicesData } from "@/lib/services-data";
 
-const services = [
-  {
-    slug: "assessment",
-    icon: BarChart3,
-    title: "IAM Assessment",
-    tagline: "Understand your current posture — honestly",
-    desc: "A structured, 22-question assessment across five IAM domains. You get a maturity score, gap analysis and prioritised recommendations.",
-    outcomes: ["Know exactly where your gaps are", "Benchmark against sector peers", "Get a ready-to-present board summary"],
-    time: "2–4 weeks",
-    badge: "Most popular starting point",
-  },
-  {
-    slug: "roadmap",
-    icon: TrendingUp,
-    title: "Roadmap & Strategy",
-    tagline: "A prioritised, costed path to target maturity",
-    desc: "Turn your assessment findings into a practical, board-ready roadmap that prioritises risk reduction, aligns to budget and sequences delivery realistically.",
-    outcomes: ["Clear 12–24 month programme plan", "Quick wins identified and costed", "Executive presentation ready"],
-    time: "4–6 weeks",
-    badge: null,
-  },
-  {
-    slug: "implementation",
-    icon: Shield,
-    title: "Implementation",
-    tagline: "Hands-on delivery, not just advice",
-    desc: "From PAM deployments and MFA rollouts to IGA platform implementation — we deliver, configure and handover with full knowledge transfer.",
-    outcomes: ["Named delivery leads throughout", "Tracked via your client portal", "Full documentation and runbooks"],
-    time: "Project-based",
-    badge: null,
-  },
-  {
-    slug: "implementation",
-    icon: Zap,
-    title: "Optimisation",
-    tagline: "More value from tools you already own",
-    desc: "Many organisations have IAM tooling in place that isn't being used to its potential. We tune, expand and improve existing deployments.",
-    outcomes: ["Tool utilisation audit", "Coverage expansion plan", "Configuration hardening"],
-    time: "4–8 weeks",
-    badge: null,
-  },
-  {
-    slug: "managed",
-    icon: HeadphonesIcon,
-    title: "Managed Services",
-    tagline: "Ongoing identity security, without the overhead",
-    desc: "Continuous monitoring, access reviews, incident response and periodic health assessments — delivered as a flexible managed service.",
-    outcomes: ["Regular access certification campaigns", "Identity threat monitoring", "Quarterly posture reviews"],
-    time: "Ongoing subscription",
-    badge: null,
-  },
-];
+const iconMap = {
+  BarChart3,
+  TrendingUp,
+  Shield,
+  ShieldAlert,
+  Zap,
+  HeadphonesIcon,
+  Wrench,
+  ClipboardCheck,
+  Crosshair,
+};
+
+const services = Object.entries(servicesData).map(([slug, s]) => ({
+  slug,
+  icon: iconMap[s.icon] || Shield,
+  title: s.title,
+  tagline: s.tagline,
+  desc: s.heroDesc,
+  outcomes: (s.whatWeDo || []).slice(0, 3),
+  time: slug === "assessment" ? "2–4 weeks"
+      : slug === "roadmap" ? "4–6 weeks"
+      : slug === "managed" ? "Ongoing subscription"
+      : slug === "tooling-strategy" ? "4–8 weeks"
+      : slug === "assurance" ? "4–8 weeks"
+      : slug === "offensive-security" ? "2–4 weeks"
+      : "Project-based",
+  badge: s.badge || null,
+}));
 
 export default function ServicesPage() {
   return (

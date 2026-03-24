@@ -8,12 +8,12 @@ import {
 } from "lucide-react";
 
 const tasks = [
-  { id: 1, title: "Complete discovery questionnaire", status: "in-progress", due: "25 Mar 2025", priority: "high", owner: "Client" },
-  { id: 2, title: "Upload network architecture diagram", status: "pending", due: "28 Mar 2025", priority: "high", owner: "Client" },
-  { id: 3, title: "Confirm project kick-off attendees", status: "completed", due: "20 Mar 2025", priority: "medium", owner: "Client" },
-  { id: 4, title: "Provide Active Directory export", status: "pending", due: "1 Apr 2025", priority: "medium", owner: "Client" },
-  { id: 5, title: "Review assessment summary report", status: "completed", due: "18 Mar 2025", priority: "low", owner: "K2K" },
-  { id: 6, title: "Schedule privileged access workshop", status: "pending", due: "5 Apr 2025", priority: "medium", owner: "Client" },
+  { id: 1, title: "Complete discovery questionnaire", status: "in-progress", due: "25 Mar 2026", priority: "high", owner: "Client" },
+  { id: 2, title: "Upload network architecture diagram", status: "pending", due: "28 Mar 2026", priority: "high", owner: "Client" },
+  { id: 3, title: "Confirm project kick-off attendees", status: "completed", due: "20 Mar 2026", priority: "medium", owner: "Client" },
+  { id: 4, title: "Provide Active Directory export", status: "pending", due: "1 Apr 2026", priority: "medium", owner: "Client" },
+  { id: 5, title: "Review assessment summary report", status: "completed", due: "18 Mar 2026", priority: "low", owner: "K2K" },
+  { id: 6, title: "Schedule privileged access workshop", status: "pending", due: "5 Apr 2026", priority: "medium", owner: "Client" },
 ];
 
 const milestones = [

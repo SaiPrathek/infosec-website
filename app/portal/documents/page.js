@@ -3,11 +3,11 @@
 import { FileText, Download, Upload, Search } from "lucide-react";
 
 const documents = [
-  { name: "K2K_Assessment_Summary_v1.pdf", size: "2.4 MB", uploaded: "18 Mar 2025", type: "PDF", by: "K2K", category: "Reports" },
-  { name: "Project_Statement_of_Work.docx", size: "890 KB", uploaded: "10 Mar 2025", type: "DOC", by: "K2K", category: "Contracts" },
-  { name: "NDA_Signed.pdf", size: "340 KB", uploaded: "8 Mar 2025", type: "PDF", by: "Client", category: "Contracts" },
-  { name: "IAM_Maturity_Framework_v2.pdf", size: "1.8 MB", uploaded: "12 Mar 2025", type: "PDF", by: "K2K", category: "Frameworks" },
-  { name: "Network_Topology_Diagram.vsdx", size: "4.1 MB", uploaded: "15 Mar 2025", type: "VISIO", by: "Client", category: "Technical" },
+  { name: "K2K_Assessment_Summary_v1.pdf", size: "2.4 MB", uploaded: "18 Mar 2026", type: "PDF", by: "K2K", category: "Reports" },
+  { name: "Project_Statement_of_Work.docx", size: "890 KB", uploaded: "10 Mar 2026", type: "DOC", by: "K2K", category: "Contracts" },
+  { name: "NDA_Signed.pdf", size: "340 KB", uploaded: "8 Mar 2026", type: "PDF", by: "Client", category: "Contracts" },
+  { name: "IAM_Maturity_Framework_v2.pdf", size: "1.8 MB", uploaded: "12 Mar 2026", type: "PDF", by: "K2K", category: "Frameworks" },
+  { name: "Network_Topology_Diagram.vsdx", size: "4.1 MB", uploaded: "15 Mar 2026", type: "VISIO", by: "Client", category: "Technical" },
 ];
 
 const typeColors = {

@@ -34,8 +34,8 @@ export default function PortalLayout({ children }) {
           style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
           <div className="mb-6 px-3">
             <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: "var(--muted)" }}>Project</p>
-            <p className="font-bold text-sm" style={{ color: "var(--foreground)" }}>IAM Assessment</p>
-            <p className="text-xs" style={{ color: "var(--muted)" }}>Acme Financial Ltd</p>
+            <p className="font-bold text-sm" style={{ color: "var(--foreground)" }}>Active Engagement</p>
+            <p className="text-xs" style={{ color: "var(--muted)" }}>Demo Client</p>
           </div>
           <nav className="space-y-1 flex-1">
             {sidebarItems.map((item) => {

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Phone, MapPin, Linkedin, Twitter } from "lucide-react";
+import { Mail, MapPin, Linkedin, Twitter } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -25,7 +25,6 @@ export default function Footer() {
             <div className="space-y-2">
               {[
                 { icon: Mail, label: "hello@infoseck2k.com" },
-                { icon: Phone, label: "+44 (0)20 0000 0000" },
                 { icon: MapPin, label: "London, UK" },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-2 text-xs text-[#bccabf]">
@@ -41,10 +40,11 @@ export default function Footer() {
             <h4 className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4">Services</h4>
             <ul className="space-y-2.5">
               {[
-                { label: "IAM Assessment", href: "/services/assessment" },
-                { label: "Roadmap & Strategy", href: "/services/roadmap" },
-                { label: "Implementation", href: "/services/implementation" },
+                { label: "Assessment", href: "/services/assessment" },
+                { label: "Tooling Strategy & Support", href: "/services/tooling-strategy" },
                 { label: "Managed Services", href: "/services/managed" },
+                { label: "Assurance Services", href: "/services/assurance" },
+                { label: "Offensive Security", href: "/services/offensive-security" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-sm text-[#bccabf] hover:text-[#5cdda2] transition-colors">
