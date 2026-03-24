@@ -21,9 +21,6 @@ export default function AIChatWidget() {
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Don't render on portal or internal pages — those have their own AI assistants
-  if (pathname?.startsWith("/portal") || pathname?.startsWith("/internal")) return null;
-
   useEffect(() => {
     if (open) {
       setHasNewMessage(false);
@@ -34,6 +31,9 @@ export default function AIChatWidget() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Don't render on portal or internal pages — those have their own AI assistants
+  if (pathname?.startsWith("/portal") || pathname?.startsWith("/internal")) return null;
 
   const sendMessage = async () => {
     const text = input.trim();
