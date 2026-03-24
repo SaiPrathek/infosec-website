@@ -3,7 +3,7 @@ import {
   ArrowRight, CheckCircle, Users, Eye,
   BarChart3, ShieldAlert, Building2, Landmark, Shield,
   BookOpen, TrendingUp, Search, RefreshCw, Globe,
-  ChevronRight, Radio, CreditCard, CreditCard as CardIcon,
+  ChevronRight, Radio, CreditCard, Lock, KeyRound,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import LogoCloud from "@/components/LogoCloud";
@@ -79,6 +79,23 @@ const insights = [
   },
 ];
 
+const iamPlatformBadges = ["CyberArk", "BeyondTrust", "Delinea", "SailPoint", "Saviynt", "Okta", "Microsoft Entra", "Duo Security"];
+
+const iamDepthStats = [
+  { value: "120+", label: "IAM/PAM programmes delivered" },
+  { value: "40+", label: "PAM platform deployments" },
+  { value: "15+", label: "Financial services firms" },
+  { value: "End-to-end", label: "Assessment → Managed" },
+];
+
+const domainBars = [
+  { label: "Identity Security", color: "#5cdda2", width: 72 },
+  { label: "Privileged Access", color: "#5cdda2", width: 45 },
+  { label: "Authentication", color: "#c3c0ff", width: 60 },
+  { label: "Endpoint Exposure", color: "#f97316", width: 33 },
+  { label: "Detection Maturity", color: "#c3c0ff", width: 55 },
+];
+
 const journeySteps = [
   {
     step: "01",
@@ -103,10 +120,10 @@ const journeySteps = [
   },
   {
     step: "04",
-    label: "Route",
-    icon: ChevronRight,
+    label: "Propose",
+    icon: TrendingUp,
     color: "#c3c0ff",
-    desc: "We recommend which pathway — or combination — matches your risk profile, budget and compliance obligations.",
+    desc: "We generate a tailored programme proposal — mapped to your score, your budget and your compliance obligations. You review it before anyone calls you.",
   },
   {
     step: "05",
@@ -175,27 +192,22 @@ export default function HomePage() {
             <div className="lg:col-span-5 relative">
               <div className="absolute -inset-4 bg-[#5cdda2]/5 blur-[60px] rounded-full" />
               <div className="relative bg-[#0e1322]/70 backdrop-blur-xl border border-[#3d4a42]/20 rounded-xl p-6">
-                <div className="w-full h-64 rounded-xl bg-gradient-to-br from-[#1a1f2f] to-[#090e1c] border border-[#3d4a42]/20 flex items-center justify-center mb-5">
-                  <div className="text-center">
-                    <div className="w-16 h-16 rounded-full bg-[#5cdda2]/10 flex items-center justify-center mx-auto mb-3">
-                      <Shield size={28} className="text-[#5cdda2]" />
-                    </div>
-                    <p className="text-sm text-[#bccabf]">Cyber Risk Dashboard</p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    { label: "Risk Score", value: "3.8/5", color: "text-[#5cdda2]" },
-                    { label: "Detection Coverage", value: "74%", color: "text-[#c3c0ff]" },
-                    { label: "Critical Gaps", value: "4", color: "text-orange-400" },
-                    { label: "Risk Level", value: "Medium", color: "text-orange-400" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="bg-[#1a1f2f] rounded-lg p-3 border border-[#3d4a42]/10">
-                      <p className="text-xs text-[#bccabf] mb-1">{stat.label}</p>
-                      <p className={`text-lg font-extrabold tracking-tight ${stat.color}`}>{stat.value}</p>
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-4">Risk Profile Preview</p>
+                <div className="space-y-3 mb-5">
+                  {domainBars.map((bar) => (
+                    <div key={bar.label}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-xs font-medium text-[#bccabf]">{bar.label}</span>
+                        <span className="text-xs font-bold" style={{ color: bar.color }}>{bar.width}%</span>
+                      </div>
+                      <div className="w-full h-1.5 rounded-full bg-[#3d4a42]/30">
+                        <div className="h-1.5 rounded-full transition-all duration-700"
+                          style={{ width: `${bar.width}%`, background: bar.color }} />
+                      </div>
                     </div>
                   ))}
                 </div>
+                <p className="text-[0.65rem] text-[#bccabf]/60 text-center">Example profile · Complete the assessment for your real score</p>
               </div>
             </div>
           </div>
@@ -250,6 +262,111 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Free Tools — promoted to position 4 */}
+      <section className="bg-[#090e1c] py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-14">
+            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
+              Free Tools — No Account Required
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+              Two free tools. Real intelligence. No account required.
+            </h2>
+            <p className="text-base max-w-2xl mx-auto text-[#bccabf]">
+              Used by 500+ UK security teams. Start with intelligence — not a sales call.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            {/* Assessment card */}
+            <div className="bg-[#1a1f2f] rounded-xl border border-[#5cdda2]/20 p-7 flex flex-col">
+              <div className="flex items-start gap-4 mb-5">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#5cdda2] to-[#04a56f]">
+                  <BarChart3 size={20} color="#003823" />
+                </div>
+                <div>
+                  <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-0.5">Cyber Risk Assessment</p>
+                  <h3 className="font-bold text-base text-[#dee1f7]">Cyber Risk Assessment</h3>
+                </div>
+              </div>
+              {/* Domain bars preview */}
+              <div className="space-y-2.5 mb-5 opacity-60">
+                {domainBars.map((bar) => (
+                  <div key={bar.label}>
+                    <div className="flex items-center justify-between mb-0.5">
+                      <span className="text-[0.65rem] font-medium text-[#bccabf]">{bar.label}</span>
+                    </div>
+                    <div className="w-full h-1 rounded-full bg-[#3d4a42]/30">
+                      <div className="h-1 rounded-full" style={{ width: `${bar.width}%`, background: bar.color }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm leading-relaxed mb-5 text-[#bccabf]">
+                22 questions across five cyber risk domains. Get your risk score, gap analysis and recommended programme pathway — completely free, takes under 10 minutes.
+              </p>
+              <div className="mt-auto flex items-center justify-between">
+                <span className="text-xs px-3 py-1 rounded-full font-bold bg-[#2f3445] text-[#5cdda2]">
+                  Free · ~10 minutes
+                </span>
+                <Link href="/assessment/select"
+                  className="btn-primary flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold">
+                  Start Cyber Risk Assessment <ArrowRight size={13} />
+                </Link>
+              </div>
+            </div>
+
+            {/* Domain Intelligence card */}
+            <div className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-7 flex flex-col">
+              <div className="flex items-start gap-4 mb-5">
+                <div className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#3b82f6] to-[#8b5cf6]">
+                  <Globe size={20} color="white" />
+                </div>
+                <div>
+                  <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-0.5">Domain Intelligence</p>
+                  <h3 className="font-bold text-base text-[#dee1f7]">Domain Intelligence Hub</h3>
+                </div>
+              </div>
+              {/* What it reveals */}
+              <div className="space-y-3 mb-5">
+                {[
+                  { icon: Lock, label: "Credential exposure", desc: "Leaked passwords and emails from data breaches" },
+                  { icon: Globe, label: "Domain footprint", desc: "Subdomains, exposed services and DNS records" },
+                  { icon: Search, label: "Infrastructure mapping", desc: "Open ports, technologies and public-facing assets" },
+                ].map(({ icon: Icon, label, desc }) => (
+                  <div key={label} className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-lg flex items-center justify-center flex-shrink-0 bg-blue-500/10 mt-0.5">
+                      <Icon size={11} style={{ color: "#3b82f6" }} />
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold text-[#dee1f7]">{label}</p>
+                      <p className="text-xs text-[#bccabf]">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm leading-relaxed mb-5 text-[#bccabf]">
+                Surface your external attack surface — powered by DomainTools technology. No account required.
+              </p>
+              <div className="mt-auto flex items-center justify-between">
+                <span className="text-xs px-3 py-1 rounded-full font-bold bg-[#2f3445] text-[#5cdda2]">
+                  Free · Results in seconds
+                </span>
+                <Link href="/tools/osint"
+                  className="flex items-center gap-1.5 text-sm font-bold border border-[#3d4a42]/30 px-4 py-2 rounded-lg text-[#bccabf] hover:text-[#dee1f7] hover:border-[#5cdda2]/30 transition-colors">
+                  Check your domain <ArrowRight size={13} />
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Stats strip */}
+          <p className="text-center text-xs text-[#bccabf]/60 mt-8">
+            500+ assessments completed · Trusted by UK financial services, NHS and critical infrastructure
+          </p>
+        </div>
+      </section>
+
       {/* Solution Pathways */}
       <section className="bg-[#090e1c] py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -269,15 +386,21 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
             {/* Large card — Identity Security */}
             <div className="card-glow md:col-span-8 bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 hover:bg-[#25293a] transition-colors p-8 flex flex-col">
-              <div className="flex items-start justify-between mb-6">
+              <div className="flex items-start justify-between mb-4">
                 <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-[#5cdda2]/10">
                   <BarChart3 size={24} className="text-[#5cdda2]" />
                 </div>
-                <span className="text-xs px-3 py-1 rounded-full bg-[#2f3445] text-[#5cdda2] font-bold">Assessment-Led</span>
+                <span className="text-xs px-3 py-1 rounded-full bg-[#5cdda2]/15 text-[#5cdda2] font-bold">Core Specialism · 12 years deep</span>
+              </div>
+              {/* Platform stack tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {["CyberArk", "SailPoint", "Okta", "BeyondTrust", "Microsoft Entra"].map((p) => (
+                  <span key={p} className="text-[0.65rem] px-2 py-0.5 rounded border border-[#3d4a42]/30 text-[#bccabf]">{p}</span>
+                ))}
               </div>
               <h3 className="text-xl font-bold tracking-tight mb-3 text-[#dee1f7]">Identity Security</h3>
               <p className="text-sm leading-relaxed text-[#bccabf] mb-6">
-                Structured IAM maturity assessment, roadmap and implementation — from privileged access to identity governance and MFA. The foundation of any security programme.
+                Our deepest area of expertise — from PAM and IGA to MFA rollout and identity governance. The full stack, delivered.
               </p>
               <Link href="/services/assessment"
                 className="mt-auto inline-flex items-center gap-1 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
@@ -345,6 +468,58 @@ export default function HomePage() {
                 Learn more <ArrowRight size={13} />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Identity Security Depth */}
+      <section className="bg-[#0e1322] py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="mb-12">
+            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
+              Our Deepest Specialism
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+              Identity Security &amp; PAM — 12 years, end to end
+            </h2>
+            <p className="text-base max-w-2xl text-[#bccabf]">
+              IAM and PAM is not a sub-service for us. It&apos;s what we built the firm on. We deliver the technology, the process, the governance framework and the ongoing managed service — across all major platforms.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-2 gap-10 items-start">
+            {/* Left: platform badges */}
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-[#bccabf] mb-4">Platforms we deploy and operate</p>
+              <div className="flex flex-wrap gap-2">
+                {iamPlatformBadges.map((p) => (
+                  <span key={p} className="text-sm font-semibold px-4 py-2 rounded-full border border-[#3d4a42]/30 text-[#dee1f7] bg-[#1a1f2f]">
+                    {p}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Right: stats grid */}
+            <div className="grid grid-cols-2 gap-4">
+              {iamDepthStats.map((s) => (
+                <div key={s.label} className="bg-[#1a1f2f] rounded-xl p-5 border border-[#3d4a42]/10">
+                  <p className="text-2xl font-extrabold tracking-tight text-[#5cdda2] mb-1">{s.value}</p>
+                  <p className="text-xs text-[#bccabf]">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex flex-col sm:flex-row gap-3 mt-10">
+            <Link href="/services/assessment"
+              className="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-md font-bold text-sm">
+              Explore Identity Security <ArrowRight size={14} />
+            </Link>
+            <Link href="/book?service=assessment"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-bold text-sm border border-[#5cdda2]/30 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">
+              Talk to an IAM specialist <ArrowRight size={14} />
+            </Link>
           </div>
         </div>
       </section>
@@ -450,29 +625,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Sector Expertise */}
-      <section className="bg-[#0e1322] py-24">
+      {/* Sector Expertise — compressed */}
+      <section className="bg-[#090e1c] py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-14">
-            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
-              Sector Expertise
+          <div className="text-center mb-8">
+            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-3 block">
+              Sector experience
             </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
-              Deep sector knowledge
+            <h2 className="text-xl font-extrabold tracking-tight text-[#dee1f7]">
+              We know your compliance environment
             </h2>
-            <p className="text-base text-[#bccabf]">
-              We understand the compliance pressures and threat landscape specific to your industry.
-            </p>
-          </ScrollReveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
             {sectorCards.map((s) => (
               <Link key={s.label} href={s.href}
-                className="card-glow bg-[#1a1f2f] hover:bg-[#25293a] rounded-xl p-6 border border-[#3d4a42]/10 transition-colors group">
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[#5cdda2]/10">
-                  <s.icon size={22} className="text-[#5cdda2]" />
-                </div>
-                <h3 className="font-bold text-sm mb-1 text-[#dee1f7] group-hover:text-[#5cdda2] transition-colors">{s.label}</h3>
-                <p className="text-xs text-[#bccabf]">{s.desc}</p>
+                className="flex items-center gap-2 px-5 py-3 rounded-full border border-[#3d4a42]/30 bg-[#1a1f2f] hover:bg-[#25293a] transition-colors">
+                <s.icon size={14} className="text-[#5cdda2]" />
+                <span className="text-sm font-semibold text-[#dee1f7]">{s.label}</span>
+                <span className="text-[0.65rem] text-[#bccabf] ml-1">{s.desc}</span>
               </Link>
             ))}
           </div>
@@ -501,70 +671,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Free Tools */}
-      <section className="bg-[#161b2b] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] text-[#5cdda2] mb-4 block">
-              Free Tools — No Account Required
-            </span>
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
-              Know your risk before you spend a penny
-            </h2>
-            <p className="text-base max-w-2xl mx-auto text-[#bccabf]">
-              Two tools used by 500+ UK security teams. Get immediate, actionable intelligence about your cyber risk and external exposure.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {[
-              {
-                tag: "CYBER RISK ASSESSMENT",
-                title: "Cyber Risk Assessment",
-                desc: "22 questions across five cyber risk domains. Get your risk score, gap analysis and recommended programme pathway — completely free, takes under 10 minutes.",
-                time: "~10 minutes",
-                href: "/assessment/select",
-                cta: "Start assessment",
-                gradient: "from-[#5cdda2] to-[#04a56f]",
-                iconColor: "#003823",
-                isAssessment: true,
-              },
-              {
-                tag: "DOMAIN INTELLIGENCE",
-                title: "Domain Intelligence Hub",
-                desc: "Surface your external attack surface — leaked credentials, exposed infrastructure, subdomain footprint and domain intelligence signals. Powered by DomainTools technology.",
-                time: "Results in seconds",
-                href: "/tools/osint",
-                cta: "Explore Domain Intelligence",
-                gradient: "from-[#3b82f6] to-[#8b5cf6]",
-                iconColor: "white",
-                isAssessment: false,
-              },
-            ].map((tool) => (
-              <div key={tool.title} className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-7 flex flex-col">
-                <div className="flex items-start gap-4 mb-5">
-                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br ${tool.gradient}`}>
-                    {tool.isAssessment ? <BarChart3 size={20} color={tool.iconColor} /> : <Globe size={20} color={tool.iconColor} />}
-                  </div>
-                  <div>
-                    <p className="text-[0.7rem] font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-0.5">{tool.tag}</p>
-                    <h3 className="font-bold text-base text-[#dee1f7]">{tool.title}</h3>
-                  </div>
-                </div>
-                <p className="text-sm leading-relaxed mb-5 text-[#bccabf]">{tool.desc}</p>
-                <div className="mt-auto flex items-center justify-between">
-                  <span className="text-xs px-3 py-1 rounded-full font-bold bg-[#2f3445] text-[#5cdda2]">
-                    Free · {tool.time}
-                  </span>
-                  <Link href={tool.href}
-                    className="flex items-center gap-1.5 text-sm font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors">
-                    {tool.cta} <ArrowRight size={14} />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* CTA Section */}
       <section className="bg-[#0e1322] py-24">

@@ -8,7 +8,7 @@ import {
 import { useTheme } from "@/components/ThemeProvider";
 
 const services = [
-  { label: "Identity Security", href: "/services/assessment", desc: "IAM assessment, roadmap & implementation" },
+  { label: "Identity Security", href: "/services/assessment", desc: "IAM assessment, roadmap & implementation", isCore: true },
   { label: "Managed Detection", href: "/services/managed-detection", desc: "24/7 SOC powered by LevelBlue / AlienVault" },
   { label: "Domain Intelligence & OSINT", href: "/services/domain-intelligence", desc: "External exposure monitoring via DomainTools" },
   { label: "Security Assurance", href: "/services/assurance", desc: "ISO 27001, DORA, FCA & Cyber Essentials+" },
@@ -66,7 +66,14 @@ export default function Navbar() {
                       <Link key={s.href} href={s.href}
                         className={`flex flex-col px-3 py-2 rounded-lg transition-colors ${dropdownItem}`}
                         onClick={() => setServicesOpen(false)}>
-                        <span className="text-sm font-medium">{s.label}</span>
+                        <span className="flex items-center gap-1.5 text-sm font-medium">
+                          {s.label}
+                          {s.isCore && (
+                            <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#5cdda2]/15 text-[#5cdda2]">
+                              Core specialism
+                            </span>
+                          )}
+                        </span>
                         <span className={`text-xs ${dropdownMuted}`}>{s.desc}</span>
                       </Link>
                     ))}
@@ -202,9 +209,14 @@ export default function Navbar() {
         <div className={`md:hidden border-t px-4 py-4 space-y-3 ${mobileBg}`}>
           <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel}`}>Services</p>
           {services.map((s) => (
-            <Link key={s.href} href={s.href} className={`block text-sm font-medium py-1 ${mobileLink}`}
+            <Link key={s.href} href={s.href} className={`flex items-center gap-1.5 text-sm font-medium py-1 ${mobileLink}`}
               onClick={() => setMenuOpen(false)}>
               {s.label}
+              {s.isCore && (
+                <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#5cdda2]/15 text-[#5cdda2]">
+                  Core
+                </span>
+              )}
             </Link>
           ))}
           <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Sectors</p>

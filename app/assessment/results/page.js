@@ -5,7 +5,7 @@ import Link from "next/link";
 import {
   RadarChart, PolarGrid, PolarAngleAxis, Radar, ResponsiveContainer, Tooltip
 } from "recharts";
-import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, Download, Calendar, AlertTriangle, TrendingUp, CheckCircle, Shield, Sparkles, ChevronRight, FileText } from "lucide-react";
 import { assessmentThemes, maturityBands, assessmentTypes } from "@/lib/assessment-data";
 import { servicesData } from "@/lib/services-data";
 
@@ -27,7 +27,7 @@ export default function AssessmentResultsPage() {
       fetch("/api/ai/report", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ contact: parsed.contact, scores: parsed.scores }),
+        body: JSON.stringify({ contact: parsed.contact, scores: parsed.scores, assessmentType: parsed.assessmentType }),
       })
         .then((r) => r.json())
         .then(({ narrative }) => {
@@ -84,6 +84,26 @@ export default function AssessmentResultsPage() {
   }));
 
   const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+
+  // Derive programme proposal steps by assessment type
+  const proposalSteps = (() => {
+    if (assessmentTypeId === "swift") return [
+      { label: "SWIFT CSP Assessment", duration: "Completed", current: true, serviceSlug: null },
+      { label: "SWIFT CSP Gap Review", duration: "2–4 weeks", current: false, serviceSlug: "swift-assurance" },
+      { label: "Attestation Support", duration: "4–6 weeks", current: false, serviceSlug: "swift-assurance" },
+    ];
+    if (assessmentTypeId === "compliance") return [
+      { label: "Compliance Assessment", duration: "Completed", current: true, serviceSlug: null },
+      { label: "Control Gap Remediation", duration: "6–12 weeks", current: false, serviceSlug: "assurance" },
+      { label: "Assurance Pack", duration: "4–6 weeks", current: false, serviceSlug: "assurance" },
+    ];
+    if (assessmentTypeId === "offensive") return [
+      { label: "Exposure Assessment", duration: "Completed", current: true, serviceSlug: null },
+      { label: "Remediation Planning", duration: "2–4 weeks", current: false, serviceSlug: "offensive-security" },
+      { label: "Managed Detection", duration: "Ongoing", current: false, serviceSlug: "managed-detection" },
+    ];
+    return band?.proposalSteps || [];
+  })();
 
   return (
     <div className="pt-16" style={{ background: "var(--background)" }}>
@@ -258,6 +278,75 @@ export default function AssessmentResultsPage() {
           </div>
         )}
 
+        {/* Programme Proposal */}
+        {proposalSteps.length > 0 && (
+          <div className="rounded-2xl border mb-10 overflow-hidden no-print"
+            style={{ borderColor: "var(--border)" }}>
+            <div className="px-6 py-4 border-b flex items-center gap-2"
+              style={{ background: "var(--card-bg)", borderColor: "var(--border)" }}>
+              <FileText size={14} style={{ color: "var(--k2k-teal)" }} />
+              <span className="text-sm font-bold uppercase tracking-wider" style={{ color: "var(--foreground)" }}>
+                Your programme proposal
+              </span>
+            </div>
+            <div className="p-8" style={{ background: "var(--background)" }}>
+              <p className="text-sm mb-6" style={{ color: "var(--muted)" }}>
+                Based on your score of <strong style={{ color: "var(--foreground)" }}>{overallScore}</strong> ({band.label} maturity),
+                here is the recommended programme journey for your organisation.
+              </p>
+              {/* Step journey */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-stretch gap-3 mb-8 flex-wrap">
+                {proposalSteps.map((step, i) => (
+                  <div key={i} className="flex items-center gap-3 flex-shrink-0">
+                    <div className="rounded-xl p-4 border flex-shrink-0" style={{
+                      background: step.current ? "rgba(92,221,162,0.06)" : "var(--card-bg)",
+                      borderColor: step.current ? "rgba(92,221,162,0.3)" : "var(--border)",
+                      minWidth: "150px",
+                    }}>
+                      <div className="flex items-center justify-between mb-1">
+                        <span className="text-[0.65rem] font-bold uppercase tracking-wide"
+                          style={{ color: step.current ? "#5cdda2" : "var(--muted)" }}>
+                          Step {i + 1}
+                        </span>
+                        {step.current && (
+                          <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#5cdda2]/20 text-[#5cdda2]">
+                            You are here
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-sm font-bold mb-0.5" style={{ color: "var(--foreground)" }}>{step.label}</p>
+                      <p className="text-xs mb-1.5" style={{ color: "var(--muted)" }}>{step.duration}</p>
+                      {step.serviceSlug && (
+                        <Link href={`/services/${step.serviceSlug}`}
+                          className="text-xs font-medium inline-flex items-center gap-0.5"
+                          style={{ color: "#5cdda2" }}>
+                          What&apos;s included <ArrowRight size={10} />
+                        </Link>
+                      )}
+                    </div>
+                    {i < proposalSteps.length - 1 && (
+                      <ChevronRight size={16} style={{ color: "var(--muted)" }} className="flex-shrink-0 hidden sm:block" />
+                    )}
+                  </div>
+                ))}
+              </div>
+              {/* 2-up CTA block */}
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href={`/book?name=${encodeURIComponent(contact?.name || "")}&email=${encodeURIComponent(contact?.email || "")}&company=${encodeURIComponent(contact?.company || "")}&service=${band.recommendation}`}
+                  className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold">
+                  <Calendar size={16} /> Book a specialist call to discuss this proposal
+                </Link>
+                <button onClick={() => window.print()}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl border font-semibold text-sm hover:opacity-80 transition-opacity"
+                  style={{ color: "var(--foreground)", borderColor: "var(--border)" }}>
+                  <Download size={14} /> Download proposal PDF
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Recommended service card */}
         <div className="rounded-2xl border mb-8 overflow-hidden"
           style={{ borderColor: "rgba(0,164,110,0.3)" }}>
@@ -312,14 +401,16 @@ export default function AssessmentResultsPage() {
           </div>
         </div>
 
-        {/* Download */}
-        <div className="text-center no-print">
-          <button onClick={() => window.print()}
-            className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity"
-            style={{ color: "var(--muted)" }}>
-            <Download size={14} /> Download PDF report
-          </button>
-        </div>
+        {/* Fallback download (only shown when no proposal steps) */}
+        {proposalSteps.length === 0 && (
+          <div className="text-center no-print">
+            <button onClick={() => window.print()}
+              className="inline-flex items-center gap-2 text-sm font-medium hover:opacity-70 transition-opacity"
+              style={{ color: "var(--muted)" }}>
+              <Download size={14} /> Download PDF report
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
