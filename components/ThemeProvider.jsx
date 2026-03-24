@@ -8,12 +8,21 @@ export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
-    // Always dark — ensure class is set in case of stale localStorage
-    document.documentElement.classList.add("dark");
-    localStorage.setItem("k2k-theme", "dark");
+    const saved = localStorage.getItem("k2k-theme") || "dark";
+    setTheme(saved);
+    const html = document.documentElement;
+    html.classList.remove("dark", "light");
+    html.classList.add(saved);
   }, []);
 
-  const toggleTheme = () => {};
+  const toggleTheme = () => {
+    const next = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    localStorage.setItem("k2k-theme", next);
+    const html = document.documentElement;
+    html.classList.remove("dark", "light");
+    html.classList.add(next);
+  };
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -3,14 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import {
-  Menu,
-  X,
-  ChevronDown,
-  ArrowRight,
-  Search,
-  Sparkles,
-  Shield,
+  Menu, X, ChevronDown, ArrowRight, Search, Sparkles, Shield, Sun, Moon,
 } from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
 
 const services = [
   { label: "IAM Assessment", href: "/services/assessment", desc: "Know your risk in 10 minutes" },
@@ -32,9 +27,22 @@ export default function Navbar() {
   const [sectorsOpen, setSectorsOpen] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [resourcesOpen, setResourcesOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
+  const isDark = theme === "dark";
+
+  const navBg = isDark ? "bg-[#0e1322]/80 border-[#3d4a42]/15" : "bg-white/90 border-slate-200/60";
+  const navLink = isDark ? "text-slate-400 hover:text-white" : "text-slate-600 hover:text-slate-900";
+  const dropdownBg = isDark ? "bg-[#1a1f2f] border-[#3d4a42]/20" : "bg-white border-slate-200/60 shadow-lg";
+  const dropdownItem = isDark ? "text-[#dee1f7] hover:bg-[#25293a]" : "text-slate-800 hover:bg-slate-100";
+  const dropdownMuted = isDark ? "text-[#bccabf]" : "text-slate-500";
+  const dividerColor = isDark ? "border-[#3d4a42]/30" : "border-slate-200";
+  const mobileBg = isDark ? "bg-[#0e1322] border-[#3d4a42]/20" : "bg-white border-slate-200";
+  const mobileSectionLabel = isDark ? "text-[#bccabf]" : "text-slate-400";
+  const mobileLink = isDark ? "text-[#dee1f7]" : "text-slate-800";
+  const menuBtnColor = isDark ? "text-[#dee1f7]" : "text-slate-700";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0e1322]/70 backdrop-blur-3xl border-b border-[#3d4a42]/15">
+    <nav className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-3xl border-b transition-colors duration-300 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -46,21 +54,21 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-5">
             {/* Services dropdown */}
             <div className="relative" onMouseEnter={() => setServicesOpen(true)} onMouseLeave={() => setServicesOpen(false)}>
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+              <button className={`flex items-center gap-1 text-sm font-medium transition-colors ${navLink}`}>
                 Services <ChevronDown size={14} />
               </button>
               {servicesOpen && (
                 <div className="absolute top-full left-0 w-64 pt-2">
-                  <div className="bg-[#1a1f2f] rounded-xl p-2 shadow-xl border border-[#3d4a42]/20 z-50">
+                  <div className={`rounded-xl p-2 border ${dropdownBg}`}>
                     {services.map((s) => (
                       <Link key={s.href} href={s.href}
-                        className="flex flex-col px-3 py-2 rounded-lg hover:bg-[#25293a] transition-colors"
+                        className={`flex flex-col px-3 py-2 rounded-lg transition-colors ${dropdownItem}`}
                         onClick={() => setServicesOpen(false)}>
-                        <span className="text-sm font-medium text-[#dee1f7]">{s.label}</span>
-                        <span className="text-xs text-[#bccabf]">{s.desc}</span>
+                        <span className="text-sm font-medium">{s.label}</span>
+                        <span className={`text-xs ${dropdownMuted}`}>{s.desc}</span>
                       </Link>
                     ))}
-                    <div className="border-t border-[#3d4a42]/30 mt-2 pt-2">
+                    <div className={`border-t mt-2 pt-2 ${dividerColor}`}>
                       <Link href="/services" className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#5cdda2]"
                         onClick={() => setServicesOpen(false)}>
                         All services <ArrowRight size={12} />
@@ -73,15 +81,15 @@ export default function Navbar() {
 
             {/* Sectors dropdown */}
             <div className="relative" onMouseEnter={() => setSectorsOpen(true)} onMouseLeave={() => setSectorsOpen(false)}>
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+              <button className={`flex items-center gap-1 text-sm font-medium transition-colors ${navLink}`}>
                 Sectors <ChevronDown size={14} />
               </button>
               {sectorsOpen && (
                 <div className="absolute top-full left-0 w-48 pt-2">
-                  <div className="bg-[#1a1f2f] rounded-xl p-2 shadow-xl border border-[#3d4a42]/20 z-50">
+                  <div className={`rounded-xl p-2 border ${dropdownBg}`}>
                     {sectors.map((s) => (
                       <Link key={s.href} href={s.href}
-                        className="block px-3 py-2 rounded-lg text-sm font-medium text-[#dee1f7] hover:bg-[#25293a] transition-colors"
+                        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${dropdownItem}`}
                         onClick={() => setSectorsOpen(false)}>
                         {s.label}
                       </Link>
@@ -93,35 +101,35 @@ export default function Navbar() {
 
             {/* Free Tools dropdown */}
             <div className="relative" onMouseEnter={() => setToolsOpen(true)} onMouseLeave={() => setToolsOpen(false)}>
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+              <button className={`flex items-center gap-1 text-sm font-medium transition-colors ${navLink}`}>
                 Free Tools <ChevronDown size={14} />
               </button>
               {toolsOpen && (
                 <div className="absolute top-full left-0 w-56 pt-2">
-                  <div className="bg-[#1a1f2f] rounded-xl p-2 shadow-xl border border-[#3d4a42]/20 z-50">
+                  <div className={`rounded-xl p-2 border ${dropdownBg}`}>
                     <Link href="/assessment"
-                      className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-[#25293a] transition-colors"
+                      className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg transition-colors ${dropdownItem}`}
                       onClick={() => setToolsOpen(false)}>
                       <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#5cdda2] to-[#04a56f]">
                         <Shield size={13} color="#003823" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-[#dee1f7]">IAM Assessment</p>
-                        <p className="text-xs text-[#bccabf]">Know your risk in 10 min</p>
+                        <p className="text-sm font-medium">IAM Assessment</p>
+                        <p className={`text-xs ${dropdownMuted}`}>Know your risk in 10 min</p>
                       </div>
                     </Link>
                     <Link href="/tools/osint"
-                      className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-[#25293a] transition-colors"
+                      className={`flex items-center gap-2.5 px-3 py-2.5 rounded-lg transition-colors ${dropdownItem}`}
                       onClick={() => setToolsOpen(false)}>
                       <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: "linear-gradient(135deg,#3b82f6,#8b5cf6)" }}>
                         <Search size={13} color="white" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-[#dee1f7]">OSINT Hub</p>
-                        <p className="text-xs text-[#bccabf]">External exposure check</p>
+                        <p className="text-sm font-medium">OSINT Hub</p>
+                        <p className={`text-xs ${dropdownMuted}`}>External exposure check</p>
                       </div>
                     </Link>
-                    <div className="border-t border-[#3d4a42]/30 mt-1 pt-1">
+                    <div className={`border-t mt-1 pt-1 ${dividerColor}`}>
                       <Link href="/tools" className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#5cdda2]"
                         onClick={() => setToolsOpen(false)}>
                         All free tools <ArrowRight size={12} />
@@ -134,19 +142,19 @@ export default function Navbar() {
 
             {/* Resources dropdown */}
             <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
-              <button className="flex items-center gap-1 text-sm font-medium text-slate-400 hover:text-white transition-colors">
+              <button className={`flex items-center gap-1 text-sm font-medium transition-colors ${navLink}`}>
                 Resources <ChevronDown size={14} />
               </button>
               {resourcesOpen && (
                 <div className="absolute top-full left-0 w-48 pt-2">
-                  <div className="bg-[#1a1f2f] rounded-xl p-2 shadow-xl border border-[#3d4a42]/20 z-50">
+                  <div className={`rounded-xl p-2 border ${dropdownBg}`}>
                     {[
                       { label: "Why Us", href: "/why-us" },
                       { label: "Insights", href: "/insights" },
                       { label: "Case Studies", href: "/case-studies" },
                     ].map((s) => (
                       <Link key={s.href} href={s.href}
-                        className="block px-3 py-2 rounded-lg text-sm font-medium text-[#dee1f7] hover:bg-[#25293a] transition-colors"
+                        className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${dropdownItem}`}
                         onClick={() => setResourcesOpen(false)}>
                         {s.label}
                       </Link>
@@ -156,13 +164,22 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link href="/portal" className="text-sm font-medium text-slate-400 hover:text-white transition-colors">
+            <Link href="/portal" className={`text-sm font-medium transition-colors ${navLink}`}>
               Client Portal
             </Link>
           </div>
 
           {/* Right actions */}
           <div className="flex items-center gap-2">
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 rounded-lg transition-colors ${isDark ? "text-slate-400 hover:text-white hover:bg-white/10" : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"}`}
+              aria-label="Toggle theme"
+            >
+              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+            </button>
+
             <Link href="/internal" className="hidden md:inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg transition-colors hover:opacity-90"
               style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "white" }}>
               <Sparkles size={11} /> Sales AI
@@ -171,7 +188,7 @@ export default function Navbar() {
               className="hidden md:inline-flex items-center gap-1 text-sm font-bold px-4 py-2 rounded-md btn-primary">
               Free Assessment <ArrowRight size={14} />
             </Link>
-            <button className="md:hidden p-2 rounded-lg text-[#dee1f7]" onClick={() => setMenuOpen(!menuOpen)}>
+            <button className={`md:hidden p-2 rounded-lg ${menuBtnColor}`} onClick={() => setMenuOpen(!menuOpen)}>
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
@@ -180,30 +197,30 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-[#3d4a42]/20 px-4 py-4 space-y-3 bg-[#0e1322]">
-          <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#bccabf]">Services</p>
+        <div className={`md:hidden border-t px-4 py-4 space-y-3 ${mobileBg}`}>
+          <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel}`}>Services</p>
           {services.map((s) => (
-            <Link key={s.href} href={s.href} className="block text-sm font-medium py-1 text-[#dee1f7]"
+            <Link key={s.href} href={s.href} className={`block text-sm font-medium py-1 ${mobileLink}`}
               onClick={() => setMenuOpen(false)}>
               {s.label}
             </Link>
           ))}
-          <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#bccabf] pt-2">Sectors</p>
+          <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Sectors</p>
           {sectors.map((s) => (
-            <Link key={s.href} href={s.href} className="block text-sm font-medium py-1 text-[#dee1f7]"
+            <Link key={s.href} href={s.href} className={`block text-sm font-medium py-1 ${mobileLink}`}
               onClick={() => setMenuOpen(false)}>
               {s.label}
             </Link>
           ))}
-          <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#bccabf] pt-2">Free Tools</p>
-          <Link href="/assessment" className="block text-sm font-medium py-1 text-[#dee1f7]" onClick={() => setMenuOpen(false)}>IAM Assessment</Link>
-          <Link href="/tools/osint" className="block text-sm font-medium py-1 text-[#dee1f7]" onClick={() => setMenuOpen(false)}>OSINT Hub</Link>
-          <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#bccabf] pt-2">Resources</p>
-          <Link href="/why-us" className="block text-sm font-medium py-1 text-[#dee1f7]" onClick={() => setMenuOpen(false)}>Why Us</Link>
-          <Link href="/insights" className="block text-sm font-medium py-1 text-[#dee1f7]" onClick={() => setMenuOpen(false)}>Insights</Link>
-          <Link href="/case-studies" className="block text-sm font-medium py-1 text-[#dee1f7]" onClick={() => setMenuOpen(false)}>Case Studies</Link>
+          <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Free Tools</p>
+          <Link href="/assessment" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>IAM Assessment</Link>
+          <Link href="/tools/osint" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>OSINT Hub</Link>
+          <p className={`text-xs font-bold uppercase tracking-[0.1em] ${mobileSectionLabel} pt-2`}>Resources</p>
+          <Link href="/why-us" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Why Us</Link>
+          <Link href="/insights" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Insights</Link>
+          <Link href="/case-studies" className={`block text-sm font-medium py-1 ${mobileLink}`} onClick={() => setMenuOpen(false)}>Case Studies</Link>
           <div className="pt-3 space-y-2">
-            <Link href="/portal" className="block text-sm font-medium text-[#dee1f7]" onClick={() => setMenuOpen(false)}>Client Portal</Link>
+            <Link href="/portal" className={`block text-sm font-medium ${mobileLink}`} onClick={() => setMenuOpen(false)}>Client Portal</Link>
             <Link href="/internal" className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1.5 rounded-lg mt-1"
               style={{ background: "linear-gradient(135deg,#7c3aed,#4f46e5)", color: "white" }}
               onClick={() => setMenuOpen(false)}>
@@ -215,6 +232,14 @@ export default function Navbar() {
             onClick={() => setMenuOpen(false)}>
             Free Assessment
           </Link>
+          {/* Mobile theme toggle */}
+          <button
+            onClick={toggleTheme}
+            className={`flex items-center gap-2 text-sm font-medium py-1 ${mobileLink}`}
+          >
+            {isDark ? <Sun size={16} /> : <Moon size={16} />}
+            {isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          </button>
         </div>
       )}
     </nav>

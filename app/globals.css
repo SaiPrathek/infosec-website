@@ -3,7 +3,7 @@
 @source "../components/**/*.{js,jsx,ts,tsx}";
 @source "../lib/**/*.{js,jsx,ts,tsx}";
 
-:root, .dark {
+.dark {
   --foreground: #dee1f7;
   --background: #0e1322;
   --card-bg: #1a1f2f;
@@ -22,6 +22,65 @@
   --surface-high: #25293a;
   --surface-highest: #2f3445;
 }
+
+html.light {
+  --foreground: #1e293b;
+  --background: #f8fafc;
+  --card-bg: #ffffff;
+  --border: #e2e8f0;
+  --muted: #64748b;
+  --k2k-primary: #04a56f;
+  --k2k-primary-dark: #047857;
+  --k2k-on-primary: #ffffff;
+  --k2k-secondary: #6366f1;
+  --k2k-teal: #04a56f;
+  --k2k-cyan: #6366f1;
+  --k2k-gradient: linear-gradient(135deg, #04a56f 0%, #047857 100%);
+  --surface-lowest: #f1f5f9;
+  --surface-low: #f1f5f9;
+  --surface-container: #ffffff;
+  --surface-high: #e2e8f0;
+  --surface-highest: #cbd5e1;
+}
+
+html.light {
+  color-scheme: light;
+}
+
+/* ── Light mode: override hardcoded dark Tailwind bg classes ── */
+html.light .bg-\[\#0e1322\] { background-color: #f8fafc !important; }
+html.light .bg-\[\#090e1c\] { background-color: #f1f5f9 !important; }
+html.light .bg-\[\#161b2b\] { background-color: #f1f5f9 !important; }
+html.light .bg-\[\#1a1f2f\] { background-color: #ffffff !important; }
+html.light .bg-\[\#25293a\] { background-color: #f1f5f9 !important; }
+html.light .bg-\[\#2f3445\] { background-color: #e2e8f0 !important; }
+
+html.light .text-\[\#dee1f7\] { color: #1e293b !important; }
+html.light .text-\[\#bccabf\] { color: #64748b !important; }
+html.light .text-slate-400 { color: #475569 !important; }
+html.light .text-slate-300 { color: #64748b !important; }
+
+html.light .border-\[\#3d4a42\]\/20,
+html.light .border-\[\#3d4a42\]\/30,
+html.light .border-\[\#3d4a42\]\/15,
+html.light .border-\[\#3d4a42\] { border-color: #e2e8f0 !important; }
+
+html.light .glass-card {
+  background: rgba(255,255,255,0.90) !important;
+  border-color: rgba(0,0,0,0.08) !important;
+}
+
+html.light .dark-mesh {
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(4,165,111,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(4,165,111,0.04) 0%, transparent 50%) !important;
+}
+
+html.light .card-glow:hover {
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12), 0 0 28px rgba(4,165,111,0.10) !important;
+}
+
+html.light ::-webkit-scrollbar-thumb { background: #04a56f !important; }
 
 html {
   color-scheme: dark;
