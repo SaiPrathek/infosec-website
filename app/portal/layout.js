@@ -6,7 +6,7 @@ import { useState } from "react";
 import {
   BarChart3, CheckCircle, FileText, Shield, Upload,
   AlertTriangle, Activity, ClipboardCheck, Bug, ChevronDown,
-  Users, Lock, Crosshair,
+  Users, Lock, Crosshair, Clock, PieChart,
 } from "lucide-react";
 import PortalAIAssistant from "@/components/PortalAIAssistant";
 
@@ -53,13 +53,25 @@ const workspaceConfig = {
       { icon: Upload,        label: "Upload files",    href: "/portal/upload" },
     ],
   },
+  "technical-resources": {
+    label: "Resource Delivery",
+    tabs: [
+      { icon: BarChart3,  label: "Dashboard",    href: "/portal" },
+      { icon: Users,      label: "Resources",    href: "/portal/resources" },
+      { icon: Clock,      label: "Timesheets",   href: "/portal/timesheets" },
+      { icon: PieChart,   label: "Utilisation",  href: "/portal/utilisation" },
+      { icon: FileText,   label: "Documents",    href: "/portal/documents" },
+      { icon: Upload,     label: "Upload files", href: "/portal/upload" },
+    ],
+  },
 };
 
 const projectContext = {
   "iam-assessment":    { name: "Active Engagement", client: "Demo Client", status: "In Progress" },
   "managed-services":  { name: "Managed Identity Programme", client: "Demo Client", status: "Active" },
   "assurance":         { name: "ISO 27001 Assurance", client: "Demo Client", status: "In Progress" },
-  "offensive-security":{ name: "Q2 2026 Pentest", client: "Demo Client", status: "Remediation" },
+  "offensive-security":      { name: "Q2 2026 Pentest", client: "Demo Client", status: "Remediation" },
+  "technical-resources":     { name: "Security Resource Programme", client: "Demo Client", status: "Active" },
 };
 
 export default function PortalLayout({ children }) {

@@ -14,6 +14,7 @@ const expertiseOptions = [
   { id: "managed", label: "Managed Services", desc: "Ongoing IAM/PAM governance, managed detection, continuous monitoring & vulnerability management" },
   { id: "assurance", label: "Assurance Services", desc: "Evidence tracking, control mapping, compliance packs and audit-ready outputs" },
   { id: "offensive-security", label: "Offensive Security", desc: "Penetration testing, vulnerability assessments, remediation planning and retesting" },
+  { id: "technical-resources", label: "Technical Resource Delivery", desc: "Flexible security resource across UK, Germany & India — project-based, dedicated, managed service augmentation or on-demand" },
   { id: "unsure", label: "Not sure — help me decide", desc: "Speak with an expert who will guide you to the right service" },
 ];
 

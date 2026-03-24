@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, TrendingUp, Shield, ShieldAlert, CheckCircle, Zap, HeadphonesIcon, Wrench, ClipboardCheck, Crosshair, Radio, Globe, CreditCard } from "lucide-react";
+import { ArrowRight, BarChart3, TrendingUp, Shield, ShieldAlert, CheckCircle, Zap, HeadphonesIcon, Wrench, ClipboardCheck, Crosshair, Radio, Globe, CreditCard, Users2 } from "lucide-react";
 import { servicesData } from "@/lib/services-data";
 
 const iconMap = {
@@ -15,6 +15,7 @@ const iconMap = {
   Radio,
   Globe,
   CreditCard,
+  Users2,
 };
 
 const servicesMap = Object.fromEntries(
@@ -28,6 +29,7 @@ const servicesMap = Object.fromEntries(
       : slug === "managed-detection" ? "Ongoing subscription"
       : slug === "domain-intelligence" ? "Ongoing subscription"
       : slug === "swift-assurance" ? "4–6 weeks"
+      : slug === "technical-resources" ? "Flexible / Ongoing"
       : "Project-based";
     return [slug, {
       slug,
@@ -70,6 +72,15 @@ const practiceGroups = [
     borderColor: "border-[#3d4a42]/20",
     slugs: ["assurance", "swift-assurance"],
   },
+  {
+    id: "delivery",
+    eyebrow: "Technical Resource Delivery",
+    title: "Resource Delivery",
+    desc: "Flexible, governed security resource across UK, Germany/EU and India — on the engagement model that fits your programme.",
+    accent: "#e8a87c",
+    borderColor: "border-[#e8a87c]/20",
+    slugs: ["technical-resources"],
+  },
 ];
 
 export default function ServicesPage() {
@@ -83,7 +94,7 @@ export default function ServicesPage() {
             End-to-End Delivery
           </span>
           <h1 className="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
-            Five specialist practice areas.{" "}
+            Six specialist practice areas.{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5cdda2] to-[#04a56f]">
               One firm.
             </span>

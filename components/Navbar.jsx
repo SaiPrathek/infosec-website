@@ -13,6 +13,7 @@ const services = [
   { label: "Domain Intelligence & OSINT", href: "/services/domain-intelligence", desc: "External exposure monitoring via DomainTools" },
   { label: "Security Assurance", href: "/services/assurance", desc: "ISO 27001, DORA, FCA & Cyber Essentials+" },
   { label: "SWIFT & Payments Assurance", href: "/services/swift-assurance", desc: "SWIFT CSP readiness & attestation support" },
+  { label: "Technical Resource Delivery", href: "/services/technical-resources", desc: "Flexible security resource across UK, Germany & India", isDelivery: true },
 ];
 
 const sectors = [
@@ -71,6 +72,11 @@ export default function Navbar() {
                           {s.isCore && (
                             <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#5cdda2]/15 text-[#5cdda2]">
                               Core specialism
+                            </span>
+                          )}
+                          {s.isDelivery && (
+                            <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#e8a87c]/15 text-[#e8a87c]">
+                              Delivery
                             </span>
                           )}
                         </span>
@@ -215,6 +221,11 @@ export default function Navbar() {
               {s.isCore && (
                 <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#5cdda2]/15 text-[#5cdda2]">
                   Core
+                </span>
+              )}
+              {s.isDelivery && (
+                <span className="text-[0.6rem] px-1.5 py-0.5 rounded-full font-bold bg-[#e8a87c]/15 text-[#e8a87c]">
+                  Delivery
                 </span>
               )}
             </Link>

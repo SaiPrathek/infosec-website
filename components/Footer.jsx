@@ -45,6 +45,7 @@ export default function Footer() {
                 { label: "Managed Services", href: "/services/managed" },
                 { label: "Assurance Services", href: "/services/assurance" },
                 { label: "Offensive Security", href: "/services/offensive-security" },
+                { label: "Technical Resource Delivery", href: "/services/technical-resources" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link href={item.href} className="text-sm text-[#bccabf] hover:text-[#5cdda2] transition-colors">

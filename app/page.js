@@ -4,6 +4,7 @@ import {
   BarChart3, ShieldAlert, Building2, Landmark, Shield,
   BookOpen, TrendingUp, Search, RefreshCw, Globe,
   ChevronRight, Radio, CreditCard, Lock, KeyRound,
+  Users2, MapPin,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import LogoCloud from "@/components/LogoCloud";
@@ -87,6 +88,38 @@ const iamDepthStats = [
   { value: "15+", label: "Financial services firms" },
   { value: "End-to-end", label: "Assessment → Managed" },
 ];
+
+const deliveryGeographies = [
+  {
+    flag: "🇬🇧", country: "United Kingdom", city: "London", color: "#5cdda2",
+    highlights: [
+      "On-site and remote delivery",
+      "UK contract frameworks",
+      "IR35-compliant placements",
+      "FCA and DORA-regulated sector experience",
+    ],
+  },
+  {
+    flag: "🇩🇪", country: "Germany / EU", city: "Berlin", color: "#c3c0ff",
+    highlights: [
+      "EU GDPR-aligned contracts",
+      "NIS2 and DORA programme delivery",
+      "German-speaking resource available",
+      "Cross-border programme coordination",
+    ],
+  },
+  {
+    flag: "🇮🇳", country: "India", city: "Bangalore", color: "#e8a87c",
+    highlights: [
+      "Extended-hours monitoring coverage",
+      "Cost-efficient programme resource",
+      "IGA, PAM and SOC specialisms",
+      "IST timezone for APAC overlap",
+    ],
+  },
+];
+
+const deliveryModels = ["Project-Based", "Dedicated Placement", "Managed Service Augmentation", "On-Demand Advisory"];
 
 const domainBars = [
   { label: "Identity Security", color: "#5cdda2", width: 72 },
@@ -520,6 +553,80 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-bold text-sm border border-[#5cdda2]/30 text-[#5cdda2] hover:bg-[#5cdda2]/5 transition-all">
               Talk to an IAM specialist <ArrowRight size={14} />
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Resource Delivery at Scale */}
+      <section className="bg-[#090e1c] py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="mb-12">
+            <span className="text-[0.75rem] font-bold uppercase tracking-[0.1em] mb-4 block" style={{ color: "#e8a87c" }}>
+              Technical Resource Delivery
+            </span>
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-extrabold tracking-tighter mb-4 text-[#dee1f7]">
+                  Security resource, at the pace you need.
+                </h2>
+                <p className="text-base max-w-2xl text-[#bccabf]">
+                  K2K deploys experienced security professionals across UK, Germany/EU and India — on the model that fits your programme. Every resource is governed, time-tracked and visible in your client portal.
+                </p>
+              </div>
+              <Link href="/services/technical-resources"
+                className="flex-shrink-0 inline-flex items-center gap-2 px-6 py-3 rounded-md font-bold text-sm border transition-all"
+                style={{ borderColor: "rgba(232,168,124,0.35)", color: "#e8a87c" }}>
+                Explore resource delivery <ArrowRight size={14} />
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          {/* 3 geography cards */}
+          <div className="grid md:grid-cols-3 gap-6 mb-8">
+            {deliveryGeographies.map((geo) => (
+              <div key={geo.country} className="bg-[#1a1f2f] rounded-xl p-7 border hover:bg-[#25293a] transition-colors"
+                style={{ borderColor: `${geo.color}25` }}>
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="text-3xl leading-none">{geo.flag}</span>
+                  <div>
+                    <p className="font-extrabold text-base tracking-tight text-[#dee1f7]">{geo.country}</p>
+                    <p className="text-xs font-medium" style={{ color: geo.color }}>{geo.city}</p>
+                  </div>
+                </div>
+                <ul className="space-y-2.5">
+                  {geo.highlights.map((h) => (
+                    <li key={h} className="flex items-start gap-2 text-xs text-[#bccabf]">
+                      <CheckCircle size={12} className="mt-0.5 flex-shrink-0" style={{ color: geo.color }} />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Delivery models + governance strip */}
+          <div className="bg-[#1a1f2f] rounded-xl border border-[#3d4a42]/10 p-6 flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#bccabf] mb-3">Delivery Models</p>
+              <div className="flex flex-wrap gap-2">
+                {deliveryModels.map((m) => (
+                  <span key={m} className="text-xs px-3 py-1.5 rounded-full border font-semibold"
+                    style={{ borderColor: "rgba(232,168,124,0.3)", color: "#e8a87c", background: "rgba(232,168,124,0.07)" }}>
+                    {m}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="md:text-right flex-shrink-0">
+              <p className="text-xs font-bold text-[#dee1f7] mb-1">Full portal visibility</p>
+              <p className="text-xs text-[#bccabf] max-w-xs md:max-w-[280px] mb-2">
+                Timesheets, utilisation and resource burn-rate visible in your client portal — back-ended into Zoho Projects and Zoho People.
+              </p>
+              <Link href="/portal" className="text-xs font-bold text-[#5cdda2] hover:text-[#7bfabc] transition-colors inline-flex items-center gap-1">
+                View portal demo <ArrowRight size={11} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
